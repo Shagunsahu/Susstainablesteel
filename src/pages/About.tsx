@@ -68,7 +68,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4 relative">
               <div className="space-y-4 mt-8">
                 <img
-                  src="src/assets/a3.jpg"
+                  src="/assets/a3.jpg"
                   alt="Construction"
                   className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: '0ms' }}
@@ -76,7 +76,7 @@ const About = () => {
               </div>
               <div className="space-y-4">
                 <img
-                  src="src/assets/a2.jpg"
+                  src="/assets/a2.jpg"
                   alt="Steel"
                   className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: '1500ms' }}
@@ -124,7 +124,7 @@ const About = () => {
               <div className="absolute inset-0 bg-primary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="src/assets/founder.jpg" 
+                  src="/assets/founder.jpg" 
                   alt="Mukesh Singh"
                   className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
                 />

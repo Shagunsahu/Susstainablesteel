@@ -171,7 +171,7 @@ const HeroSection = () => {
               {/* IMAGE */}
               <div className="relative h-[500px] w-full">
                  <img
-                  src="src/assets/heroimage.jpg"
+                  src="/assets/heroimage.jpg"
                   alt="Construction"
                   className="w-full h-full object-cover opacity-90 pointer-events-none" // prevent image drag
                  />

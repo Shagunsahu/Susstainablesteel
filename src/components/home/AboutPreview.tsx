@@ -57,7 +57,7 @@ const AboutPreview = () => {
                   style={{ animationDelay: "0ms" }}
                 />
                 <img
-                  src="src/assets/a2.jpg"
+                  src="/assets/a2.jpg"
                   alt="Steel structure"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "1000ms" }}
@@ -65,13 +65,13 @@ const AboutPreview = () => {
               </div>
               <div className="space-y-4">
                 <img
-                  src="src/assets/a3.jpg"
+                  src="/assets/a3.jpg"
                   alt="Industrial facility"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "2000ms" }}
                 />
                 <img
-                  src="src/assets/a4.jpg"
+                  src="/assets/a4.jpg"
                   alt="Workers on site"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "500ms" }}
