@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Target, Eye, Award, Users, Clock, Shield, ArrowRight } from "lucide-react";
+import { CheckCircle, Target, Eye, Award, Users, Clock, Shield, ArrowRight, Quote, Linkedin, Mail } from "lucide-react";
 
 const highlights = [
   { icon: Award, title: "Quality First", description: "ISO certified processes ensuring top-tier quality" },
@@ -68,7 +68,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4 relative">
               <div className="space-y-4 mt-8">
                 <img
-                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=500&fit=crop"
+                  src="src/assets/a3.jpg"
                   alt="Construction"
                   className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: '0ms' }}
@@ -76,7 +76,7 @@ const About = () => {
               </div>
               <div className="space-y-4">
                 <img
-                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=500&fit=crop"
+                  src="src/assets/a2.jpg"
                   alt="Steel"
                   className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: '1500ms' }}
@@ -108,6 +108,70 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed">
                 To provide exceptional project implementations with unwavering commitment to safety, timely delivery, and budget adherence while exceeding client expectations.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- NEW FOUNDER SECTION --- */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          {/* UPDATED GRID COLUMNS HERE: Changed lg:grid-cols-2 to lg:grid-cols-[400px_1fr] */}
+          <div className="grid lg:grid-cols-[400px_1fr] gap-12 items-center lg:justify-between animate-fade-in">
+            
+            {/* Left: Founder Image with Effects */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-primary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="src/assets/founder.jpg" 
+                  alt="Mukesh Singh"
+                  className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                {/* Name Card Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 pt-20">
+                  <h3 className="text-white font-display text-2xl font-bold">Mukesh Singh</h3>
+                  <p className="text-primary font-medium">Founder & CEO</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Founder's Message */}
+            <div className="relative">
+              <Quote className="w-20 h-20 text-primary/10 absolute -top-10 -left-6 -z-10" />
+              
+              <div className="space-y-6">
+                <span className="text-primary text-sm font-bold uppercase tracking-widest border-l-4 border-primary pl-4">Founder's Message</span>
+                
+                <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight">
+                  "Quality is not just an act, <span className="text-primary">it is a habit.</span>"
+                </h2>
+                
+                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+                  <p>
+                    When I established Sustainable Steel Industries in 2002, my vision was simple: to bring world-class industrial construction standards to the Gulf region.
+                  </p>
+                  <p>
+                    We didn't just want to build structures; we wanted to build relationships based on trust, transparency, and engineering excellence. Over two decades later, while technologies have changed, our core commitment to safety and quality remains our unshakeable foundation.
+                  </p>
+                  <p>
+                    Thank you for trusting us with your vision. We look forward to building the future with you.
+                  </p>
+                </div>
+
+                {/* Signature & Socials */}
+                <div className="pt-8 flex items-center gap-8 border-t border-border mt-8">
+                  <div className="flex gap-3">
+                    <a href="https://www.linkedin.com/in/mukesh-s-b5ba7457?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all hover:-translate-y-1">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a href="mailto:mukesh@sustainablesteelind.com" className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all hover:-translate-y-1">
+                      <Mail className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

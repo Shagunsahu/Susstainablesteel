@@ -28,9 +28,24 @@ const Footer = () => {
             
             {/* Social Icons with Glow Effect */}
             <div className="flex gap-4">
-              {[Facebook, Linkedin, Instagram, Twitter].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group">
-                  <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
+              {[
+                { 
+                  Icon: Mail, 
+                  link: "mailto:Mukesh@sustainablesteelllc.com" 
+                },
+                { 
+                  Icon: Linkedin, 
+                  link: "https://www.linkedin.com/in/mukesh-s-b5ba7457?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
+                }
+              ].map((social, i) => (
+                <a 
+                  key={i} 
+                  href={social.link}
+                  target={social.Icon === Linkedin ? "_blank" : undefined}
+                  rel={social.Icon === Linkedin ? "noopener noreferrer" : undefined}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group"
+                >
+                  <social.Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
                 </a>
               ))}
             </div>
@@ -48,7 +63,7 @@ const Footer = () => {
                 { name: "About Us", path: "/about" },
                 { name: "Services", path: "/services" },
                 { name: "Products", path: "/products" },
-                { name: "Our Team", path: "/team" },
+                //{ name: "Our Team", path: "/team" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
@@ -99,7 +114,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-1">Phone</p>
-                  <a href="tel:+96894739596" className="text-lg hover:text-primary transition-colors font-medium">+968 9473 9596</a>
+                  <a href="tel:+971508614171" className="text-lg hover:text-primary transition-colors font-medium">971508614171</a>
                 </div>
               </li>
               
@@ -109,7 +124,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-1">Email</p>
-                  <a href="mailto:sales@sustainablesteelind.com" className="hover:text-primary transition-colors text-sm sm:text-base">sales@sustainablesteelind.com</a>
+                  <a href="mailto:Mukesh@sustainablesteelllc.com" className="hover:text-primary transition-colors text-sm sm:text-base">Mukesh@sustainablesteelind.com</a>
                 </div>
               </li>
 

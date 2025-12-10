@@ -51,13 +51,13 @@ const AboutPreview = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4 mt-8">
                 <img
-                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=300&fit=crop"
+                  src="src/assets/a1.jpg"
                   alt="Construction site"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "0ms" }}
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=400&fit=crop"
+                  src="src/assets/a2.jpg"
                   alt="Steel structure"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "1000ms" }}
@@ -65,13 +65,13 @@ const AboutPreview = () => {
               </div>
               <div className="space-y-4">
                 <img
-                  src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=400&h=400&fit=crop"
+                  src="src/assets/a3.jpg"
                   alt="Industrial facility"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "2000ms" }}
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop"
+                  src="src/assets/a4.jpg"
                   alt="Workers on site"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "500ms" }}

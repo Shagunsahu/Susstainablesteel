@@ -171,7 +171,7 @@ const HeroSection = () => {
               {/* IMAGE */}
               <div className="relative h-[500px] w-full">
                  <img
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
+                  src="src/assets/heroimage.jpg"
                   alt="Construction"
                   className="w-full h-full object-cover opacity-90 pointer-events-none" // prevent image drag
                  />

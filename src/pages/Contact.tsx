@@ -11,15 +11,15 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+968 9473 9596",
-    link: "tel:+96894739596",
+    value: "+971508614171",
+    link: "tel:+971508614171",
     description: "Call us for immediate assistance",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "sales@sustainablesteelind.com",
-    link: "mailto:sales@sustainablesteelind.com",
+    value: "Mukesh@sustainablesteelllc.com",
+    link: "mailto:Mukesh@sustainablesteelllc.com",
     description: "Email us for detailed inquiries",
   },
   {
