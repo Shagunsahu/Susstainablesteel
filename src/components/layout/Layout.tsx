@@ -1,5 +1,5 @@
 import { ReactNode, useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Phone } from "lucide-react";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -36,6 +36,18 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+
+      {/* --- Floating Call Button (above WhatsApp) --- */}
+      <a
+        href="tel:+971508614171"
+        className="fixed bottom-40 right-8 z-65 p-3 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
+        aria-label="Call us"
+      >
+        <Phone className="w-6 h-6" />
+        <span className="absolute right-16 bg-white text-black text-sm font-semibold px-3 py-1 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+          Call us
+        </span>
+      </a>
 
       {/* --- Floating WhatsApp Button (Bottom Right) --- */}
       <a
