@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -54,7 +53,7 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <img src={logo} alt="Sustainable Steel Logo" className={`w-auto transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`} />
+              <img src="/assets/logo.png" alt="Sustainable Steel Logo" className={`w-auto transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`} />
               <div className="hidden sm:block">
                 <h1 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">Sustainable Steel</h1>
                 <p className={`text-xs text-muted-foreground transition-all ${isScrolled ? "hidden" : "block"}`}>Industries LLC SP</p>

@@ -51,7 +51,7 @@ const AboutPreview = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4 mt-8">
                 <img
-                  src="src/assets/a1.jpg"
+                  src="/assets/a1.jpg"
                   alt="Construction site"
                   className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
                   style={{ animationDelay: "0ms" }}

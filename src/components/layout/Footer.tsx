@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, Instagram, Twitter, ArrowRight, ChevronRight } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -16,7 +15,7 @@ const Footer = () => {
           {/* 1. Company Info */}
           <div className="animate-fade-in space-y-6">
             <Link to="/" className="flex items-center gap-3 group">
-              <img src={logo} alt="Sustainable Steel Logo" className="h-12 w-auto group-hover:scale-105 transition-transform duration-300" />
+              <img src="/assets/logo.png" alt="Sustainable Steel Logo" className="h-12 w-auto group-hover:scale-105 transition-transform duration-300" />
               <div>
                 <h3 className="font-display text-xl font-bold group-hover:text-primary transition-colors">Sustainable Steel</h3>
                 <p className="text-sm text-muted-foreground">Industries LLC SP</p>
