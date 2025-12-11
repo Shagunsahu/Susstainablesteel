@@ -63,13 +63,13 @@ const ContactPreview = () => {
               <h3 className="font-display text-2xl font-semibold mb-6">Contact Information</h3>
               
               {/* Phone Card */}
-              <a href="tel:+96894739596" className="group flex items-start gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <a href="tel:+971 508614171" className="group flex items-start gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                   <Phone className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <p className="font-semibold text-lg group-hover:text-primary transition-colors">Phone</p>
-                  <p className="text-muted-foreground">+968 9473 9596</p>
+                  <p className="text-muted-foreground">+971 508614171</p>
                 </div>
               </a>
 
@@ -91,7 +91,7 @@ const ContactPreview = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-lg">Location</p>
-                  <p className="text-muted-foreground">UAE & Oman</p>
+                  <p className="text-muted-foreground">UAE </p>
                 </div>
               </div>
 

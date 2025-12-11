@@ -13,9 +13,10 @@ export default {
       },
     },
     extend: {
+      // --- UPDATED FONTS FOR PREMIUM LOOK ---
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'Georgia', 'serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'], // Modern, clean body font
+        display: ['Space Grotesk', 'sans-serif'], // Industrial, high-end heading font
       },
       colors: {
         border: "hsl(var(--border))",
@@ -97,7 +98,6 @@ export default {
           from: { opacity: "0", transform: "translateX(20px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
-        // NEW ANIMATIONS ADDED HERE
         "blink": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
@@ -106,15 +106,21 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        blob: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "slide-in-right": "slide-in-right 0.6s ease-out forwards",
-        // NEW ANIMATIONS ADDED HERE
         "blink": "blink 1s step-end infinite",
         "float": "float 3s ease-in-out infinite",
+        blob: "blob 7s infinite",
       },
     },
   },

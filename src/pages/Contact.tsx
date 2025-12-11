@@ -18,14 +18,14 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "Mukesh@sustainablesteelllc.com",
-    link: "mailto:Mukesh@sustainablesteelllc.com",
+    value: "sales@sustainablesteelllc.com",
+    link: "mailto:sales@sustainablesteelllc.com",
     description: "Email us for detailed inquiries",
   },
   {
     icon: MapPin,
     title: "Locations",
-    value: "UAE & Oman",
+    value: "UAE",
     description: "Serving across the Gulf region",
   },
   {
@@ -286,7 +286,7 @@ const Contact = () => {
         <div className="text-center">
           <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
           <h3 className="font-display text-2xl font-bold mb-2">Visit Our Offices</h3>
-          <p className="text-muted-foreground">UAE & Oman</p>
+          <p className="text-muted-foreground">UAE </p>
         </div>
       </section>
     </Layout>

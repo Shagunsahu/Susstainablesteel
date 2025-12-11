@@ -113,7 +113,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-1">Phone</p>
-                  <a href="tel:+971508614171" className="text-lg hover:text-primary transition-colors font-medium">971508614171</a>
+                  <a href="tel:+971508614171" className="text-lg hover:text-primary transition-colors font-medium">+971 508614171</a>
                 </div>
               </li>
               
@@ -123,7 +123,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-1">Email</p>
-                  <a href="mailto:Mukesh@sustainablesteelllc.com" className="hover:text-primary transition-colors text-sm sm:text-base">Mukesh@sustainablesteelind.com</a>
+                  <a href="mailto:sales@sustainablesteelllc.com" className="hover:text-primary transition-colors text-sm sm:text-base">sales@sustainablesteelllc.com</a>
                 </div>
               </li>
 
@@ -133,7 +133,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold mb-1">Location</p>
-                  <p>UAE & Oman</p>
+                  <p>UAE </p>
                 </div>
               </li>
 
