@@ -28,7 +28,6 @@ const Layout = ({ children }: LayoutProps) => {
       top: 0,
       behavior: "smooth",
     });
-
   };
 
   return (
@@ -70,7 +69,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Floating Scroll-to-Top Button (Bottom Right) */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:bg-primary/90 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${
+        className={`group fixed bottom-8 right-8 z-50 p-4 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-500 hover:bg-primary/90 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${
           showScrollTop 
             ? "opacity-100 translate-y-0 scale-100" 
             : "opacity-0 translate-y-10 scale-0 pointer-events-none"
@@ -78,6 +77,10 @@ const Layout = ({ children }: LayoutProps) => {
         aria-label="Scroll to top"
       >
         <ArrowUp className="w-6 h-6 animate-bounce" style={{ animationDuration: '3s' }} />
+
+        <span className="absolute right-16 bg-white text-black text-sm font-semibold px-3 py-1 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none" aria-hidden>
+          Scroll to top
+        </span>
       </button>
     </div>
   );
