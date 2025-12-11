@@ -117,16 +117,16 @@ const About = () => {
       <section className="py-24 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4">
           {/* UPDATED GRID COLUMNS HERE: Changed lg:grid-cols-2 to lg:grid-cols-[400px_1fr] */}
-          <div className="grid lg:grid-cols-[400px_1fr] gap-12 items-center lg:justify-between animate-fade-in">
+          <div className="grid lg:grid-cols-[320px_1fr] gap-12 items-center lg:justify-between animate-fade-in">
             
             {/* Left: Founder Image with Effects */}
             <div className="relative group">
               <div className="absolute inset-0 bg-primary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-[320px] mx-auto">
                 <img
-                  src="/assets/founder.jpg" 
+                  src="/assets/founder.jpg"
                   alt="Mukesh Singh"
-                  className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+                  className="w-full max-w-[320px] h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
                 />
                 
                 {/* Name Card Overlay */}
