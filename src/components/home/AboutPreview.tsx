@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CheckCircle, ArrowRight, Target, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -37,6 +37,13 @@ const AboutPreview = () => {
     "Competitive pricing",
   ];
 
+  const navigate = useNavigate();
+
+  const openAboutTop = () => {
+    navigate("/about");
+    setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" }), 50);
+  };
+
   return (
     <section className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
@@ -53,28 +60,28 @@ const AboutPreview = () => {
                 <img
                   src="/assets/a1.jpg"
                   alt="Construction site"
-                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
+                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 opacity-0 animate-fade-in"
                   style={{ animationDelay: "0ms" }}
                 />
                 <img
                   src="/assets/a2.jpg"
                   alt="Steel structure"
-                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
-                  style={{ animationDelay: "1000ms" }}
+                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 opacity-0 animate-fade-in"
+                  style={{ animationDelay: "150ms" }}
                 />
               </div>
               <div className="space-y-4">
                 <img
                   src="/assets/a3.jpg"
                   alt="Industrial facility"
-                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
-                  style={{ animationDelay: "2000ms" }}
+                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 opacity-0 animate-fade-in"
+                  style={{ animationDelay: "300ms" }}
                 />
                 <img
                   src="/assets/a4.jpg"
                   alt="Workers on site"
-                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 animate-float"
-                  style={{ animationDelay: "500ms" }}
+                  className="rounded-2xl shadow-card hover:scale-105 transition-transform duration-500 opacity-0 animate-fade-in"
+                  style={{ animationDelay: "450ms" }}
                 />
               </div>
             </div>
@@ -137,12 +144,10 @@ const AboutPreview = () => {
               </div>
             </div>
 
-            <Link to="/about">
-              <Button variant="hero" size="lg" className="group">
-                Learn More About Us
-                <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-            </Link>
+            <Button onClick={openAboutTop} variant="hero" size="lg" className="group">
+              Learn More About Us
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
           </div>
         </div>
       </div>

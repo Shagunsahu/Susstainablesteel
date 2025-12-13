@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Wind, Sun, Building2, CircleDot, Settings, Lightbulb, Check } from "lucide-react";
 
 const products = [
   {
+    id: "roof-ventilators", // EXACT ID MATCHING THE URL HASH
     category: "Roof Ventilators",
     icon: Wind,
     items: [
@@ -12,23 +14,24 @@ const products = [
         name: "Turbo Ventilator",
         description: "Wind-powered roof ventilator for industrial applications",
         specs: ["Sizes: 14\" - 36\"", "Material: Aluminum/SS", "Wind speed: 3-60 km/h"],
-        image: "/assets/s1.jpg",
+        image: "/assets/rv/rv1.jpg",
       },
       {
         name: "Ridge Ventilator",
         description: "Continuous ridge ventilation for maximum airflow",
         specs: ["Length: Custom", "Material: GI/Aluminum", "Opening: 300-600mm"],
-        image: "/assets/s2.jpg",
+        image: "/assets/rv/rv2.jpg",
       },
       {
         name: "Louver Ventilator",
         description: "Gravity-based ventilation with rain protection",
         specs: ["Sizes: 600x600 - 1200x1200mm", "Material: Aluminum", "Blade angle: 45°"],
-        image: "/assets/s3.jpg",
+        image: "/assets/rv/rv3.jpg",
       },
     ],
   },
   {
+    id: "tubular-skylights", // EXACT ID MATCHING THE URL HASH
     category: "Tubular Skylights",
     icon: Sun,
     items: [
@@ -36,23 +39,24 @@ const products = [
         name: "Residential Skylight",
         description: "Natural daylight solution for homes and small spaces",
         specs: ["Diameter: 10\" - 14\"", "Coverage: Up to 200 sq ft", "UV protection: 99%"],
-        image: "/assets/s4.jpg",
+        image: "/assets/tsl/tsl1.jpg",
       },
       {
         name: "Commercial Skylight",
         description: "High-capacity daylight system for large spaces",
         specs: ["Diameter: 18\" - 24\"", "Coverage: Up to 500 sq ft", "Diffuser: Prismatic"],
-        image: "/assets/s5.jpg",
+        image: "/assets/tsl/tsl5.jpg",
       },
       {
         name: "Industrial Skylight",
         description: "Heavy-duty skylight for factories and warehouses",
         specs: ["Diameter: 24\" - 36\"", "Coverage: Up to 1000 sq ft", "Impact resistant"],
-        image: "/assets/s6.jpg",
+        image: "/assets/tsl/tsl7.jpg",
       },
     ],
   },
   {
+    id: "steel-structures", // EXACT ID MATCHING THE URL HASH
     category: "Steel Structures",
     icon: Building2,
     items: [
@@ -60,19 +64,19 @@ const products = [
         name: "Warehouse Buildings",
         description: "Pre-engineered steel warehouses with clear span design",
         specs: ["Span: Up to 80m", "Height: Up to 25m", "Bay spacing: 6-12m"],
-        image: "/assets/p1.jpg",
+        image: "/assets/se/se1.jpg",
       },
       {
         name: "Factory Buildings",
         description: "Industrial factory structures with crane support",
         specs: ["Crane capacity: Up to 50T", "Multi-span available", "Mezzanine options"],
-        image: "/assets/p1.jpg",
+        image: "/assets/se/se2.jpg",
       },
       {
         name: "Commercial Buildings",
         description: "Multi-story steel frame commercial structures",
         specs: ["Floors: Up to 10", "Fast construction", "Customizable facade"],
-        image: "/assets/p1.jpg",
+        image: "/assets/se/se3.jpg",
       },
     ],
   },
@@ -85,6 +89,32 @@ const features = [
 ];
 
 const Products = () => {
+  const location = useLocation();
+
+  // Robust Scroll Handler
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      
+      if (element) {
+        // Immediate scroll attempt
+        element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Retry after short delay (in case images are loading shifting layout)
+        setTimeout(() => {
+          const retryElement = document.getElementById(id);
+          if (retryElement) {
+            retryElement.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 300);
+      }
+    } else {
+      // If no hash, scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -124,7 +154,11 @@ const Products = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           {products.map((category) => (
-            <div key={category.category} className="mb-24 last:mb-0 scroll-mt-24" id={category.category.toLowerCase().replace(" ", "-")}>
+            <div 
+              key={category.id} 
+              id={category.id} // Binds the hardcoded ID here
+              className="mb-24 last:mb-0 scroll-mt-40" // scroll-mt-40 creates space for the sticky header
+            >
               
               {/* Category Header */}
               <div className="flex items-center gap-4 mb-10 border-b border-border pb-4">
@@ -141,7 +175,7 @@ const Products = () => {
                     key={product.name}
                     className="group bg-card rounded-2xl overflow-hidden shadow-card border border-border hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col"
                   >
-                    {/* Image with Zoom */}
+                    {/* Image */}
                     <div className="relative h-56 overflow-hidden">
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
                       <img
@@ -149,9 +183,6 @@ const Products = () => {
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Premium</span>
-                      </div>
                     </div>
 
                     {/* Content */}
@@ -171,7 +202,7 @@ const Products = () => {
 
                       <div className="mt-auto">
                         <Link to="/contact">
-                          <Button variant="heroOutline" size="sm" className="w-full group/btn">
+                          <Button variant="outline" size="sm" className="w-full group/btn hover:bg-primary hover:text-white border-primary/20">
                             Request Quote
                             <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
                           </Button>
@@ -183,24 +214,6 @@ const Products = () => {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-secondary/30 text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-            Can't Find What You're Looking For?
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            We offer custom solutions tailored to your specific requirements. Contact us to discuss your project needs.
-          </p>
-          <Link to="/contact">
-            <Button variant="hero" size="xl" className="shadow-lg">
-              Contact Us
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </Link>
         </div>
       </section>
     </Layout>

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -5,13 +7,15 @@ import { Wind, Sun, Building2, Wrench, Settings, Zap, ArrowRight, CheckCircle } 
 
 const services = [
   {
+    id: "roof-ventilators",
     icon: Wind,
     title: "Roof Ventilators",
     description: "Industrial roof ventilation systems designed for warehouses, factories, and industrial facilities. Our ventilators ensure optimal airflow and temperature control.",
     features: ["Natural ventilation without electricity", "Energy efficient operation", "Durable weather-resistant design", "Low maintenance requirements", "Custom sizes available", "Quick installation"],
-    image: "/assets/s1.jpg",
+    image: "/assets/s1.jpg", 
   },
   {
+    id: "tubular-skylights",
     icon: Sun,
     title: "Tubular Skylights",
     description: "Innovative natural lighting solutions that capture and distribute sunlight throughout your industrial spaces. Reduce energy consumption while creating a brighter workspace.",
@@ -19,6 +23,7 @@ const services = [
     image: "/assets/s5.jpg",
   },
   {
+    id: "steel-structures",
     icon: Building2,
     title: "Steel Structures",
     description: "Pre-engineered building solutions for warehouses, factories, commercial buildings, and more. Our steel structures are designed for durability and efficiency.",
@@ -26,6 +31,7 @@ const services = [
     image: "/assets/s4.jpg",
   },
   {
+    id: "installation",
     icon: Wrench,
     title: "Installation Services",
     description: "Professional installation services executed by experienced teams. We ensure quality workmanship, adherence to safety standards, and timely project completion.",
@@ -33,6 +39,7 @@ const services = [
     image: "/assets/s7.jpg",
   },
   {
+    id: "maintenance",
     icon: Settings,
     title: "Maintenance",
     description: "Comprehensive maintenance programs designed to keep your installations running at peak efficiency. Regular inspections and timely repairs extend the life of your equipment.",
@@ -40,6 +47,7 @@ const services = [
     image: "/assets/s1.jpg",
   },
   {
+    id: "energy-solutions",
     icon: Zap,
     title: "Energy Solutions",
     description: "Eco-friendly energy solutions designed to reduce costs and minimize environmental impact. Smart systems that optimize energy usage.",
@@ -49,14 +57,27 @@ const services = [
 ];
 
 const Services = () => {
+  const location = useLocation();
+
+  // Handle scrolling when URL has a hash (e.g. #roof-ventilators)
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        // Wait slightly for layout to settle
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative py-24 bg-background overflow-hidden">
-        {/* Animated Background Elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-primary/5 rounded-full blur-xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 bg-secondary rounded-full blur-xl animate-float"></div>
-        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <span className="text-primary text-sm font-bold uppercase tracking-widest border border-primary/20 px-4 py-1.5 rounded-full">Our Services</span>
@@ -76,7 +97,8 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group grid lg:grid-cols-2 gap-12 items-center mb-32 last:mb-10 ${
+              id={service.id} // Binds the ID for scrolling
+              className={`scroll-mt-32 group grid lg:grid-cols-2 gap-12 items-center mb-32 last:mb-10 ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
@@ -107,7 +129,7 @@ const Services = () => {
                 </Link>
               </div>
 
-              {/* Image Content - With Tilt Effect */}
+              {/* Image Content */}
               <div className={`${index % 2 === 1 ? "lg:order-1" : ""} relative perspective-1000 group-hover:z-10`}>
                 <div className="absolute inset-0 bg-primary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
                 <img
@@ -120,8 +142,6 @@ const Services = () => {
           ))}
         </div>
       </section>
-
-      {/* CTA Section */}
       <section className="py-24 bg-secondary/30 text-center relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-foreground">

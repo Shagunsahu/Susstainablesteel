@@ -112,6 +112,10 @@ export default {
           "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
           "100%": { transform: "translate(0px, 0px) scale(1)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -121,6 +125,7 @@ export default {
         "blink": "blink 1s step-end infinite",
         "float": "float 3s ease-in-out infinite",
         blob: "blob 7s infinite",
+        marquee: "marquee 60s linear infinite",
       },
     },
   },
