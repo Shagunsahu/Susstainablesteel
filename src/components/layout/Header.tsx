@@ -165,7 +165,7 @@ const Header = () => {
                             <Link 
                             key={dropItem.name} 
                             to={{ pathname: dropItem.path.split('#')[0], hash: dropItem.path.includes('#') ? `#${dropItem.path.split('#')[1]}` : '' }}
-                            className="block px-4 py-3 text-sm text-slate-600 hover:bg-[#E6E8F0] hover:text-[#0a1e40] rounded-lg transition-colors flex items-center justify-between group/item"
+                            className=" px-4 py-3 text-sm text-slate-600 hover:bg-[#E6E8F0] hover:text-[#0a1e40] rounded-lg transition-colors flex items-center justify-between group/item"
                             >
                             {dropItem.name}
                             <ChevronRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-primary" />
