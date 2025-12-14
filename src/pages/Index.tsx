@@ -3,6 +3,7 @@ import HeroSection from "@/components/home/HeroSection";
 import NewsTicker from "@/components/home/NewsTicker"; // <--- Add this
 import ProjectGallery from "@/components/home/ProjectGallery"; // <--- Add this
 import AboutPreview from "@/components/home/AboutPreview";
+import StatsStrip from "@/components/home/StatsStrip";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import ContactPreview from "@/components/home/ContactPreview";
 import ClientsMarquee from "@/components/home/ClientsMarquee"; 
@@ -13,10 +14,11 @@ const Index = () => {
     <Layout>
       <NewsTicker />
       <HeroSection />
-      <ClientsMarquee /> 
+      <StatsStrip />
       <AboutPreview />
       <ProjectGallery /> 
       <ServicesPreview />
+       <ClientsMarquee /> 
       <ContactPreview />
       
     </Layout>

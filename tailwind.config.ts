@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -15,59 +20,63 @@ export default {
     extend: {
       // --- UPDATED FONTS FOR PREMIUM LOOK ---
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'], // Modern, clean body font
-        display: ['Space Grotesk', 'sans-serif'], // Industrial, high-end heading font
+        sans: ['Inter', 'system-ui', 'sans-serif'], // Professional body font
+        display: ['Playfair Display', 'Georgia', 'serif'], // Elegant heading font
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "#1e3a8a", // Blue-900 (Subtle borders)
+        input: "#112b5a", // Lighter Navy (Input backgrounds)
+        ring: "#00AEEF", // Cyan (Focus rings)
+        
+        // --- INDUSTRIAL CORE THEME COLORS ---
+        background: "#0a1e40", // Deep Navy (Main Background)
+        foreground: "#cbd5e1", // Slate-300 (Main Text)
+
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#FF0000", // Brand Red (Buttons/Actions)
+          foreground: "#ffffff", // White text on Red
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#112b5a", // Lighter Navy (Secondary elements)
+          foreground: "#00AEEF", // Cyan text
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#ef4444", // Red
+          foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#112b5a", // Muted background
+          foreground: "#94a3b8", // Muted text
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#1e3a8a", // Blue-900
+          foreground: "#00AEEF", // Cyan
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "#112b5a",
+          foreground: "#cbd5e1",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#112b5a", // Lighter Navy (Card Backgrounds)
+          foreground: "#cbd5e1",
         },
+        // Legacy support if needed
         steel: {
-          blue: "hsl(var(--steel-blue))",
-          dark: "hsl(var(--steel-dark))",
-          red: "hsl(var(--steel-red))",
-          light: "hsl(var(--steel-light))",
-          gray: "hsl(var(--steel-gray))",
+          blue: "#00AEEF",
+          dark: "#0a1e40",
+          red: "#FF0000",
+          light: "#112b5a",
+          gray: "#94a3b8",
         },
         sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+          DEFAULT: "#0a1e40",
+          foreground: "#cbd5e1",
+          primary: "#FF0000",
+          "primary-foreground": "#ffffff",
+          accent: "#1e3a8a",
+          "accent-foreground": "#00AEEF",
+          border: "#1e3a8a",
+          ring: "#00AEEF",
         },
       },
       borderRadius: {
@@ -78,8 +87,8 @@ export default {
         "2xl": "calc(var(--radius) + 8px)",
       },
       boxShadow: {
-        'card': 'var(--shadow-card)',
-        'elevated': 'var(--shadow-xl)',
+        'card': '0 4px 20px -4px rgba(0, 0, 0, 0.5)',
+        'elevated': '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
       },
       keyframes: {
         "accordion-down": {

@@ -3,14 +3,18 @@ import { Phone, Mail, MapPin, Linkedin, ArrowRight, ChevronRight } from "lucide-
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background relative overflow-hidden">
-               
-      <div className="absolute inset-0 opacity-[0.03]" 
-           style={{ backgroundImage: 'linear-gradient(#444 1px, transparent 1px), linear-gradient(90deg, #444 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
+    // Updated colors to match the Dark Theme (bg-background instead of bg-foreground)
+    <footer className="bg-background text-foreground relative overflow-hidden border-t border-white/5">
+      {/* 1. Top Gradient Border (The "Energy Line") */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00AEEF] via-[#FF0000] to-[#00AEEF]"></div>
+
+      {/* 2. Background Pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">
-        {/* REDUCED GAP: changed to gap-6 md:gap-4 to bring columns closer */}
+        {/* RESPONSIVE GRID: 1 col (mobile) -> 2 cols (tablet) -> 3 cols (laptop) -> 5 cols (desktop) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-4">
           
           {/* 1. Company Info */}
@@ -48,8 +52,6 @@ const Footer = () => {
                 { name: "Services", path: "/services" },
                 { name: "Products", path: "/products" },
                 { name: "Careers", path: "/careers" },
-                 { name: "Products", path: "/products" },
-                { name: "Clients", path: "/clients" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
@@ -62,7 +64,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* 3. Products */}
+          {/* 3. Products (New Section) */}
           <div className="animate-fade-in">
             <h4 className="font-display text-base font-semibold mb-4 flex items-center gap-2">
               <span className="w-1 h-5 bg-primary rounded-full"></span> Products
@@ -85,7 +87,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* 4. Our Services */}
+          {/* 4. Services */}
           <div className="animate-fade-in">
             <h4 className="font-display text-base font-semibold mb-4 flex items-center gap-2">
               <span className="w-1 h-5 bg-primary rounded-full"></span> Services

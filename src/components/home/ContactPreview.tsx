@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, CheckCircle, Zap, ArrowRight, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle2, Zap, ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -40,114 +40,120 @@ const ContactPreview = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-secondary/30 relative overflow-hidden">
-      {/* Decorative Background Blob */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none" />
+    <section id="contact" className="py-24 bg-background relative overflow-hidden">
+      
+      {/* 1. Background Pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+      </div>
 
-      <div className="container mx-auto px-4">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#00AEEF]/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <span className="text-primary text-sm font-bold uppercase tracking-widest bg-primary/10 px-4 py-2 rounded-full">Contact Us</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-6 mb-4">
-            Get a Free Quote Today
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Fill out the form below and our team will get back to you within 5 minutes.
-          </p>
+           <span className="text-[#00AEEF] text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
+              <span className="w-2 h-2 bg-[#FF0000] rounded-full"></span> Contact Us
+           </span>
+           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+              Start Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Project</span>
+           </h2>
+           <p className="text-slate-400 max-w-xl mx-auto text-lg">
+             Ready to build? Fill out the form below and our engineering team will get back to you within 5 minutes.
+           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Interactive Contact Info */}
-          <div className="space-y-8 animate-slide-in-right" style={{ animationDelay: '200ms' }}>
+          
+          {/* LEFT: Contact Information (HUD Style) */}
+          <div className="space-y-6 animate-slide-in-right" style={{ animationDelay: '200ms' }}>
             
-            <div className="space-y-4">
-              <h3 className="font-display text-2xl font-semibold mb-6">Contact Information</h3>
-              
-              {/* Phone Card */}
-              <a href="tel:+971 508614171" className="group flex items-start gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                  <Phone className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <p className="font-semibold text-lg group-hover:text-primary transition-colors">Phone</p>
-                  <p className="text-muted-foreground">+971 508614171</p>
-                </div>
-              </a>
+            {/* Phone Card */}
+            <a href="tel:+971508614171" className="group flex items-center gap-5 p-5 bg-[#0a1e40] rounded-xl border border-white/10 hover:border-[#00AEEF] transition-all duration-300 relative overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-r from-[#00AEEF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+               <div className="w-12 h-12 rounded-lg bg-[#112b5a] border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10">
+                 <Phone className="w-5 h-5 text-[#00AEEF]" />
+               </div>
+               <div className="relative z-10">
+                 <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Call Us Now</p>
+                 <p className="text-white text-lg font-bold font-display group-hover:text-[#00AEEF] transition-colors">+971 50 861 4171</p>
+               </div>
+            </a>
 
-              {/* Email Card */}
-              <a href="mailto:sales@sustainablesteelind.com" className="group flex items-start gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                  <Mail className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <p className="font-semibold text-lg group-hover:text-primary transition-colors">Email</p>
-                  <p className="text-muted-foreground">sales@sustainablesteelind.com</p>
-                </div>
-              </a>
+            {/* Email Card */}
+            <a href="mailto:sales@sustainablesteelind.com" className="group flex items-center gap-5 p-5 bg-[#0a1e40] rounded-xl border border-white/10 hover:border-[#00AEEF] transition-all duration-300 relative overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-r from-[#00AEEF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+               <div className="w-12 h-12 rounded-lg bg-[#112b5a] border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10">
+                 <Mail className="w-5 h-5 text-[#00AEEF]" />
+               </div>
+               <div className="relative z-10">
+                 <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Email Support</p>
+                 <p className="text-white text-lg font-bold font-display group-hover:text-[#00AEEF] transition-colors">sales@sustainablesteelind.com</p>
+               </div>
+            </a>
 
-              {/* Location Card (Static but styled same) */}
-              <div className="flex items-start gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-6 h-6 text-primary" />
+            {/* Location & Hours Grid */}
+            <div className="grid sm:grid-cols-2 gap-6">
+                <div className="p-5 bg-[#0a1e40] rounded-xl border border-white/10">
+                    <MapPin className="w-6 h-6 text-[#FF0000] mb-3" />
+                    <p className="text-white font-bold mb-1">UAE Headquarters</p>
+                    
                 </div>
-                <div>
-                  <p className="font-semibold text-lg">Location</p>
-                  <p className="text-muted-foreground">UAE </p>
+                <div className="p-5 bg-[#0a1e40] rounded-xl border border-white/10">
+                    <div className="flex justify-between items-start mb-3">
+                        <Clock className="w-6 h-6 text-[#FF0000]" />
+                        <span className="flex h-2 w-2 relative">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                    </div>
+                    <p className="text-white font-bold mb-1">Working Hours</p>
+                    <p className="text-slate-400 text-sm">Sun - Thu: 8AM - 6PM</p>
                 </div>
-              </div>
-
-              {/* Hours Card */}
-              <div className="flex items-start gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="font-semibold text-lg">Working Hours</p>
-                  <p className="text-muted-foreground">Sun - Thu: 8AM - 6PM</p>
-                </div>
-              </div>
             </div>
 
-            {/* Free Offers & Pulse Alert */}
-            <div className="bg-card rounded-2xl p-8 shadow-card border border-border relative overflow-hidden">
-              <h4 className="font-semibold text-lg mb-4">What You Get For Free</h4>
-              <ul className="space-y-3 mb-8">
-                {freeOffers.map((offer, i) => (
-                  <li key={offer} className="flex items-center gap-3 text-sm animate-fade-in" style={{ animationDelay: `${i * 100 + 500}ms` }}>
-                    <div className="bg-green-500/10 p-1 rounded-full">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+            {/* "Limited Time Offer" Box */}
+            <div className="mt-8 p-6 bg-gradient-to-br from-[#FF0000]/10 to-transparent rounded-xl border border-[#FF0000]/30 relative overflow-hidden group">
+                {/* Diagonal Stripes Pattern */}
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #FF0000 0, #FF0000 10px, transparent 10px, transparent 20px)' }}></div>
+                
+                <div className="relative z-10 flex items-start gap-4">
+                    <div className="p-2 bg-[#FF0000] rounded-lg shadow-lg shadow-red-900/50 animate-bounce">
+                        <Zap className="w-6 h-6 text-white fill-white" />
                     </div>
-                    <span>{offer}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Pulsing Offer Box */}
-              <div className="relative p-4 bg-destructive/5 rounded-xl border border-destructive/20 flex items-center gap-4 overflow-hidden group">
-                <div className="absolute inset-0 bg-destructive/5 animate-pulse-glow"></div>
-                <div className="bg-white p-2 rounded-full shadow-sm z-10 animate-bounce" style={{ animationDuration: '2s' }}>
-                    <Zap className="w-5 h-5 text-destructive fill-destructive" />
+                    <div>
+                        <h4 className="text-[#FF0000] font-bold text-lg mb-1">Limited Time Offer!</h4>
+                        <p className="text-slate-300 text-sm mb-4">Get <span className="text-white font-bold">10% OFF</span> on all orders placed this month. Includes free site survey.</p>
+                        <div className="flex flex-wrap gap-x-4 gap-y-2">
+                             {freeOffers.map((offer, i) => (
+                                <div key={i} className="flex items-center gap-2 text-xs text-slate-400">
+                                    <CheckCircle2 className="w-3 h-3 text-green-500" /> {offer}
+                                </div>
+                             ))}
+                        </div>
+                    </div>
                 </div>
-                <div className="z-10">
-                  <p className="font-bold text-destructive">Limited Time Offer!</p>
-                  <p className="text-xs text-destructive/80 font-medium">Get 10% off on orders placed this month</p>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* Right Side - Interactive Form */}
-          <div className="bg-card rounded-3xl p-8 lg:p-10 shadow-xl border border-border relative animate-fade-in delay-200">
-             {/* Form Heading */}
+          {/* RIGHT: "Control Panel" Form */}
+          <div className="bg-[#0a1e40] rounded-2xl p-8 lg:p-10 border border-white/10 shadow-2xl relative animate-fade-in delay-200">
+             
+            {/* Top Bar Decoration */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00AEEF] via-[#FF0000] to-[#00AEEF]"></div>
+
             <div className="mb-8">
-                <h3 className="font-display text-2xl font-bold mb-2">Request a Callback</h3>
-                <p className="text-muted-foreground text-sm">We usually respond within 5 minutes during working hours.</p>
+               <h3 className="font-display text-2xl font-bold text-white mb-2">Request Callback</h3>
+               <p className="text-slate-400 text-sm">Fill in the specs below. Average response time: <span className="text-[#00AEEF] font-bold">5 mins</span>.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-1.5 group">
-                <label className="text-sm font-semibold text-foreground/80 group-focus-within:text-primary transition-colors">Full Name</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 group-focus-within:text-[#00AEEF] transition-colors">Full Name</label>
                 <Input
-                  className="bg-secondary/20 border-border focus:bg-background focus:border-primary transition-all duration-300 h-12"
+                  className="bg-[#112b5a] border-white/10 text-white focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all h-12"
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -157,21 +163,21 @@ const ContactPreview = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-1.5 group">
-                    <label className="text-sm font-semibold text-foreground/80 group-focus-within:text-primary transition-colors">Phone Number</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 group-focus-within:text-[#00AEEF] transition-colors">Phone Number</label>
                     <Input
-                    className="bg-secondary/20 border-border focus:bg-background focus:border-primary transition-all duration-300 h-12"
-                    placeholder="+968..."
+                    className="bg-[#112b5a] border-white/10 text-white focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all h-12"
+                    placeholder="+971..."
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     required
                     />
                 </div>
                 <div className="space-y-1.5 group">
-                    <label className="text-sm font-semibold text-foreground/80 group-focus-within:text-primary transition-colors">Email Address</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 group-focus-within:text-[#00AEEF] transition-colors">Email Address</label>
                     <Input
                     type="email"
-                    className="bg-secondary/20 border-border focus:bg-background focus:border-primary transition-all duration-300 h-12"
-                    placeholder="john@example.com"
+                    className="bg-[#112b5a] border-white/10 text-white focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all h-12"
+                    placeholder="john@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -180,55 +186,49 @@ const ContactPreview = () => {
               </div>
 
               <div className="space-y-1.5 group">
-                <label className="text-sm font-semibold text-foreground/80 group-focus-within:text-primary transition-colors">Service Required</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 group-focus-within:text-[#00AEEF] transition-colors">Service Required</label>
                 <Select value={formData.service} onValueChange={(value) => setFormData({ ...formData, service: value })}>
-                  <SelectTrigger className="bg-secondary/20 border-border focus:bg-background focus:border-primary transition-all duration-300 h-12">
+                  <SelectTrigger className="bg-[#112b5a] border-white/10 text-white focus:border-[#00AEEF] h-12">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-[#0a1e40] border-[#112b5a] text-slate-300">
                     <SelectItem value="roof-ventilators">Roof Ventilators</SelectItem>
                     <SelectItem value="tubular-skylights">Tubular Skylights</SelectItem>
                     <SelectItem value="steel-structures">Steel Structures</SelectItem>
                     <SelectItem value="installation">Installation Services</SelectItem>
                     <SelectItem value="maintenance">Maintenance</SelectItem>
-                    <SelectItem value="energy-solutions">Energy Solutions</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-1.5 group">
-                <label className="text-sm font-semibold text-foreground/80 group-focus-within:text-primary transition-colors">Message</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 group-focus-within:text-[#00AEEF] transition-colors">Message</label>
                 <Textarea
-                  className="bg-secondary/20 border-border focus:bg-background focus:border-primary transition-all duration-300 min-h-[120px] resize-none"
-                  placeholder="Tell us about your project requirements..."
+                  className="bg-[#112b5a] border-white/10 text-white focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] min-h-[120px] resize-none"
+                  placeholder="Tell us about your project specs..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 />
               </div>
 
               <Button 
-                variant="hero" 
+                variant="default" 
                 size="lg" 
-                className="w-full h-14 text-lg group mt-4" 
+                className="w-full h-14 text-lg font-bold bg-[#FF0000] hover:bg-red-700 text-white shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:shadow-[0_0_30px_rgba(255,0,0,0.5)] transition-all mt-4" 
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                        <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                        Sending...
-                    </span>
+                  <span className="flex items-center gap-2">
+                    <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                    Transmitting...
+                  </span>
                 ) : (
-                    <>
-                        Get Free Quote
-                        <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                    </>
+                  <>
+                    Send Request
+                    <Send className="w-5 h-5 ml-2" />
+                  </>
                 )}
               </Button>
-              
-              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground mt-4">
-                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                 Typical response time: 5 minutes
-              </div>
             </form>
           </div>
         </div>

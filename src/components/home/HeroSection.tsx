@@ -1,11 +1,17 @@
-import { useState, useEffect, MouseEvent } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from "@/components/ui/select";
 
-// Hook for typewriter effect
-const useTypewriter = (words: string[], speed = 150, pause = 2000) => {
+// --- HOOK: Typewriter Effect ---
+const useTypewriter = (words: string[], speed = 100, pause = 2000) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
@@ -27,7 +33,7 @@ const useTypewriter = (words: string[], speed = 150, pause = 2000) => {
 
     const timeout = setTimeout(() => {
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, Math.max(reverse ? 75 : subIndex === words[index].length ? pause : speed, parseInt(Math.random() * 350 + "")));
+    }, Math.max(reverse ? 50 : subIndex === words[index].length ? pause : speed, parseInt(Math.random() * 150 + "")));
 
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, words, speed, pause]);
@@ -39,173 +45,131 @@ const useTypewriter = (words: string[], speed = 150, pause = 2000) => {
     return () => clearTimeout(timeout2);
   }, [blink]);
 
-  return `${words[index].substring(0, subIndex)}${blink ? "|" : " "}`;
-};
-
-// Hook for counting numbers
-const useCounter = (end: number, duration: number = 2000) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const increment = end / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [end, duration]);
-
-  return count;
+  return `${words[index].substring(0, subIndex)}${blink ? "|" : ""}`;
 };
 
 const HeroSection = () => {
-  const typewriterText = useTypewriter(["Future", "Infrastructure", "Vision"], 150, 2000);
-  const projectCount = useCounter(500);
-
-  // State for 3D Tilt Effect
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    // Calculate rotation (max 10 degrees)
-    const rotateX = ((y - centerY) / centerY) * -10; // Invert Y for natural tilt
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    setRotate({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    // Reset to flat when mouse leaves
-    setRotate({ x: 0, y: 0 });
-  };
+  // Updated text for Typer Effect
+  const typewriterText = useTypewriter(["Warehouses", "Factories", "The Future"], 100, 2500);
 
   return (
-    <section className="relative py-16 lg:py-24 overflow-hidden bg-background">
-      {/* Background Shapes for depth */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-secondary/30 -skew-x-12 translate-x-1/4 -z-10" />
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
+      
+      {/* 1. Full-Width Background Image with Deep Navy Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/assets/heroimage.jpg" // Ensure this image exists in your public/assets folder
+          alt="Steel Structure Background" 
+          className="w-full h-full object-cover animate-fade-in"
+        />
+        {/* Gradient Overlay: Deep Navy (#0a1e40) opacity 90% */}
+        <div className="absolute inset-0 bg-[#0a1e40]/90 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1e40] via-transparent to-transparent"></div>
+      </div>
 
-      <div className="container mx-auto px-4">
-        {/* Promo Banner */}
-        <div className="flex flex-wrap items-center gap-4 mb-8 animate-fade-in">
+      {/* 2. Blueprint Grid Pattern */}
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" 
+        style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+      </div>
+
+      {/* 3. Main Content */}
+      <div className="container mx-auto px-4 relative z-10 pt-20">
+        <div className="max-w-4xl animate-fade-in">
+          
+          {/* Badge */}
+          <div className="flex flex-wrap items-center gap-4 mb-8">
+            
+            {/* 1. LIMITED OFFER BADGE (New) */}
+            <div className="flex flex-wrap items-center gap-4 mb-8 animate-fade-in">
+
           <span className="bg-destructive/10 text-destructive px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 border border-destructive/20">
+
             <span className="relative flex h-3 w-3">
+
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
+
               <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive"></span>
+
             </span>
+
             Limited Offer: Free Consultation + 10% Off!
+
           </span>
+
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="animate-fade-in relative z-10">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Building a Sustainable <br />
-              <span className="text-primary min-h-[1.2em] inline-block">
-                {typewriterText}
-              </span>
-              <br />with Steel
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              Premier provider of roof ventilation systems, tubular skylights, and steel structure works across UAE & Oman.
-            </p>
-
-            {/* Interactive Selector */}
-            <div className="bg-card p-4 rounded-xl shadow-lg border border-border mb-8 max-w-md animate-fade-in" style={{ animationDelay: '200ms' }}>
-              <label className="text-sm font-medium text-muted-foreground mb-2 block">I am looking for...</label>
-              <div className="flex gap-2">
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ventilation">Roof Ventilation</SelectItem>
-                    <SelectItem value="skylights">Tubular Skylights</SelectItem>
-                    <SelectItem value="steel">Steel Structures</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Link to="/contact">
-                  <Button variant="hero">Get Estimate</Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-6 mt-8">
-              {["Quality Assured", "Eco-Friendly", "ISO Certified"].map((text) => (
-                <div key={text} className="flex items-center gap-2 text-sm group cursor-pointer">
-                  <div className="bg-primary/10 p-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
-                    <CheckCircle className="w-4 h-4 text-primary group-hover:text-white" />
-                  </div>
-                  <span className="text-muted-foreground group-hover:text-foreground transition-colors">{text}</span>
-                </div>
-              ))}
-            </div>
+            {/* 2. ISO 9001:2015 CERTIFIED BADGE */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/50 border border-secondary mb-8 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00AEEF] opacity-75"></span>
+               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00AEEF]"></span>
+            </span>
+            <span className="text-xs font-bold uppercase tracking-wider text-white">ISO 9001:2015 Certified</span>
           </div>
+        </div>
+          {/* Headline with Typewriter */}
+          <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight text-white mb-6">
+            We Build <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#FF4444]">
+              {typewriterText}
+            </span>
+          </h1>
 
-          {/* Right Content - 3D TILT IMAGE */}
-          <div className="relative animate-slide-in-right animation-delay-200 perspective-1000">
-            <div 
-              className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transition-transform duration-100 ease-out bg-black"
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              style={{
-                transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(1.02, 1.02, 1.02)`,
-                transition: "transform 0.1s ease-out" // Smooth movement
-              }}
-            >
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl border-l-4 border-[#00AEEF] pl-6">
+            The region's premier provider of pre-engineered steel structures, roof ventilation systems, and industrial skylights. Engineering excellence across UAE & Oman since 2002.
+          </p>
+
+          {/* --- INTERACTIVE SELECTOR --- */}
+          <div className="bg-secondary/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 mb-10 max-w-lg shadow-2xl animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <label className="text-sm font-bold text-slate-300 mb-3 block uppercase tracking-wider">
+              I am looking for...
+            </label>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Select>
+                <SelectTrigger className="w-full h-12 bg-background/50 border-white/10 text-white focus:ring-[#00AEEF]">
+                  <SelectValue placeholder="Select Service" />
+                </SelectTrigger>
+                <SelectContent className="bg-[#0a1e40] border-[#1e3a8a] text-slate-300">
+                  <SelectItem value="ventilation">Roof Ventilation</SelectItem>
+                  <SelectItem value="skylights">Tubular Skylights</SelectItem>
+                  <SelectItem value="steel">Steel Structures</SelectItem>
+                  <SelectItem value="maintenance">Maintenance</SelectItem>
+                </SelectContent>
+              </Select>
               
-              {/* IMAGE */}
-              <div className="relative h-[500px] w-full">
-                 <img
-                  src="/assets/heroimage.jpg"
-                  alt="Construction"
-                  className="w-full h-full object-cover opacity-90 pointer-events-none" // prevent image drag
-                 />
-                 
-                 {/* Shine Effect Overlay */}
-                 <div 
-                   className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-300"
-                   style={{ opacity: Math.abs(rotate.x) + Math.abs(rotate.y) > 2 ? 0.3 : 0 }} 
-                 />
-              </div>
-
-              {/* Floating Stats Card - Moves slightly more for parallax depth */}
-              <div 
-                className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/20 pointer-events-none"
-                style={{
-                  transform: `translateX(${rotate.y * -1.5}px) translateY(${rotate.x * -1.5}px)`, // Parallax: moves opposite to tilt
-                  transition: "transform 0.1s ease-out"
-                }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary/10 p-3 rounded-xl">
-                    <CheckCircle className="w-8 h-8 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-4xl font-bold text-foreground tabular-nums">
-                      {projectCount}+
-                    </p>
-                    <p className="text-sm text-muted-foreground font-medium">Projects Completed</p>
-                  </div>
-                </div>
-              </div>
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button className="w-full h-12 px-6 bg-[#FF0000] hover:bg-red-700 text-white font-bold whitespace-nowrap">
+                  Get Estimate
+                </Button>
+              </Link>
             </div>
           </div>
+
+          {/* Trust Indicators (Bottom) 
+          <div className="mt-12 flex flex-wrap gap-8 text-sm font-medium text-slate-400">
+            {[
+                "Turnkey Solutions", 
+                "Civil Defense Approved", 
+                "20+ Years Experience",
+                "500+ Projects Delivered"
+            ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="bg-[#00AEEF]/10 p-1 rounded-full">
+                    <CheckCircle2 className="w-5 h-5 text-[#00AEEF]" />
+                  </div>
+                  <span className="uppercase tracking-wide">{item}</span>
+                </div>
+            ))}
+          </div>*/}
+
         </div>
+      </div>
+
+      {/* 4. Decorative Floating Element */}
+      <div className="hidden xl:block absolute -right-20 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-[800px] h-[800px] animate-[spin_120s_linear_infinite]">
+          <path fill="#00AEEF" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,70.9,32.3C59.6,43.1,48.3,51.8,36.5,58.8C24.7,65.8,12.4,71.1,-0.6,72.1C-13.6,73.1,-27.2,69.8,-38.7,62.1C-50.2,54.4,-59.6,42.3,-66.6,29.1C-73.6,15.9,-78.2,1.6,-76.3,-11.8C-74.4,-25.2,-66,-37.7,-55.4,-46.8C-44.8,-55.9,-32,-61.6,-19.1,-64.8C-6.2,-68,-0.9,-68.7,11.8,-76.4L44.7,-76.4Z" transform="translate(100 100)" />
+        </svg>
       </div>
     </section>
   );

@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Team from "./pages/Team";
+import PEBSpecs from "./pages/PEBSpecs";
 import Clients from "./pages/Clients";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/products" element={<Products />} />
           <Route path="/clients" element={<Clients />} />
           {/*<Route path="/team" element={<Team />} />*/}
+          <Route path="/peb-specifications" element={<PEBSpecs />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

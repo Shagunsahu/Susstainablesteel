@@ -6,103 +6,71 @@
 
 @layer base {
   :root {
-    /* Stronger peachy / warm yellowish base per request */
-    --background: 40 70% 97%; /* warmer, more yellow/peach */
-    --foreground: 222 47% 11%;
+    /* --- INDUSTRIAL CORE THEME (Navy, Red, Cyan) --- */
+    
+    /* Background: Deep Navy (#0a1e40) */
+    --background: 218 73% 15%;
+    
+    /* Foreground: Soft Slate Text (#cbd5e1) */
+    --foreground: 215 25% 84%;
 
-    --card: 40 32% 99%; /* warm card surface */
-    --card-foreground: 222 47% 11%;
+    /* Cards: Slightly Lighter Navy (#112b5a) */
+    --card: 219 68% 21%;
+    --card-foreground: 215 25% 84%;
 
-    --popover: 40 32% 99%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 219 68% 21%;
+    --popover-foreground: 215 25% 84%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Brand Red (#FF0000) */
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%; /* White text on red */
 
-    --secondary: 38 60% 95%;
-    --secondary-foreground: 222 47% 11%;
+    /* Secondary: Lighter Navy (#112b5a) with Cyan Text */
+    --secondary: 219 68% 21%;
+    --secondary-foreground: 196 100% 47%; /* Cyan (#00AEEF) */
 
-    --muted: 38 60% 95%;
+    /* Muted: Lighter Navy background, Slate text */
+    --muted: 219 68% 21%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Blue-900 (#1e3a8a) background, Cyan text */
+    --accent: 218 64% 33%;
+    --accent-foreground: 196 100% 47%;
 
-    --destructive: 0 84% 60%;
+    /* Destructive: Red */
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 38 40% 91%;
-    --input: 38 40% 91%;
-    --ring: 217 91% 60%;
+    /* Borders: Blue-900 (#1e3a8a) */
+    --border: 218 64% 33%;
+    --input: 219 68% 21%;
+    
+    /* Ring: Cyan (#00AEEF) */
+    --ring: 196 100% 47%;
 
     --radius: 0.75rem;
 
-    /* Custom colors */
-    --steel-blue: 217 91% 60%;
-    --steel-dark: 222 47% 11%;
-    --steel-red: 0 72% 51%;
-    --steel-light: 40 70% 97%;
-    --steel-gray: 215 16% 47%;
+    /* Custom Gradients using Brand Colors */
+    /* Navy to Lighter Navy */
+    --gradient-hero: linear-gradient(135deg, hsl(218 73% 15%) 0%, hsl(219 68% 21%) 100%);
+    /* Red to Darker Red */
+    --gradient-primary: linear-gradient(135deg, hsl(0 100% 50%) 0%, hsl(0 100% 40%) 100%);
+    /* Card gradient: Subtle Navy */
+    --gradient-card: linear-gradient(180deg, hsl(219 68% 21%) 0%, hsl(218 73% 15%) 100%);
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(40 70% 97%) 0%, hsl(34 60% 94%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 50%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(40 32% 99%) 0%, hsl(34 45% 97%) 100%);
-
-    /* Shadows (unchanged) */
-    --shadow-sm: 0 1px 2px 0 hsl(217 91% 60% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(217 91% 60% / 0.1), 0 2px 4px -2px hsl(217 91% 60% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(217 91% 60% / 0.1), 0 4px 6px -4px hsl(217 91% 60% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(217 91% 60% / 0.1), 0 8px 10px -6px hsl(217 91% 60% / 0.1);
-    --shadow-card: 0 4px 20px -4px hsl(217 91% 60% / 0.15);
-
-    --sidebar-background: 40 60% 97%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 38 50% 96%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 38 40% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Shadows tailored for dark mode depth */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    --shadow-card: 0 4px 20px -4px rgb(0 0 0 / 0.5);
   }
 
+  /* Since the whole site is dark, .dark class just inherits or reinforces root */
   .dark {
-    --background: 222 47% 8%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 212 27% 84%;
-    
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 218 73% 15%;
+    --foreground: 215 25% 84%;
+    /* ... repeat values if necessary, but root handles it for single-theme sites */
   }
 }
 
@@ -116,7 +84,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display text-white; /* Ensure headings are white */
   }
 }
 
@@ -129,8 +97,9 @@
     font-family: 'Playfair Display', Georgia, serif;
   }
 
+  /* Text Gradient: Red to Cyan */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(0,100%,50%)] to-[hsl(196,100%,47%)];
   }
 
   .gradient-hero {
@@ -165,9 +134,10 @@
     50% { transform: translateY(-10px); }
   }
 
+  /* Updated Glow to use Cyan */
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px hsl(217 91% 60% / 0.3); }
-    50% { box-shadow: 0 0 40px hsl(217 91% 60% / 0.5); }
+    0%, 100% { box-shadow: 0 0 20px hsl(196 100% 47% / 0.2); }
+    50% { box-shadow: 0 0 40px hsl(196 100% 47% / 0.4); }
   }
 
   .animate-fade-in {
@@ -191,4 +161,19 @@
   .animation-delay-300 { animation-delay: 300ms; }
   .animation-delay-400 { animation-delay: 400ms; }
   .animation-delay-500 { animation-delay: 500ms; }
+  
+  /* Scrollbar Styling for Dark Theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(218 73% 15%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(218 64% 33%);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0 100% 50%);
+  }
 }
