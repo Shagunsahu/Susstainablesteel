@@ -56,8 +56,8 @@ const Footer = () => {
               ].map((link) => (
                 <li key={link.name}>
                   <Link to={link.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">
-                    <ChevronRight className="w-3 h-3 text-primary/50 group-hover:text-primary transition-all" />
-                    {link.name}
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" />
+                    <span>{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -79,8 +79,8 @@ const Footer = () => {
               ].map((prod) => (
                 <li key={prod.name}>
                   <Link to={prod.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">
-                    <ChevronRight className="w-3 h-3 text-primary/50 group-hover:text-primary transition-all" />
-                    {prod.name}
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" />
+                    <span>{prod.name}</span>
                   </Link>
                 </li>
               ))}
