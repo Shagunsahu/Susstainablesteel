@@ -11,28 +11,41 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+971508614171",
+    value: "+971 50 861 4171",
     link: "tel:+971508614171",
-    description: "Call us for immediate assistance",
+  },
+  {
+    icon: Phone,
+    title: "Phone",
+    value: "+971 56 653 8609",
+    link: "tel:+971566538609",
+    
   },
   {
     icon: Mail,
     title: "Email",
-    value: "sales@sustainablesteelllc.com",
+    value: "sales@sustainablesteelllc.com ",
     link: "mailto:sales@sustainablesteelllc.com",
-    description: "Email us for detailed inquiries",
+ 
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    value: "jk@sustainablesteelllc.com",
+    link: "mailto:jk@sustainablesteelllc.com",
+   
   },
   {
     icon: MapPin,
     title: "Locations",
     value: "UAE",
-    description: "Serving across the Gulf region",
+   
   },
   {
     icon: Clock,
     title: "Working Hours",
     value: "Sun - Thu: 8AM - 6PM",
-    description: "We're here when you need us",
+    
   },
 ];
 
@@ -46,7 +59,7 @@ const freeOffers = [
 const faqs = [
   {
     question: "What areas do you serve?",
-    answer: "We primarily serve UAE and Oman, with the capability to handle projects across the GCC region.",
+    answer: "We primarily serve UAE , with the capability to handle projects across the GCC region.",
   },
   {
     question: "How long does a typical project take?",
@@ -123,7 +136,6 @@ const Contact = () => {
                         <div>
                           <p className="font-semibold">{info.title}</p>
                           <p className="text-primary">{info.value}</p>
-                          <p className="text-xs text-muted-foreground mt-1">{info.description}</p>
                         </div>
                       </a>
                     ) : (
@@ -134,7 +146,6 @@ const Contact = () => {
                         <div>
                           <p className="font-semibold">{info.title}</p>
                           <p className="text-foreground">{info.value}</p>
-                          <p className="text-xs text-muted-foreground mt-1">{info.description}</p>
                         </div>
                       </div>
                     )}

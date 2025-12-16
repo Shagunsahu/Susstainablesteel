@@ -76,9 +76,11 @@ const ContactPreview = () => {
                <div className="w-12 h-12 rounded-lg bg-[#112b5a] border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10">
                  <Phone className="w-5 h-5 text-[#00AEEF]" />
                </div>
+
                <div className="relative z-10">
                  <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Call Us Now</p>
                  <p className="text-white text-lg font-bold font-display group-hover:text-[#00AEEF] transition-colors">+971 50 861 4171</p>
+                 <p className="text-white text-lg font-bold font-display group-hover:text-[#00AEEF] transition-colors">+971 56 653 8609</p>
                </div>
             </a>
 
@@ -91,6 +93,7 @@ const ContactPreview = () => {
                <div className="relative z-10">
                  <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Email Support</p>
                  <p className="text-white text-lg font-bold font-display group-hover:text-[#00AEEF] transition-colors">sales@sustainablesteelind.com</p>
+                 <p className="text-white text-lg font-bold font-display group-hover:text-[#00AEEF] transition-colors">jk@sustainablesteelind.com</p>
                </div>
             </a>
 

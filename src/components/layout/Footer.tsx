@@ -27,7 +27,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-muted-foreground leading-relaxed text-sm">
-              Premier provider of roof ventilation systems, tubular skylights, and steel structure works across UAE & Oman.
+              Premier provider of roof ventilation systems, tubular skylights, and steel structure works across UAE.
             </p>
             
             <div className="flex gap-3">
@@ -119,21 +119,27 @@ const Footer = () => {
                 <div className="bg-primary/10 p-1.5 h-fit rounded-lg"><Phone className="w-4 h-4 text-primary" /></div>
                 <div>
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Phone</p>
-                  <a href="tel:+971508614171" className="text-sm font-medium hover:text-primary whitespace-nowrap">+971 508614171</a>
+                  <div className="flex flex-col gap-1 text-sm font-medium">
+                    <a href="tel:+971508614171" className="hover:text-primary whitespace-nowrap">+971 50 861 4171</a>
+                    <a href="tel:+971566538609" className="hover:text-primary whitespace-nowrap">+971 56 653 8609</a>
+                  </div>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="bg-primary/10 p-1.5 h-fit rounded-lg"><Mail className="w-4 h-4 text-primary" /></div>
                 <div className="overflow-hidden">
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Email</p>
-                  <a href="mailto:sales@sustainablesteelllc.com" className="hover:text-primary break-all text-xs">sales@sustainablesteelllc.com</a>
+                  <div className="flex flex-col gap-1 text-xs">
+                    <a href="mailto:sales@sustainablesteelllc.com" className="hover:text-primary break-all">sales@sustainablesteelllc.com</a>
+                    <a href="mailto:jk@sustainablesteelllc.com" className="hover:text-primary break-all">jk@sustainablesteelllc.com</a>
+                  </div>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="bg-primary/10 p-1.5 h-fit rounded-lg"><MapPin className="w-4 h-4 text-primary" /></div>
                 <div>
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Location</p>
-                  <p className="text-sm">UAE & Oman</p>
+                  <p className="text-sm">UAE </p>
                 </div>
               </li>
             </ul>

@@ -151,7 +151,7 @@ const AboutPreview = () => {
                   <Eye className="w-6 h-6 text-[#00AEEF] group-hover/card:text-white transition-colors" />
                 </div>
                 <h3 className="font-bold text-white mb-2 group-hover/card:text-[#00AEEF] transition-colors">Our Vision</h3>
-                <p className="text-sm text-slate-400">To be the most sought-after PEB contractor for projects where safety and schedule are critical[cite: 28].</p>
+                <p className="text-sm text-slate-400">To be the most sought-after PEB contractor for projects where safety and schedule are critical.</p>
               </div>
 
               <div className="bg-[#112b5a]/50 backdrop-blur-sm p-6 rounded-xl border border-white/5 shadow-lg group/card hover:-translate-y-2 hover:border-[#FF0000]/50 transition-all duration-300">
@@ -159,7 +159,7 @@ const AboutPreview = () => {
                   <Target className="w-6 h-6 text-[#FF0000] group-hover/card:text-white transition-colors" />
                 </div>
                 <h3 className="font-bold text-white mb-2 group-hover/card:text-[#FF0000] transition-colors">Our Mission</h3>
-                <p className="text-sm text-slate-400">Delivering projects safely, on time, and within budget while adhering to high-quality standards[cite: 30].</p>
+                <p className="text-sm text-slate-400">Delivering projects safely, on time, and within budget while adhering to high-quality standards.</p>
               </div>
             </div>
 

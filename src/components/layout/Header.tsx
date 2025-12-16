@@ -101,9 +101,17 @@ const Header = () => {
               {copied === "phone" ? <Check className="w-4 h-4 text-green-400" /> : <Phone className="w-4 h-4 text-primary" />}
               <span className={copied === "phone" ? "text-green-400" : ""}>{copied === "phone" ? "Copied!" : "+971 508614171"}</span>
             </button>
+            <button onClick={() => handleCopy("+971 56 6538609", "phone")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
+              {copied === "phone" ? <Check className="w-4 h-4 text-green-400" /> : <Phone className="w-4 h-4 text-primary" />}
+              <span className={copied === "phone" ? "text-green-400" : ""}>{copied === "phone" ? "Copied!" : "+971 56 653 8609"}</span>
+            </button>
             <button onClick={() => handleCopy("sales@sustainablesteelllc.com", "email")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
               {copied === "email" ? <Check className="w-4 h-4 text-green-400" /> : <Mail className="w-4 h-4 text-primary" />}
               <span className={copied === "email" ? "text-green-400" : ""}>{copied === "email" ? "Copied!" : "sales@sustainablesteelllc.com"}</span>
+            </button>
+            <button onClick={() => handleCopy("Jk@sustainablesteelllc.com", "email")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
+              {copied === "email" ? <Check className="w-4 h-4 text-green-400" /> : <Mail className="w-4 h-4 text-primary" />}
+              <span className={copied === "email" ? "text-green-400" : ""}>{copied === "email" ? "Copied!" : "Jk@sustainablesteelllc.com"}</span>
             </button>
              <a href="https://www.linkedin.com/in/mukesh-s-b5ba7457" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors hover:scale-110 duration-200">
               <Linkedin className="w-4 h-4" />

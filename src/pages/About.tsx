@@ -78,7 +78,7 @@ const About = () => {
       <section className="relative py-32 bg-[#050f24] overflow-hidden flex items-center justify-center min-h-[60vh]">
         <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed opacity-20"
-            style={{ backgroundImage: 'url("/assets/a2.jpg")' }} 
+            style={{ backgroundImage: 'url("/assets/about1.jpg")' }} 
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#050f24] via-transparent to-[#050f24] z-10"></div>
         

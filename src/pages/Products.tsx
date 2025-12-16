@@ -11,8 +11,8 @@ import {
 type ProductItem = {
   name: string;
   description: string;
-  specs: string[]; // Highlights for the card
-  details?: { label: string; value: string }[]; // Full specs for the modal
+  specs: string[]; 
+  details?: { label: string; value: string }[];
   image: string;
 };
 
@@ -24,7 +24,7 @@ type Category = {
   items: ProductItem[];
 };
 
-// --- DATA (Enhanced with Details from PDF) ---
+// --- DATA ---
 const products: Category[] = [
   {
     id: "roof-ventilators",
@@ -140,16 +140,18 @@ const products: Category[] = [
           { label: "Compatibility", value: "Sandwich & Single Skin Roofs" },
           { label: "Warranty", value: "Up to 10 Years" }
         ],
-        image: "/assets/waterproofing.jpg",
+        image: "/assets/rm1.jpg",
       },
     ],
   },
 ];
+
 const features = [
-  { icon: Lightbulb, title: "Energy Saving", description: "Save up to 40% on electricity costs with our skylights[cite: 100]." },
-  { icon: Settings, title: "Value Engineering", description: "Optimized designs that save 5-7% on structural steel costs[cite: 31]." },
-  { icon: Check, title: "Rust Free", description: "Ventilators made of 80% SS and 20% Aluminum[cite: 89]." },
+  { icon: Lightbulb, title: "Energy Saving", description: "Save up to 40% on electricity costs with our skylights." },
+  { icon: Settings, title: "Value Engineering", description: "Optimized designs that save 5-7% on structural steel costs." },
+  { icon: Check, title: "Rust Free", description: "Ventilators made of 80% SS and 20% Aluminum." },
 ];
+
 const Products = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(products[0].id);
@@ -159,7 +161,7 @@ const Products = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = products.map(p => document.getElementById(p.id));
-      const scrollPosition = window.scrollY + 200; // Offset
+      const scrollPosition = window.scrollY + 200; 
 
       sections.forEach(section => {
         if (section && section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
@@ -186,11 +188,12 @@ const Products = () => {
   return (
     <Layout>
       <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ 
-               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
-               backgroundSize: '40px 40px' 
-             }}>
-        </div>
+           style={{ 
+             backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
+             backgroundSize: '40px 40px' 
+           }}>
+      </div>
+      
       {/* 1. HERO SECTION */}
       <section className="relative py-28 bg-background overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-secondary/10"></div>
@@ -202,9 +205,8 @@ const Products = () => {
 
         <div className="container mx-auto px-4 relative z-10 text-center animate-fade-in">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
-              
-               <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Our Products</span>
-            </div>
+             <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Our Products</span>
+          </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6">
             Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF4444]">Performance</span>
           </h1>
@@ -213,6 +215,7 @@ const Products = () => {
           </p>
         </div>
       </section>
+
       {/* Features Bar */}
       <section className="py-12 bg-card border-y border-border">
         <div className="container mx-auto px-4">
@@ -279,7 +282,12 @@ const Products = () => {
               {/* Product Cards Grid */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {category.items.map((product) => (
-                  <div key={product.name} className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-2xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                  <div
+                    key={product.name}
+                    // FIX: Changed from <button> to <div> to allow nested interactive elements
+                    className="group bg-card rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-2xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full text-left cursor-pointer"
+                    onClick={() => setSelectedProduct(product)}
+                  >
                     
                     {/* Image Area */}
                     <div className="relative h-60 overflow-hidden bg-muted">
@@ -319,16 +327,19 @@ const Products = () => {
 
                       {/* Actions */}
                       <div className="flex gap-3 mt-auto">
-                        <Button 
-                          onClick={() => setSelectedProduct(product)}
-                          variant="outline" 
-                          className="flex-1 border-border text-foreground hover:bg-muted"
+                        <button 
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedProduct(product);
+                          }}
+                          className="flex-1 px-3 py-2 rounded-lg border border-border text-foreground hover:bg-muted transition-colors flex items-center justify-center gap-2 z-20 relative"
                         >
-                          <FileText className="w-4 h-4 mr-2" />
+                          <FileText className="w-4 h-4" />
                           Specs
-                        </Button>
-                        <Link to="/contact" className="flex-1">
-                          <Button className="w-full bg-primary hover:bg-primary/80 text-white transition-colors">
+                        </button>
+                        <Link to="/contact" className="flex-1 z-20 relative" onClick={(e) => e.stopPropagation()}>
+                          <Button type="button" className="w-full bg-primary hover:bg-primary/80 text-white transition-colors">
                             Quote
                             <ChevronRight className="w-4 h-4 ml-1" />
                           </Button>

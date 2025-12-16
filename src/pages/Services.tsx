@@ -18,7 +18,7 @@ const services = [
       "Multistory Buildings & Car Parks",
       "Customized design to match site conditions"
     ],
-    image: "/assets/s1.jpg"
+    image: "/assets/se/se1.jpg"
   },
   {
     id: "ventilators",
@@ -32,7 +32,7 @@ const services = [
       "Eliminates hot & polluted stale air",
       "Maintenance-free operation"
     ],
-    image: "/assets/s2.jpg" 
+    image: "/assets/rv/rv1.jpg" 
   },
   {
     id: "skylights",
@@ -46,7 +46,7 @@ const services = [
       "Zero carbon footprint impact",
       "Enhances employee productivity"
     ],
-    image: "/assets/s3.jpg"
+    image: "/assets/tsl/tsl3.jpg"
   },
   {
     id: "waterproofing",
@@ -60,7 +60,7 @@ const services = [
       "Customized material for Sandwich/Single Skin",
       "Long-term solution vs quick-fix repairs"
     ],
-    image: "/assets/s4.jpg"
+    image: "/assets/rm1.jpg"
   },
   {
     id: "sheet-replacement",
