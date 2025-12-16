@@ -21,18 +21,21 @@ const navLinks = [
     name: "Services", 
     path: "/services", 
     dropdown: [
-      { name: "Roof Ventilation", path: "/services#ventilation" },
-      { name: "Steel Structures", path: "/services#steel" },
-      { name: "Installation", path: "/services#installation" }
+      { name: "Steel Structure Works", path: "/services#steel" },
+      { name: "Roof Ventilator Fans", path: "/services#ventilators" },
+      { name: "Tubular Skylights", path: "/services#skylights" },
+      { name: "Roof Water Proofing", path: "/services#waterproofing" },
+      { name: "Sheet Replacement", path: "/services#sheet-replacement" }
     ]
   },
   { 
     name: "Products", 
     path: "/products",
     dropdown: [
-      { name: "Roof Ventilators", path: "/products#roof-ventilators" },
+      { name: "Roof Ventilator Fans", path: "/products#roof-ventilators" },
       { name: "Tubular Skylights", path: "/products#tubular-skylights" },
-      { name: "Steel Structures", path: "/products#steel-structures" }
+      { name: "Steel Structures", path: "/products#steel-structures" },
+      { name: "Roof Maintenance", path: "/products#maintenance" }
     ]
   },
   { name: "PEB Technical", path: "/peb-specifications" },

@@ -1,49 +1,50 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Wind, Sun, Building2, Wrench, Settings, Zap } from "lucide-react";
+import { ArrowRight, Wind, Sun, Building2, Droplets, Hammer, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Data aligned with Company Profile PDF [cite: 3-7, 31, 89, 100]
 const services = [
   {
     icon: Wind,
-    title: "Roof Ventilators",
-    description: "Industrial roof ventilation systems for warehouses and factories, ensuring optimal airflow and temperature control.",
-    features: ["Natural ventilation", "Energy efficient", "Durable design"],
+    title: "Roof Ventilator Fans",
+    description: "Zero-energy wind driven turbine ventilators that eliminate heat and dust without electricity.",
+    features: ["No Electric Cost", "Rust Free (80% SS)", "No Maintenance"],
     link: "/services#roof-ventilators",
   },
   {
     icon: Sun,
     title: "Tubular Skylights",
-    description: "Natural lighting solutions that reduce energy consumption while illuminating your industrial spaces.",
-    features: ["UV protection", "Reduced costs", "Eco-friendly"],
+    description: "Natural daylighting systems that foster a healthier work environment while cutting costs.",
+    features: ["Save 40% Electricity", "Lowers Cooling Load", "Zero Carbon Footprint"],
     link: "/services#tubular-skylights",
   },
   {
     icon: Building2,
-    title: "Steel Structures",
-    description: "Pre-engineered building solutions for warehouses, factories, and commercial buildings.",
-    features: ["Custom design", "Quick install", "Long-lasting"],
+    title: "Steel Structure Works",
+    description: "Turnkey PEB solutions for warehouses, factories, and multi-level car parks.",
+    features: ["Custom Fabrication", "Logistic Warehouses", "Rapid Installation"],
     link: "/services#steel-structures",
   },
   {
-    icon: Wrench,
-    title: "Installation Services",
-    description: "Professional installation services with experienced teams ensuring quality workmanship.",
-    features: ["Expert team", "Safe practices", "On-time delivery"],
-    link: "/services#installation",
+    icon: Droplets,
+    title: "Roof Water Proofing",
+    description: "Comprehensive seam sealing and coating to prevent costly water penetration damage.",
+    features: ["Simpler than Replacement", "Seals all Leaks", "Long-term Solution"],
+    link: "/services#waterproofing",
   },
   {
-    icon: Settings,
-    title: "Maintenance",
-    description: "Comprehensive maintenance programs to keep your installations running at peak efficiency.",
-    features: ["Regular checks", "Quick repairs", "24/7 support"],
-    link: "/services#maintenance",
+    icon: Hammer,
+    title: "Sheet Replacement",
+    description: "Professional replacement of damaged single-skin or sandwich panels to restore integrity.",
+    features: ["Sandwich Panels", "Single Skin", "Minimizes Disruption"],
+    link: "/services#sheet-replacement",
   },
   {
-    icon: Zap,
-    title: "Energy Solutions",
-    description: "Eco-friendly solutions to reduce energy costs and environmental impact.",
-    features: ["Cost savings", "Green certified", "Smart systems"],
-    link: "/services#energy-solutions",
+    icon: TrendingUp,
+    title: "Value Engineering",
+    description: "Expert structural analysis to optimize designs and reduce material weight without compromising safety.",
+    features: ["5-7% Cost Savings", "Material Optimization", "Structural Integrity"],
+    link: "/services#steel-structures",
   },
 ];
 
@@ -61,13 +62,13 @@ const ServicesPreview = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
            <span className="text-[#00AEEF] text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
-              <span className="w-2 h-2 bg-[#FF0000] rounded-full"></span> Our Services
+              <span className="w-2 h-2 bg-[#FF0000] rounded-full"></span> Our Expertise
            </span>
            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-              Industrial <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Solutions</span>
+             Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Solutions</span>
            </h2>
            <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-             From advanced ventilation systems to heavy steel structures, we provide end-to-end engineering solutions tailored to your needs.
+             From zero-energy ventilation to heavy steel structures, we provide end-to-end industrial solutions tailored to your needs.
            </p>
         </div>
 

@@ -4,42 +4,54 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Briefcase, CheckCircle, Upload, ArrowRight, Star } from "lucide-react";
+import { 
+  Briefcase, CheckCircle2, Upload, ArrowRight, Star, 
+  MapPin, Clock, ShieldCheck, TrendingUp, Users 
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+// Benefits aligned with Profile values (Safety, Growth, Quality)
 const benefits = [
-  "Competitive Salary Packages",
-  "Health Insurance & Benefits",
-  "Professional Development",
-  "Collaborative Work Environment",
-  "Career Growth Opportunities",
-  "Work-Life Balance",
+  { icon: TrendingUp, title: "Career Growth", desc: "Work on landmark projects across UAE & Oman." },
+  { icon: ShieldCheck, title: "Safety First", desc: "Strict HSE protocols ensuring a safe work environment." },
+  { icon: Users, title: "Expert Team", desc: "Learn from veterans with 20+ years of industry experience." },
+  { icon: Star, title: "Performance Bonus", desc: "Competitive packages rewarded on project success." },
 ];
 
 const openPositions = [
   {
+    id: 1,
     title: "Structural Design Engineer",
     type: "Full-time",
-    location: "UAE",
-    description: "We are looking for an experienced Structural Engineer to design and analyze steel structures...",
+    location: "Sharjah, UAE",
+    department: "Engineering",
+    description: "We are looking for an experienced Structural Engineer proficient in STAAD.Pro and MBS to design PEB structures tailored to Middle East standards.",
+    requirements: ["Bachelor's in Civil Engineering", "3+ Years Experience", "Proficiency in AutoCAD & Tekla"]
   },
   {
+    id: 2,
     title: "Project Manager",
     type: "Full-time",
-    location: "Oman",
-    description: "Lead complex industrial projects from conception to completion. Must have 5+ years experience...",
+    location: "Sohar, Oman",
+    department: "Operations",
+    description: "Lead complex industrial projects from conception to completion. Responsible for scheduling, budget management, and client coordination.",
+    requirements: ["PMP Certification preferred", "5+ Years in Steel Construction", "Strong Leadership Skills"]
   },
   {
+    id: 3,
     title: "Sales Executive",
     type: "Full-time",
-    location: "UAE",
-    description: "Drive business growth by identifying new opportunities in the industrial sector...",
+    location: "Dubai, UAE",
+    department: "Sales",
+    description: "Drive business growth by identifying new opportunities in the industrial warehousing and logistics sector.",
+    requirements: ["Valid UAE Driving License", "Proven Track Record in B2B Sales", "Fluent in English & Hindi/Arabic"]
   },
 ];
 
 const Careers = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", position: "", message: "" });
+  const [activeJob, setActiveJob] = useState<number | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,155 +64,209 @@ const Careers = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
+      
+      {/* 1. HERO SECTION (Dark Navy Theme) */}
       <section className="relative py-24 bg-background overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 pattern-grid-lg opacity-20"></div>
+        {/* Technical Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.04]" 
+             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+        </div>
+        
+        {/* Glow Effects */}
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"></div>
+
         <div className="container mx-auto px-4 relative z-10 text-center animate-fade-in">
-          <span className="text-primary text-sm font-bold uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full">Join Our Team</span>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mt-6 mb-6">
-            Build Your Career <span className="text-primary">With Us</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
+              
+               <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Join Our Team</span>
+            </div>
+            
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Build Your Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#FF4444]">With Us</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            At Sustainable Steel, we believe our people are our greatest asset. Join a team of passionate professionals dedicated to excellence.
+            Join a team of passionate professionals dedicated to engineering excellence. We build more than structures; we build careers.
           </p>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-card border-y border-border">
+      {/* 2. CULTURE / BENEFITS GRID */}
+      <section className="py-20 bg-muted border-b border-border">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl font-bold mb-4">Why Work With Us?</h2>
-            <p className="text-muted-foreground">We offer more than just a job; we offer a career path filled with opportunities.</p>
+            <h2 className="font-display text-3xl font-bold text-foreground mb-4">Why Sustainable Steel?</h2>
+            <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, i) => (
-              <div key={i} className="flex items-center gap-4 p-6 bg-background rounded-xl border border-border hover:border-primary/50 transition-colors shadow-sm">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-5 h-5 text-primary" />
+              <div key={i} className="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                  <benefit.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                 </div>
-                <span className="font-medium text-foreground">{benefit}</span>
+                <h3 className="font-bold text-lg text-foreground mb-2">{benefit.title}</h3>
+                <p className="text-sm text-muted-foreground">{benefit.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Open Positions & Application Form */}
-      <section className="py-24 bg-background">
+      {/* 3. MAIN CONTENT: JOBS & FORM */}
+      <section className="py-24 bg-background relative">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-[1fr_450px] gap-16">
             
-            {/* Left: Open Positions */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="font-display text-3xl font-bold mb-6">Current Openings</h2>
-                <p className="text-muted-foreground mb-8">
-                  We are currently hiring for the following positions. Even if you don't see a perfect match, feel free to send us your resume!
-                </p>
-              </div>
+            {/* LEFT: OPEN POSITIONS */}
+            <div>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
+                <Briefcase className="w-8 h-8 text-primary" /> Current Openings
+              </h2>
 
               <div className="space-y-4">
                 {openPositions.map((job) => (
-                  <div key={job.title} className="group p-6 rounded-2xl border border-border bg-card hover:shadow-lg hover:border-primary/30 transition-all duration-300">
-                    <div className="flex justify-between items-start mb-4">
+                  <div 
+                    key={job.id} 
+                    className={`group rounded-2xl border transition-all duration-300 overflow-hidden ${
+                      activeJob === job.id 
+                        ? "border-primary bg-primary/5 shadow-md" 
+                        : "border-border bg-card hover:border-primary/50"
+                    }`}
+                  >
+                    {/* Job Header (Clickable) */}
+                    <div 
+                      className="p-6 cursor-pointer flex justify-between items-start"
+                      onClick={() => setActiveJob(activeJob === job.id ? null : job.id)}
+                    >
                       <div>
-                        <h3 className="font-display text-xl font-bold group-hover:text-primary transition-colors">{job.title}</h3>
-                        <div className="flex gap-4 mt-2 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" /> {job.type}</span>
-                          <span className="flex items-center gap-1"><ArrowRight className="w-4 h-4" /> {job.location}</span>
+                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          {job.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-4 mt-3 text-sm text-muted-foreground">
+                          <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-muted-foreground/60" /> {job.type}</span>
+                          <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-muted-foreground/60" /> {job.location}</span>
+                          <span className="flex items-center gap-1.5 bg-muted px-2 py-0.5 rounded text-xs font-semibold uppercase">{job.department}</span>
                         </div>
                       </div>
-                      <Button variant="outline" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">Apply</Button>
+                      <div className={`transform transition-transform duration-300 ${activeJob === job.id ? "rotate-90" : ""}`}>
+                         <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                            <ArrowRight className="w-4 h-4" />
+                         </div>
+                      </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">{job.description}</p>
+
+                    {/* Job Details (Expandable) */}
+                    <div className={`px-6 pb-6 overflow-hidden transition-[max-height] duration-500 ease-in-out ${activeJob === job.id ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+                       <div className="pt-4 border-t border-border/50">
+                          <p className="text-muted-foreground mb-4 leading-relaxed">{job.description}</p>
+                          <h4 className="font-bold text-foreground text-sm mb-2 uppercase tracking-wide">Key Requirements:</h4>
+                          <ul className="space-y-2 mb-6">
+                             {job.requirements.map(req => (
+                               <li key={req} className="flex items-center gap-2 text-sm text-muted-foreground">
+                                  <CheckCircle2 className="w-4 h-4 text-primary" /> {req}
+                               </li>
+                             ))}
+                          </ul>
+                          <Button 
+                            onClick={(e) => {
+                               e.stopPropagation();
+                               setFormData({...formData, position: job.title});
+                               window.scrollTo({ top: 0, behavior: 'smooth' });
+                               document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            className="bg-primary hover:bg-primary/80 text-white"
+                          >
+                            Apply for this Role
+                          </Button>
+                       </div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right: Application Form */}
-            <div className="bg-card rounded-3xl p-8 lg:p-10 shadow-xl border border-border/50 h-fit sticky top-24">
-              <h2 className="font-display text-2xl font-bold mb-2">Apply Now</h2>
-              <p className="text-sm text-muted-foreground mb-8">Fill out the form below to submit your application.</p>
-              
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Full Name *</label>
-                  <Input 
-                    required 
-                    placeholder="John Doe" 
-                    className="bg-secondary/30 h-11"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  />
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Email *</label>
-                    <Input 
-                      required 
-                      type="email" 
-                      placeholder="john@example.com" 
-                      className="bg-secondary/30 h-11"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
+            {/* RIGHT: APPLICATION FORM (Sticky) */}
+            <div id="application-form" className="relative">
+               <div className="sticky top-24">
+                  <div className="bg-card text-foreground p-8 rounded-3xl shadow-2xl border border-border relative overflow-hidden">
+                     {/* Decorative Background */}
+                     <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+                     
+                     <h2 className="font-display text-2xl font-bold mb-2 relative z-10">Start Your Journey</h2>
+                     <p className="text-muted-foreground text-sm mb-6 relative z-10">Fill out the form below to join our growing team.</p>
+                     
+                     <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
+                        <div className="space-y-1.5">
+                           <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Full Name</label>
+                           <Input 
+                             required 
+                             placeholder="John Doe" 
+                             className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
+                             value={formData.name}
+                             onChange={(e) => setFormData({...formData, name: e.target.value})}
+                           />
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                           <div className="space-y-1.5">
+                              <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Email</label>
+                              <Input 
+                                required 
+                                type="email"
+                                placeholder="john@doe.com" 
+                                className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
+                                value={formData.email}
+                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                              />
+                           </div>
+                           <div className="space-y-1.5">
+                              <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone</label>
+                              <Input 
+                                required 
+                                placeholder="+971..." 
+                                className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
+                                value={formData.phone}
+                                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                              />
+                           </div>
+                        </div>
+
+                        <div className="space-y-1.5">
+                           <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Position</label>
+                           <Select value={formData.position} onValueChange={(val) => setFormData({...formData, position: val})}>
+                              <SelectTrigger className="bg-muted border-border text-foreground focus:bg-muted/80">
+                                 <SelectValue placeholder="Select Position" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                 <SelectItem value="Structural Design Engineer">Structural Design Engineer</SelectItem>
+                                 <SelectItem value="Project Manager">Project Manager</SelectItem>
+                                 <SelectItem value="Sales Executive">Sales Executive</SelectItem>
+                                 <SelectItem value="General Application">General Application</SelectItem>
+                              </SelectContent>
+                           </Select>
+                        </div>
+
+                        <div className="space-y-1.5">
+                           <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Resume</label>
+                           <div className="border border-dashed border-border rounded-lg p-4 text-center hover:bg-muted transition-colors cursor-pointer group">
+                              <Upload className="w-6 h-6 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
+                              <p className="text-xs text-muted-foreground">Click to upload PDF/DOCX</p>
+                           </div>
+                        </div>
+
+                        <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/80 text-white font-bold mt-2 shadow-lg">
+                           Submit Application
+                        </Button>
+                     </form>
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Phone *</label>
-                    <Input 
-                      required 
-                      placeholder="+971..." 
-                      className="bg-secondary/30 h-11"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Position Applying For *</label>
-                  <Select onValueChange={(val) => setFormData({...formData, position: val})}>
-                    <SelectTrigger className="bg-secondary/30 h-11">
-                      <SelectValue placeholder="Select Position" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="structural-engineer">Structural Engineer</SelectItem>
-                      <SelectItem value="project-manager">Project Manager</SelectItem>
-                      <SelectItem value="sales-executive">Sales Executive</SelectItem>
-                      <SelectItem value="other">Other / General Application</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Cover Letter / Message</label>
-                  <Textarea 
-                    rows={4} 
-                    placeholder="Tell us a bit about yourself..." 
-                    className="bg-secondary/30 resize-none"
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  />
-                </div>
-
-                <div className="border-2 border-dashed border-border rounded-xl p-6 text-center hover:bg-secondary/30 transition-colors cursor-pointer group">
-                  <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
-                  <p className="text-sm font-medium">Upload Resume (PDF, DOCX)</p>
-                  <p className="text-xs text-muted-foreground mt-1">Max file size: 5MB</p>
-                </div>
-
-                <Button variant="hero" size="xl" className="w-full">
-                  Submit Application
-                </Button>
-              </form>
+               </div>
             </div>
 
           </div>
         </div>
       </section>
+
     </Layout>
   );
 };

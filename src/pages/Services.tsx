@@ -3,57 +3,79 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Wind, Sun, Building2, Wrench, Settings, Zap, ArrowRight, CheckCircle } from "lucide-react";
+import { Wind, Sun, Building2, Wrench, Settings, Zap, ArrowRight, CheckCircle, Fan, Droplets, Hammer } from "lucide-react";
 
 const services = [
   {
-    id: "roof-ventilators",
-    icon: Wind,
-    title: "Roof Ventilators",
-    description: "Industrial roof ventilation systems designed for warehouses, factories, and industrial facilities. Our ventilators ensure optimal airflow and temperature control.",
-    features: ["Natural ventilation without electricity", "Energy efficient operation", "Durable weather-resistant design", "Low maintenance requirements", "Custom sizes available", "Quick installation"],
-    image: "/assets/s1.jpg", 
+    id: "steel",
+    icon: Building2,
+    title: "Steel Structure Works",
+    subtitle: "PEB & Structural Engineering",
+    description: "We provide customized design, fabrication, and erection of steel structures. Our innovative solutions are optimized to reduce cost, time, and safety risks.",
+    keyPoints: [
+      "Value-add engineering saving 5-7% on costs",
+      "Logistic Warehouses & Food Process Factories",
+      "Multistory Buildings & Car Parks",
+      "Customized design to match site conditions"
+    ],
+    image: "/assets/s1.jpg"
   },
   {
-    id: "tubular-skylights",
+    id: "ventilators",
+    icon: Fan,
+    title: "Roof Ventilator Fans",
+    subtitle: "Zero Energy Ventilation Systems",
+    description: "Self-driven turbine ventilators that improve air quality by eliminating dust and heat without using electricity.",
+    keyPoints: [
+      "No Electric Cost & No Noise",
+      "Rust Free: 80% SS & 20% Aluminum",
+      "Eliminates hot & polluted stale air",
+      "Maintenance-free operation"
+    ],
+    image: "/assets/s2.jpg" 
+  },
+  {
+    id: "skylights",
     icon: Sun,
     title: "Tubular Skylights",
-    description: "Innovative natural lighting solutions that capture and distribute sunlight throughout your industrial spaces. Reduce energy consumption while creating a brighter workspace.",
-    features: ["UV protection coating", "Significant energy cost reduction", "Eco-friendly design", "Leak-proof installation", "Various diameter options", "Diffuser lens technology"],
-    image: "/assets/s5.jpg",
+    subtitle: "Natural Daylighting Systems",
+    description: "Energy-saving skylights that deliver natural daylight for up to 10 hours daily, fostering a healthier work environment.",
+    keyPoints: [
+      "Reduces lighting electricity costs by 40%",
+      "Lowers HVAC/Cooling demand",
+      "Zero carbon footprint impact",
+      "Enhances employee productivity"
+    ],
+    image: "/assets/s3.jpg"
   },
   {
-    id: "steel-structures",
-    icon: Building2,
-    title: "Steel Structures",
-    description: "Pre-engineered building solutions for warehouses, factories, commercial buildings, and more. Our steel structures are designed for durability and efficiency.",
-    features: ["Custom design solutions", "Quick construction time", "Long-lasting durability", "Cost-effective pricing", "Seismic resistant designs", "Expandable structures"],
-    image: "/assets/s4.jpg",
+    id: "waterproofing",
+    icon: Droplets,
+    title: "Roof Water Proofing",
+    subtitle: "Leakage Protection & Coating",
+    description: "Comprehensive waterproofing solutions to prevent costly water penetration damage and extend roof life.",
+    keyPoints: [
+      "Cost-effective alternative to replacement",
+      "Seals seams to prevent water penetration",
+      "Customized material for Sandwich/Single Skin",
+      "Long-term solution vs quick-fix repairs"
+    ],
+    image: "/assets/s4.jpg"
   },
   {
-    id: "installation",
-    icon: Wrench,
-    title: "Installation Services",
-    description: "Professional installation services executed by experienced teams. We ensure quality workmanship, adherence to safety standards, and timely project completion.",
-    features: ["Expert installation team", "Safe work practices", "On-time project delivery", "Quality assurance checks", "Minimal site disruption", "Post-installation support"],
-    image: "/assets/s7.jpg",
-  },
-  {
-    id: "maintenance",
-    icon: Settings,
-    title: "Maintenance",
-    description: "Comprehensive maintenance programs designed to keep your installations running at peak efficiency. Regular inspections and timely repairs extend the life of your equipment.",
-    features: ["Regular inspection schedules", "Quick repair services", "24/7 emergency support", "Preventive maintenance", "Performance optimization", "Annual service contracts"],
-    image: "/assets/s1.jpg",
-  },
-  {
-    id: "energy-solutions",
-    icon: Zap,
-    title: "Energy Solutions",
-    description: "Eco-friendly energy solutions designed to reduce costs and minimize environmental impact. Smart systems that optimize energy usage.",
-    features: ["Significant cost savings", "Green certified solutions", "Smart monitoring systems", "Renewable energy integration", "Carbon footprint reduction", "Energy audit services"],
-    image: "/assets/s2.jpg",
-  },
+    id: "sheet-replacement",
+    icon: Hammer,
+    title: "Sheet Replacement",
+    subtitle: "Roof Maintenance & Upgrades",
+    description: "Professional replacement of damaged or aged roof sheets to restore structural integrity and aesthetics.",
+    keyPoints: [
+      "Sandwich Panel & Single Skin replacement",
+      "Minimizes disruption to operations",
+      "Enhanced weather resistance",
+      "Restores building appearance"
+    ],
+    image: "/assets/s5.jpg"
+  }
 ];
 
 const Services = () => {
@@ -74,23 +96,35 @@ const Services = () => {
 
   return (
     <Layout>
+      <div className="absolute inset-0 opacity-[0.03]" 
+             style={{ 
+               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
+               backgroundSize: '40px 40px' 
+             }}>
+        </div>
       {/* Hero Section */}
-      <section className="relative py-24 bg-background overflow-hidden">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/5 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-secondary rounded-full blur-xl animate-float"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <span className="text-primary text-sm font-bold uppercase tracking-widest border border-primary/20 px-4 py-1.5 rounded-full">Our Services</span>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mt-6 mb-6">
-              Comprehensive <br /><span className="text-primary">Industrial Solutions</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              From ventilation to steel structures, we provide end-to-end solutions for your industrial needs with quality and reliability you can trust.
-            </p>
-          </div>
+      <section className="relative py-28 bg-background overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-secondary/10"></div>
+        <div className="absolute inset-0 opacity-[0.04]" 
+             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '50px 50px' }}>
+        </div>
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto px-4 relative z-10 text-center animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
+              
+               <span className="text-xs font-bold uppercase tracking-widest text-slate-300"> Our Services</span>
+            </div>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6">
+              Comprehensive <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF4444]">Industrial Solutions</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            From ventilation to steel structures, we provide end-to-end solutions for your industrial needs with quality and reliability you can trust.
+          </p>
         </div>
       </section>
-
+      
       {/* Services List */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
@@ -107,16 +141,17 @@ const Services = () => {
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
                   <service.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
                 </div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
                   {service.title}
                 </h2>
+                <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-4">{service.subtitle}</p>
                 <p className="text-muted-foreground mb-8 text-lg leading-relaxed">{service.description}</p>
                 
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                  {service.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3 p-2 rounded-lg hover:bg-secondary/50 transition-colors">
+                  {service.keyPoints.map((point) => (
+                    <div key={point} className="flex items-start gap-3 p-2 rounded-lg hover:bg-secondary/50 transition-colors">
                       <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-foreground/80 font-medium">{feature}</span>
+                      <span className="text-sm text-foreground/80 font-medium">{point}</span>
                     </div>
                   ))}
                 </div>

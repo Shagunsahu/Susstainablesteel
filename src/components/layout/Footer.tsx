@@ -71,11 +71,10 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2">
               {[
-                { name: "Roof Ventilators", path: "/products#roof-ventilators" },
+                { name: "Roof Ventilator Fans", path: "/products#roof-ventilators" },
                 { name: "Tubular Skylights", path: "/products#tubular-skylights" },
                 { name: "Steel Structures", path: "/products#steel-structures" },
-                { name: "Ventilation Fans", path: "/products" },
-                { name: "Steel Profiles", path: "/products" },
+                { name: "Roof Maintenance", path: "/products#maintenance" },
               ].map((prod) => (
                 <li key={prod.name}>
                   <Link to={prod.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">
@@ -94,11 +93,11 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2">
               {[
-                { name: "Roof Ventilation", path: "/services#roof-ventilators" },
-                { name: "Tubular Skylights", path: "/services#tubular-skylights" },
-                { name: "Steel Structures", path: "/services#steel-structures" },
-                { name: "Installation", path: "/services#installation" },
-                { name: "Energy Solutions", path: "/services#energy-solutions" },
+                { name: "Steel Structure Works", path: "/services#steel" },
+                { name: "Roof Ventilator Fans", path: "/services#ventilators" },
+                { name: "Tubular Skylights", path: "/services#skylights" },
+                { name: "Roof Water Proofing", path: "/services#waterproofing" },
+                { name: "Sheet Replacement", path: "/services#sheet-replacement" },
               ].map((service) => (
                 <li key={service.name}>
                   <Link to={service.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">

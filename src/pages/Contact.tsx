@@ -88,7 +88,10 @@ const Contact = () => {
       <section className="gradient-hero py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-primary text-sm font-bold uppercase tracking-widest bg-primary/10 px-4 py-1.5 rounded-full">Contact Us</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
+              
+               <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Contact Us</span>
+            </div>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Get a Free Quote Today
             </h1>

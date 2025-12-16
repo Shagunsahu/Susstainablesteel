@@ -11,46 +11,57 @@ import {
 } from "@/components/ui/select";
 
 // --- HOOK: Typewriter Effect ---
-const useTypewriter = (words: string[], speed = 100, pause = 2000) => {
-  const [index, setIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState(0);
-  const [reverse, setReverse] = useState(false);
+const useTypewriter = (words: string[], typingSpeed = 100, pauseDuration = 2000) => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [blink, setBlink] = useState(true);
 
   useEffect(() => {
-    if (index === words.length) return;
+    if (isPaused) return;
 
-    if (subIndex === words[index].length + 1 && !reverse) {
-      setReverse(true);
-      return;
-    }
-
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      setIndex((prev) => (prev + 1) % words.length);
-      return;
-    }
-
+    const currentWord = words[currentWordIndex];
+    
     const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, Math.max(reverse ? 50 : subIndex === words[index].length ? pause : speed, parseInt(Math.random() * 150 + "")));
+      if (!isDeleting) {
+        // Typing forward
+        if (currentText.length < currentWord.length) {
+          setCurrentText(currentWord.substring(0, currentText.length + 1));
+        } else {
+          // Finished typing, pause then start deleting
+          setIsPaused(true);
+          setTimeout(() => {
+            setIsDeleting(true);
+            setIsPaused(false);
+          }, pauseDuration);
+        }
+      } else {
+        // Deleting
+        if (currentText.length > 0) {
+          setCurrentText(currentText.substring(0, currentText.length - 1));
+        } else {
+          // Finished deleting, move to next word
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, isDeleting ? 50 : typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [subIndex, index, reverse, words, speed, pause]);
+  }, [currentText, isDeleting, isPaused, currentWordIndex, words, typingSpeed, pauseDuration]);
 
   useEffect(() => {
-    const timeout2 = setTimeout(() => {
-      setBlink((prev) => !prev);
-    }, 500);
-    return () => clearTimeout(timeout2);
+    const timeout = setTimeout(() => setBlink((prev) => !prev), 500);
+    return () => clearTimeout(timeout);
   }, [blink]);
 
-  return `${words[index].substring(0, subIndex)}${blink ? "|" : ""}`;
+  return `${currentText}${blink ? "|" : ""}`;
 };
 
 const HeroSection = () => {
   // Updated text for Typer Effect
-  const typewriterText = useTypewriter(["Warehouses", "Factories", "The Future"], 100, 2500);
+  const typewriterText = useTypewriter(["Warehouses", "Factories", "Multi-Level Car Parks", "The Future"], 100, 5000);
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
@@ -116,9 +127,9 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl border-l-4 border-[#00AEEF] pl-6">
-            The region's premier provider of pre-engineered steel structures, roof ventilation systems, and industrial skylights. Engineering excellence across UAE & Oman since 2002.
+            The region's premier provider of PEB steel structures and zero-energy ventilation. 
+            We deliver <span className="text-white font-semibold">5-7% cost savings</span> through value-add engineering.
           </p>
-
           {/* --- INTERACTIVE SELECTOR --- */}
           <div className="bg-secondary/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 mb-10 max-w-lg shadow-2xl animate-fade-in" style={{ animationDelay: '200ms' }}>
             <label className="text-sm font-bold text-slate-300 mb-3 block uppercase tracking-wider">

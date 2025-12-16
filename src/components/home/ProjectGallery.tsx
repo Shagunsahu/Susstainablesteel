@@ -6,22 +6,89 @@ type Project = {
   id: number;
   anchor?: string;
   title: string;
-  category: string;
+  category: string; // Matches specific PDF services
   image: string;
   location: string;
   year: string;
+  description: string; // Added for modal details
 };
 
+// Data aligned with Company Profile PDF  & Services [cite: 3-7]
 const projects: Project[] = [
-  { id: 1, anchor: "dubai-logistics", title: "Dubai Logistics Centre", category: "Warehouses", image: "/assets/s1.jpg", location: "Dubai, UAE", year: "2023" },
-  { id: 2, anchor: "oman-power-plant", title: "Oman Power Plant", category: "Power Plants", image: "/assets/s2.jpg", location: "Sohar, Oman", year: "2022" },
-  { id: 3, anchor: "al-futtaim-steel", title: "Al Futtaim Steel Works", category: "Factories", image: "/assets/s4.jpg", location: "Abu Dhabi, UAE", year: "2023" },
-  { id: 4, anchor: "city-skylight", title: "City Skylight Installation", category: "Skylights", image: "/assets/s5.jpg", location: "Sharjah, UAE", year: "2021" },
-  { id: 5, anchor: "industrial-ventilation", title: "Industrial Ventilation Unit", category: "Ventilation", image: "/assets/s7.jpg", location: "Jebel Ali, UAE", year: "2024" },
-  { id: 6, anchor: "heavy-steel-complex", title: "Heavy Steel Complex", category: "Factories", image: "/assets/s1.jpg", location: "Riyadh, KSA", year: "2022" },
+  { 
+    id: 1, 
+    anchor: "logistic-warehouse", 
+    title: "Logistic Warehouse Complex", 
+    category: "Steel Structures", 
+    image: "/assets/s1.jpg", 
+    location: "Dubai Industrial City, UAE", 
+    year: "2023",
+    description: "A large-scale pre-engineered steel structure designed for high-capacity logistics. Features optimized bay spacing and value-added engineering to reduce steel weight by 7%." 
+  },
+  { 
+    id: 2, 
+    anchor: "food-factory", 
+    title: "Food Process Factory", 
+    category: "Steel Structures", 
+    image: "/assets/s4.jpg", 
+    location: "Barka, Oman", 
+    year: "2022",
+    description: "Hygienic steel facility construction with specialized coatings and integrated ventilation systems, meeting strict food safety compliance standards."
+  },
+  { 
+    id: 3, 
+    anchor: "ventilation-unit", 
+    title: "Industrial Roof Ventilation", 
+    category: "Roof Ventilators", 
+    image: "/assets/s7.jpg", 
+    location: "Jebel Ali, UAE", 
+    year: "2024",
+    description: "Installation of zero-energy wind-driven turbine ventilators (80% SS / 20% Aluminum) to eliminate hot, stale air and reduce internal temperatures without electricity."
+  },
+  { 
+    id: 4, 
+    anchor: "skylight-system", 
+    title: "Tubular Skylight System", 
+    category: "Tubular Skylights", 
+    image: "/assets/s5.jpg", 
+    location: "Sharjah, UAE", 
+    year: "2021",
+    description: "Energy-saving daylighting solution delivering natural light for 10 hours daily, reducing artificial lighting electricity costs by 40%."
+  },
+  { 
+    id: 5, 
+    anchor: "car-park", 
+    title: "Multi-Level Car Park", 
+    category: "Steel Structures", 
+    image: "/assets/s2.jpg", 
+    location: "Abu Dhabi, UAE", 
+    year: "2023",
+    description: "Structural steel erection for a multi-story parking facility, prioritizing rapid assembly and high load-bearing capacity."
+  },
+  { 
+    id: 6, 
+    anchor: "waterproofing", 
+    title: "Roof Waterproofing", 
+    category: "Waterproofing", 
+    image: "/assets/s6.jpg", // Ensure image exists
+    location: "Sohar, Oman", 
+    year: "2022",
+    description: "Comprehensive seam sealing and coating application to prevent water penetration, offering a cost-effective alternative to full roof replacement."
+  },
+  { 
+    id: 7, 
+    anchor: "sheet-replacement", 
+    title: "Industrial Sheet Replacement", 
+    category: "Sheet Replacement", 
+    image: "/assets/s3.jpg", // Ensure image exists
+    location: "Maliha, Sharjah", 
+    year: "2023",
+    description: "Replacement of damaged single-skin and sandwich panels to restore building aesthetics and structural integrity with minimal operational disruption."
+  }
 ];
 
-const categories = ["All", "Warehouses", "Factories", "Power Plants", "Skylights", "Ventilation"];
+// Categories match PDF Services exactly [cite: 3-7]
+const categories = ["All", "Steel Structures", "Roof Ventilators", "Tubular Skylights", "Waterproofing", "Sheet Replacement"];
 
 const ProjectGallery = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -71,7 +138,7 @@ const ProjectGallery = () => {
               <span className="w-2 h-2 bg-[#FF0000] rounded-full"></span> Our Portfolio
            </span>
            <h2 id="projects-heading" className="font-display text-4xl md:text-5xl font-bold text-white">
-              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Projects</span>
+             Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Projects</span>
            </h2>
         </div>
 
@@ -136,15 +203,15 @@ const ProjectGallery = () => {
 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                   
-                   {/* Top Badge */}
-                   <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-[-10px] group-hover:translate-y-0">
+                    
+                    {/* Top Badge */}
+                    <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-[-10px] group-hover:translate-y-0">
                       <span className="bg-[#00AEEF] text-[#0a1e40] text-[10px] font-bold px-2 py-1 uppercase tracking-widest">
                         {project.year}
                       </span>
-                   </div>
+                    </div>
 
-                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                       <p className="text-[#00AEEF] text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#FF0000]"></span> {project.category}
                       </p>
@@ -152,14 +219,14 @@ const ProjectGallery = () => {
                         {project.title}
                       </h3>
                       <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                         <span className="text-slate-300 text-sm flex items-center gap-2">
-                           <MapPin className="w-4 h-4 text-[#FF0000]" /> {project.location}
-                         </span>
-                         <span className="text-sm font-bold text-white flex items-center gap-1 border-b border-[#00AEEF]">
-                            View Details <ArrowUpRight className="w-4 h-4" />
-                         </span>
+                          <span className="text-slate-300 text-sm flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-[#FF0000]" /> {project.location}
+                          </span>
+                          <span className="text-sm font-bold text-white flex items-center gap-1 border-b border-[#00AEEF]">
+                             View Details <ArrowUpRight className="w-4 h-4" />
+                          </span>
                       </div>
-                   </div>
+                    </div>
                 </div>
               </article>
             ))}
@@ -199,21 +266,21 @@ const ProjectGallery = () => {
 
                  <div className="space-y-4 mb-8 text-slate-300 leading-relaxed">
                    <p>
-                     This project represents our commitment to engineering excellence. We delivered a state-of-the-art {selectedProject.category.toLowerCase()} solution tailored to the specific environmental conditions of {selectedProject.location}.
+                     {selectedProject.description}
                    </p>
                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#FF0000]"></span> High-grade steel framing</li>
-                      <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#FF0000]"></span> Energy-efficient ventilation integration</li>
+                      <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#FF0000]"></span> Expert Execution</li>
+                      <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#FF0000]"></span> Safety First Approach</li>
                       <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#FF0000]"></span> Completed on schedule ({selectedProject.year})</li>
                    </ul>
                  </div>
 
                  <div className="flex gap-4 mt-auto">
                    <a href="/contact" className="px-8 py-3 bg-[#FF0000] hover:bg-red-700 text-white font-bold uppercase tracking-wider text-sm transition-colors shadow-lg">
-                     Request Similar
+                     Request Similar Project
                    </a>
                    <button onClick={() => setSelectedProject(null)} className="px-8 py-3 border border-white/20 hover:border-white text-white font-bold uppercase tracking-wider text-sm transition-colors">
-                     Close View
+                     Close
                    </button>
                  </div>
               </div>
