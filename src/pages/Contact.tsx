@@ -102,14 +102,21 @@ const Contact = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || `Server returned ${response.status}`);
+        throw new Error(data.error || data.message || `Server returned ${response.status}`);
       }
 
       toast({ title: "Message Sent!", description: "We will get back to you soon." });
       setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
 
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Server error. Try again later.";
+      let errorMessage = "Failed to send message. Please try again or contact us directly.";
+      
+      if (error instanceof TypeError) {
+        errorMessage = "Unable to connect to server. We're having technical issues. Please try:\n• Calling us: +971 50 861 4171\n• Emailing: sales@sustainablesteelllc.com";
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       console.error("Form submission error:", errorMessage);
       toast({ 
         title: "Submission Failed", 
@@ -238,19 +245,25 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Email Address *</label>
-                      <Input
-                        type="email"
-                        placeholder="Your email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
-                      />
-                    </div>
-                    
-                 
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Email Address *</label>
+                    <Input
+                      type="email"
+                      placeholder="Your email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Company</label>
+                    <Input
+                      placeholder="Your company name (optional)"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    />
+                  </div>
 
                   <div>
                     <label className="text-sm font-medium mb-2 block">Service Required *</label>

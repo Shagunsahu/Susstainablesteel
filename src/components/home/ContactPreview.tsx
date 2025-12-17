@@ -31,6 +31,17 @@ const ContactPreview = () => {
     setIsSubmitting(true);
 
     try {
+      // Validate required fields
+      if (!formData.name || !formData.email || !formData.phone || !formData.service) {
+        toast({
+          title: "Missing Fields",
+          description: "Please fill in all required fields.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       console.log('📤 Sending form data:', formData);
       
       const res = await fetch("https://sustainable-api.onrender.com/api/contact", {
@@ -51,7 +62,7 @@ const ContactPreview = () => {
       console.log('📥 Response data:', data);
 
       if (!res.ok) {
-        throw new Error(data.error || `Failed to submit (${res.status})`);
+        throw new Error(data.error || data.message || `Failed to submit (${res.status})`);
       }
 
       toast({
@@ -60,10 +71,18 @@ const ContactPreview = () => {
       });
       setFormData({ name: "", phone: "", email: "", company: "", service: "", message: "" });
     } catch (err: any) {
+      let errorMessage = "Failed to submit. Please try again.";
+      
+      if (err instanceof TypeError) {
+        errorMessage = "Unable to connect to server. Please call:\n+971 50 861 4171";
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
       console.error('❌ Submission error:', err);
       toast({
         title: "Submission failed",
-        description: err.message || "Please try again in a moment.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -218,6 +237,16 @@ const ContactPreview = () => {
                     required
                     />
                 </div>
+              </div>
+
+              <div className="space-y-1.5 group">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 group-focus-within:text-[#00AEEF] transition-colors">Company (Optional)</label>
+                <Input
+                  className="bg-[#112b5a] border-white/10 text-white focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all h-12"
+                  placeholder="Your company name"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                />
               </div>
 
               <div className="space-y-1.5 group">

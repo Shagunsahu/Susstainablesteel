@@ -74,13 +74,20 @@ const upload = multer({ storage: storage });
 app.post('/api/contact', (req, res) => {
     const { name, email, phone, company, service, message } = req.body;
 
+    // Validate required fields
+    if (!name || !email || !phone || !service) {
+        return res.status(400).json({ error: "Missing required fields: name, email, phone, service" });
+    }
+
     // 1. Save to Database
     const sql = "INSERT INTO contacts (name, email, phone, company, service, message) VALUES (?, ?, ?, ?, ?, ?)";
-    db.query(sql, [name, email, phone, company, service, message], (err, result) => {
+    db.query(sql, [name, email, phone, company || null, service, message || null], (err, result) => {
         if (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Database error" });
+            console.error('Database Error:', err);
+            return res.status(500).json({ error: "Failed to save contact information. Please try again.", details: err.message });
         }
+
+        console.log('Contact saved to database:', result.insertId);
 
         // 2. Send Email to Company
         const mailOptions = {
@@ -95,16 +102,17 @@ app.post('/api/contact', (req, res) => {
                 <p><strong>Company:</strong> ${company || 'N/A'}</p>
                 <p><strong>Service:</strong> ${service || 'N/A'}</p>
                 <p><strong>Message:</strong></p>
-                <p>${message}</p>
+                <p>${message || 'No message provided'}</p>
             `
         };
 
         transporter.sendMail(mailOptions, (mailErr, info) => {
             if (mailErr) {
                 console.error("Email Error:", mailErr);
-                // We still return success because DB save worked
-                return res.status(200).json({ message: "Saved to DB, but email failed." });
+                // Return success because DB save worked - email can fail but form submission succeeds
+                return res.status(200).json({ message: "Message saved successfully. Email notification failed, but we've received your inquiry." });
             }
+            console.log('Email sent successfully:', info.response);
             res.status(200).json({ message: "Message received and email sent!" });
         });
     });
@@ -115,13 +123,20 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
     const { name, email, phone, position } = req.body;
     const resumePath = req.file ? req.file.path : null;
 
+    // Validate required fields
+    if (!name || !email || !phone || !position) {
+        return res.status(400).json({ error: "Missing required fields: name, email, phone, position" });
+    }
+
     // 1. Save to Database
     const sql = "INSERT INTO applications (name, email, phone, position, resume_path) VALUES (?, ?, ?, ?, ?)";
-    db.query(sql, [name, email, phone, position, resumePath], (err, result) => {
+    db.query(sql, [name, email, phone, position, resumePath || null], (err, result) => {
         if (err) {
-            console.error(err);
-            return res.status(500).json({ error: "Database error" });
+            console.error('Database Error:', err);
+            return res.status(500).json({ error: "Failed to save application. Please try again.", details: err.message });
         }
+
+        console.log('Application saved to database:', result.insertId);
 
         // 2. Send Email with Attachment
         const mailOptions = {
@@ -134,7 +149,7 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
                 <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone:</strong> ${phone}</p>
-                <p><em>Resume attached below.</em></p>
+                <p><em>Resume ${resumePath ? 'attached below' : 'not provided'}.</em></p>
             `,
             attachments: resumePath ? [
                 {
@@ -147,8 +162,10 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
         transporter.sendMail(mailOptions, (mailErr, info) => {
             if (mailErr) {
                 console.error("Email Error:", mailErr);
-                return res.status(200).json({ message: "Saved to DB, but email failed." });
+                // Return success because DB save worked - email can fail but form submission succeeds
+                return res.status(200).json({ message: "Application saved successfully. Email notification failed, but we've received your application." });
             }
+            console.log('Email sent successfully:', info.response);
             res.status(200).json({ message: "Application submitted and email sent!" });
         });
     });

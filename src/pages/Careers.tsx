@@ -62,6 +62,17 @@ const Careers = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Validate required fields
+    if (!name || !email || !phone || !position) {
+      toast({ 
+        title: "Missing Fields", 
+        description: "Please fill in all required fields.", 
+        variant: "destructive" 
+      });
+      setLoading(false);
+      return;
+    }
+
     // Create FormData object to send file + text
     const data = new FormData();
     data.append("name", name);
@@ -79,7 +90,11 @@ const Careers = () => {
         body: data,
       });
 
-      if (!response.ok) throw new Error("Upload failed");
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(responseData.error || `Server returned ${response.status}`);
+      }
 
       toast({ 
         title: "Application Submitted", 
@@ -94,10 +109,18 @@ const Careers = () => {
       setFile(null);
 
     } catch (error) {
-      console.error(error);
+      let errorMessage = "Failed to submit application. Please try again.";
+      
+      if (error instanceof TypeError) {
+        errorMessage = "Unable to connect to server. Please try:\n• Emailing: careers@sustainablesteelllc.com\n• Calling: +971 50 861 4171";
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
+      console.error("Application submission error:", errorMessage);
       toast({ 
-        title: "Error", 
-        description: "Submission failed. Please try again.", 
+        title: "Submission Failed", 
+        description: errorMessage, 
         variant: "destructive" 
       });
     } finally {
