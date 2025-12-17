@@ -85,6 +85,13 @@ const Contact = () => {
     setLoading(true);
 
     try {
+      // Validate required fields
+      if (!formData.name || !formData.email || !formData.phone || !formData.service) {
+        toast({ title: "Missing Fields", description: "Please fill in all required fields.", variant: "destructive" });
+        setLoading(false);
+        return;
+      }
+
       // Send data to your Node.js server
       const response = await fetch('https://sustainable-api.onrender.com/api/contact', {
         method: 'POST',
@@ -92,13 +99,23 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error("Failed to send");
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || `Server returned ${response.status}`);
+      }
 
       toast({ title: "Message Sent!", description: "We will get back to you soon." });
       setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
 
     } catch (error) {
-      toast({ title: "Error", description: "Server error. Try again later.", variant: "destructive" });
+      const errorMessage = error instanceof Error ? error.message : "Server error. Try again later.";
+      console.error("Form submission error:", errorMessage);
+      toast({ 
+        title: "Submission Failed", 
+        description: errorMessage, 
+        variant: "destructive" 
+      });
     } finally {
       setLoading(false);
     }
@@ -221,7 +238,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  
                     <div>
                       <label className="text-sm font-medium mb-2 block">Email Address *</label>
                       <Input
@@ -232,15 +249,8 @@ const Contact = () => {
                         required
                       />
                     </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Company Name</label>
-                      <Input
-                        placeholder="Your company"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      />
-                    </div>
-                  </div>
+                    
+                 
 
                   <div>
                     <label className="text-sm font-medium mb-2 block">Service Required *</label>
