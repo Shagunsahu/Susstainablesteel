@@ -9,12 +9,13 @@ async function setupDatabase() {
     
     // Connect without database first to create it
     const connection = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '',
-      multipleStatements: true
-    });
-
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    ssl: { rejectUnauthorized: false },
+    multipleStatements: true
+});
     console.log('Connected successfully!');
 
     // Read SQL file

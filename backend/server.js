@@ -26,7 +26,11 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'sustainable_steel_db'
+    database: process.env.DB_NAME || 'sustainable_steel_db',
+    port: process.env.DB_PORT || 3306, // Ensure this line exists!
+    ssl: {
+        rejectUnauthorized: false // <--- ADD THIS LINE FOR AIVEN
+    }
 });
 
 db.connect((err) => {

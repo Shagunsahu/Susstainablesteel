@@ -24,19 +24,40 @@ const ContactPreview = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    
-    // Simulate network delay for effect
-    setTimeout(() => {
-        setIsSubmitting(false);
-        toast({
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to submit");
+
+      toast({
         title: "Quote Request Submitted!",
         description: "Our team will contact you within 5 minutes.",
-        });
-        setFormData({ name: "", phone: "", email: "", service: "", message: "" });
-    }, 1500);
+      });
+      setFormData({ name: "", phone: "", email: "", service: "", message: "" });
+    } catch (err) {
+      toast({
+        title: "Submission failed",
+        description: "Please try again in a moment.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -215,6 +236,7 @@ const ContactPreview = () => {
               </div>
 
               <Button 
+                type="submit"
                 variant="default" 
                 size="lg" 
                 className="w-full h-14 text-lg font-bold bg-[#FF0000] hover:bg-red-700 text-white shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:shadow-[0_0_30px_rgba(255,0,0,0.5)] transition-all mt-4" 
