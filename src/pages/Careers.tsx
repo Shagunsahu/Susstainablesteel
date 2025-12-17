@@ -50,16 +50,59 @@ const openPositions = [
 
 const Careers = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", position: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [position, setPosition] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const [activeJob, setActiveJob] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Application Submitted",
-      description: "Thank you for applying. Our HR team will review your application shortly.",
-    });
-    setFormData({ name: "", email: "", phone: "", position: "", message: "" });
+    setLoading(true);
+
+    // Create FormData object to send file + text
+    const data = new FormData();
+    data.append("name", name);
+    data.append("email", email);
+    data.append("phone", phone);
+    data.append("position", position);
+    if (file) {
+      data.append("resume", file); // Must match upload.single('resume') in backend
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/apply', {
+        method: 'POST',
+        // Note: Do NOT set Content-Type header manually when using FormData
+        body: data,
+      });
+
+      if (!response.ok) throw new Error("Upload failed");
+
+      toast({ 
+        title: "Application Submitted", 
+        description: "Good luck! Our HR team will review your application shortly." 
+      });
+      
+      // Reset Form
+      setName("");
+      setEmail("");
+      setPhone("");
+      setPosition("");
+      setFile(null);
+
+    } catch (error) {
+      console.error(error);
+      toast({ 
+        title: "Error", 
+        description: "Submission failed. Please try again.", 
+        variant: "destructive" 
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -171,7 +214,7 @@ const Careers = () => {
                           <Button 
                             onClick={(e) => {
                                e.stopPropagation();
-                               setFormData({...formData, position: job.title});
+                               setPosition(job.title);
                                window.scrollTo({ top: 0, behavior: 'smooth' });
                                document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' });
                             }}
@@ -203,8 +246,8 @@ const Careers = () => {
                              required 
                              placeholder="John Doe" 
                              className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
-                             value={formData.name}
-                             onChange={(e) => setFormData({...formData, name: e.target.value})}
+                             value={name}
+                             onChange={(e) => setName(e.target.value)}
                            />
                         </div>
                         
@@ -216,8 +259,8 @@ const Careers = () => {
                                 type="email"
                                 placeholder="john@doe.com" 
                                 className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
-                                value={formData.email}
-                                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                               />
                            </div>
                            <div className="space-y-1.5">
@@ -226,15 +269,15 @@ const Careers = () => {
                                 required 
                                 placeholder="+971..." 
                                 className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
-                                value={formData.phone}
-                                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                               />
                            </div>
                         </div>
 
                         <div className="space-y-1.5">
                            <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Position</label>
-                           <Select value={formData.position} onValueChange={(val) => setFormData({...formData, position: val})}>
+                           <Select value={position} onValueChange={(val) => setPosition(val)}>
                               <SelectTrigger className="bg-muted border-border text-foreground focus:bg-muted/80">
                                  <SelectValue placeholder="Select Position" />
                               </SelectTrigger>
@@ -249,14 +292,22 @@ const Careers = () => {
 
                         <div className="space-y-1.5">
                            <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Resume</label>
-                           <div className="border border-dashed border-border rounded-lg p-4 text-center hover:bg-muted transition-colors cursor-pointer group">
+                           <label className="border border-dashed border-border rounded-lg p-4 text-center hover:bg-muted transition-colors cursor-pointer group block">
                               <Upload className="w-6 h-6 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
-                              <p className="text-xs text-muted-foreground">Click to upload PDF/DOCX</p>
-                           </div>
+                              <p className="text-xs text-muted-foreground">{file ? file.name : "Click to upload PDF/DOCX"}</p>
+                              <input 
+                                type="file" 
+                                accept=".pdf,.docx,.doc"
+                                className="hidden"
+                                onChange={(e) => {
+                                  if (e.target.files && e.target.files[0]) setFile(e.target.files[0]);
+                                }}
+                              />
+                           </label>
                         </div>
 
-                        <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/80 text-white font-bold mt-2 shadow-lg">
-                           Submit Application
+                        <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/80 text-white font-bold mt-2 shadow-lg" disabled={loading}>
+                           {loading ? "Submitting..." : "Submit Application"}
                         </Button>
                      </form>
                   </div>

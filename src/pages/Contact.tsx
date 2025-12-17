@@ -24,7 +24,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "sales@sustainablesteelllc.com ",
+    value: "sales@sustainablesteelllc.com",
     link: "mailto:sales@sustainablesteelllc.com",
  
   },
@@ -77,22 +77,31 @@ const faqs = [
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    company: "",
-    service: "",
-    message: "",
-  });
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", service: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Quote Request Submitted!",
-      description: "Our team will contact you within 5 minutes.",
-    });
-    setFormData({ name: "", phone: "", email: "", company: "", service: "", message: "" });
+    setLoading(true);
+
+    try {
+      // Send data to your Node.js server
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Failed to send");
+
+      toast({ title: "Message Sent!", description: "We will get back to you soon." });
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+
+    } catch (error) {
+      toast({ title: "Error", description: "Server error. Try again later.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -261,8 +270,8 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button variant="hero" size="xl" className="w-full">
-                    Get Free Quote
+                  <Button type="submit" variant="hero" size="xl" className="w-full" disabled={loading}>
+                    {loading ? "Sending..." : "Get Free Quote"}
                   </Button>
 
                   <p className="text-xs text-center text-muted-foreground">
