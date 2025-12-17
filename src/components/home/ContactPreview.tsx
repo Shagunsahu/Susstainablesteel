@@ -20,6 +20,7 @@ const ContactPreview = () => {
     name: "",
     phone: "",
     email: "",
+    company: "",
     service: "",
     message: "",
   });
@@ -30,6 +31,8 @@ const ContactPreview = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('📤 Sending form data:', formData);
+      
       const res = await fetch("https://sustainable-api.onrender.com/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,22 +40,30 @@ const ContactPreview = () => {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
+          company: formData.company,
           service: formData.service,
           message: formData.message,
         }),
       });
 
-      if (!res.ok) throw new Error("Failed to submit");
+      console.log('📥 Response status:', res.status);
+      const data = await res.json();
+      console.log('📥 Response data:', data);
+
+      if (!res.ok) {
+        throw new Error(data.error || `Failed to submit (${res.status})`);
+      }
 
       toast({
         title: "Quote Request Submitted!",
         description: "Our team will contact you within 5 minutes.",
       });
-      setFormData({ name: "", phone: "", email: "", service: "", message: "" });
-    } catch (err) {
+      setFormData({ name: "", phone: "", email: "", company: "", service: "", message: "" });
+    } catch (err: any) {
+      console.error('❌ Submission error:', err);
       toast({
         title: "Submission failed",
-        description: "Please try again in a moment.",
+        description: err.message || "Please try again in a moment.",
         variant: "destructive",
       });
     } finally {

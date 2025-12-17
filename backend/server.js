@@ -10,8 +10,13 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
+// Middleware - CORS Configuration
+app.use(cors({
+    origin: '*', // Allow all origins for now
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -22,20 +27,28 @@ if (!fs.existsSync(uploadDir)){
 }
 
 // 1. Database Connection
-const db = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'sustainable_steel_db',
-    port: process.env.DB_PORT || 3306, // Ensure this line exists!
+const db = mysql.createPool({
+    host: process.env.DB_HOST, 
+    user: process.env.DB_USER, 
+    password: process.env.DB_PASSWORD, 
+    database: process.env.DB_NAME, 
+    port: process.env.DB_PORT,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
     ssl: {
-        rejectUnauthorized: false // <--- ADD THIS LINE FOR AIVEN
+        rejectUnauthorized: false
     }
 });
 
-db.connect((err) => {
-    if (err) console.error('DB Connection Failed:', err);
-    else console.log('Connected to MySQL Database');
+// Test the connection
+db.getConnection((err, connection) => {
+    if (err) {
+        console.error('DB Connection Failed:', err);
+    } else {
+        console.log('Connected to MySQL Database');
+        connection.release();
+    }
 });
 
 // 2. Configure Email Transporter
@@ -139,6 +152,22 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
             res.status(200).json({ message: "Application submitted and email sent!" });
         });
     });
+});
+
+// Health check endpoint
+app.get('/', (req, res) => {
+    res.json({ 
+        status: 'Server is running', 
+        message: 'Sustainable Steel API',
+        endpoints: {
+            contact: 'POST /api/contact',
+            apply: 'POST /api/apply'
+        }
+    });
+});
+
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // Start Server
