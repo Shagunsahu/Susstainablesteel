@@ -73,7 +73,7 @@ const Careers = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/apply', {
+      const response = await fetch('https://sustainable-api.onrender.com/api/apply', {
         method: 'POST',
         // Note: Do NOT set Content-Type header manually when using FormData
         body: data,

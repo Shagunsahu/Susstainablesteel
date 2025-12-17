@@ -86,7 +86,7 @@ const Contact = () => {
 
     try {
       // Send data to your Node.js server
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('https://sustainable-api.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
