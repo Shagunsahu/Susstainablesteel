@@ -53,9 +53,9 @@ db.getConnection((err, connection) => {
 
 // 2. Configure Email Transporter
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',  // Use exact host instead of service: 'gmail'
-    port: 465,               // Force secure port
-    secure: true,            // Use SSL
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
