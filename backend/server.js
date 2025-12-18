@@ -53,17 +53,15 @@ db.getConnection((err, connection) => {
 
 // 2. Configure Email Transporter
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',  // Explicit host
-    port: 587,               // Standard TLS port
-    secure: false,           // False for port 587
+    host: 'smtp.gmail.com',
+    port: 465,               // <--- TRY PORT 465 AGAIN
+    secure: true,            // <--- MUST BE TRUE FOR 465
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
-    tls: {
-        rejectUnauthorized: false // Fixes SSL errors
-    },
-    family: 4 // Forces IPv4 to avoid IPv6 DNS issues
+    // FORCE IPv4 (Crucial for Render)
+    family: 4 
 });
 // 3. Configure Multer (File Uploads)
 const storage = multer.diskStorage({
