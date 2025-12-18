@@ -53,7 +53,9 @@ db.getConnection((err, connection) => {
 
 // 2. Configure Email Transporter
 const transporter = nodemailer.createTransport({
-    service: process.env.EMAIL_SERVICE || 'gmail',
+    host: 'smtp.gmail.com',  // Use exact host instead of service: 'gmail'
+    port: 465,               // Force secure port
+    secure: true,            // Use SSL
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
@@ -176,15 +178,35 @@ app.get('/', (req, res) => {
     res.json({ 
         status: 'Server is running', 
         message: 'Sustainable Steel API',
+        timestamp: new Date().toISOString(),
         endpoints: {
             contact: 'POST /api/contact',
-            apply: 'POST /api/apply'
+            apply: 'POST /api/apply',
+            health: 'GET /api/health'
         }
     });
 });
 
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', timestamp: new Date().toISOString() });
+    // Check database status
+    db.getConnection((err, connection) => {
+        if (err) {
+            console.error('Health check - DB Error:', err.message);
+            return res.status(503).json({ 
+                status: 'DEGRADED', 
+                message: 'Database unavailable',
+                error: err.message,
+                timestamp: new Date().toISOString() 
+            });
+        }
+        
+        connection.release();
+        res.status(200).json({ 
+            status: 'OK', 
+            database: 'Connected',
+            timestamp: new Date().toISOString() 
+        });
+    });
 });
 
 // Start Server
