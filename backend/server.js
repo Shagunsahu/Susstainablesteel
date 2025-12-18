@@ -76,7 +76,7 @@ const upload = multer({ storage: storage });
 
 // A. Contact Form Endpoint
 app.post('/api/contact', (req, res) => {
-    const { name, email, phone, company, service, message } = req.body;
+    const { name, email, phone, company, service, message, project_details } = req.body;
 
     // Validate required fields
     if (!name || !email || !phone || !service) {
@@ -84,41 +84,40 @@ app.post('/api/contact', (req, res) => {
     }
 
     // 1. Save to Database
-    const sql = "INSERT INTO contacts (name, email, phone, company, service, message) VALUES (?, ?, ?, ?, ?, ?)";
-    db.query(sql, [name, email, phone, company || null, service, message || null], (err, result) => {
+    const sql = "INSERT INTO contacts (name, email, phone, company, service, message, project_details) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    db.query(sql, [name, email, phone, company || null, service, message || null, project_details || null], (err, result) => {
         if (err) {
             console.error('Database Error:', err);
-            return res.status(500).json({ error: "Failed to save contact information. Please try again.", details: err.message });
+            return res.status(500).json({ error: "Database error", details: err.message });
         }
 
         console.log('Contact saved to database:', result.insertId);
 
-        // 2. Send Email to Company
+        // --- THE FIX: Send "Success" to the user IMMEDIATELY ---
+        res.status(200).json({ message: "Message received successfully!" });
+
+        // --- Send Email in the Background (Fire and Forget) ---
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.COMPANY_EMAIL, // Send to company
+            to: process.env.COMPANY_EMAIL,
             subject: `New Contact Inquiry from ${name}`,
             html: `
                 <h3>New Message Received</h3>
                 <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone:</strong> ${phone}</p>
-                <p><strong>Company:</strong> ${company || 'N/A'}</p>
-                <p><strong>Service:</strong> ${service || 'N/A'}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message || 'No message provided'}</p>
+                <p><strong>Project Details:</strong> ${project_details || 'N/A'}</p>
+                <p><strong>Message:</strong> ${message || 'No message'}</p>
             `
         };
-        // transporter.sendMail(mailOptions, (mailErr, info) => {
-        //     if (mailErr) {
-        //         console.error("Email Error:", mailErr);
-        //         return res.status(200).json({ message: "Message saved successfully. Email notification failed, but we've received your inquiry." });
-        //     }
-        //     console.log('Email sent successfully:', info.response);
-        //     res.status(200).json({ message: "Message received and email sent!" });
-        // });
 
-        return res.status(200).json({ message: "Message saved successfully." });
+        transporter.sendMail(mailOptions, (mailErr, info) => {
+            if (mailErr) {
+                console.error("Background Email Failed (But User saw Success):", mailErr);
+            } else {
+                console.log('Background Email Sent:', info.response);
+            }
+        });
     });
 });
 
@@ -142,7 +141,10 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
 
         console.log('Application saved to database:', result.insertId);
 
-        // 2. Send Email with Attachment
+        // --- THE FIX: Send "Success" immediately ---
+        res.status(200).json({ message: "Application submitted successfully." });
+
+        // --- Fire-and-forget email with attachment ---
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.COMPANY_EMAIL,
@@ -158,21 +160,18 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
             attachments: resumePath ? [
                 {
                     filename: req.file.originalname,
-                    path: path.join(__dirname, resumePath) // Attach the file from uploads folder
+                    path: path.join(__dirname, resumePath)
                 }
             ] : []
         };
 
-        // transporter.sendMail(mailOptions, (mailErr, info) => {
-        //     if (mailErr) {
-        //         console.error("Email Error:", mailErr);
-        //         return res.status(200).json({ message: "Application saved successfully. Email notification failed, but we've received your application." });
-        //     }
-        //     console.log('Email sent successfully:', info.response);
-        //     res.status(200).json({ message: "Application submitted and email sent!" });
-        // });
-
-        return res.status(200).json({ message: "Application submitted successfully." });
+        transporter.sendMail(mailOptions, (mailErr, info) => {
+            if (mailErr) {
+                console.error("Background Email Failed (But User saw Success):", mailErr);
+            } else {
+                console.log('Background Email Sent:', info.response);
+            }
+        });
     });
 });
 
