@@ -109,16 +109,16 @@ app.post('/api/contact', (req, res) => {
                 <p>${message || 'No message provided'}</p>
             `
         };
+        // transporter.sendMail(mailOptions, (mailErr, info) => {
+        //     if (mailErr) {
+        //         console.error("Email Error:", mailErr);
+        //         return res.status(200).json({ message: "Message saved successfully. Email notification failed, but we've received your inquiry." });
+        //     }
+        //     console.log('Email sent successfully:', info.response);
+        //     res.status(200).json({ message: "Message received and email sent!" });
+        // });
 
-        transporter.sendMail(mailOptions, (mailErr, info) => {
-            if (mailErr) {
-                console.error("Email Error:", mailErr);
-                // Return success because DB save worked - email can fail but form submission succeeds
-                return res.status(200).json({ message: "Message saved successfully. Email notification failed, but we've received your inquiry." });
-            }
-            console.log('Email sent successfully:', info.response);
-            res.status(200).json({ message: "Message received and email sent!" });
-        });
+        return res.status(200).json({ message: "Message saved successfully." });
     });
 });
 
@@ -163,15 +163,16 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
             ] : []
         };
 
-        transporter.sendMail(mailOptions, (mailErr, info) => {
-            if (mailErr) {
-                console.error("Email Error:", mailErr);
-                // Return success because DB save worked - email can fail but form submission succeeds
-                return res.status(200).json({ message: "Application saved successfully. Email notification failed, but we've received your application." });
-            }
-            console.log('Email sent successfully:', info.response);
-            res.status(200).json({ message: "Application submitted and email sent!" });
-        });
+        // transporter.sendMail(mailOptions, (mailErr, info) => {
+        //     if (mailErr) {
+        //         console.error("Email Error:", mailErr);
+        //         return res.status(200).json({ message: "Application saved successfully. Email notification failed, but we've received your application." });
+        //     }
+        //     console.log('Email sent successfully:', info.response);
+        //     res.status(200).json({ message: "Application submitted and email sent!" });
+        // });
+
+        return res.status(200).json({ message: "Application submitted successfully." });
     });
 });
 
