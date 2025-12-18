@@ -53,16 +53,16 @@ db.getConnection((err, connection) => {
 
 // 2. Configure Email Transporter
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,              // Use Port 587 (Standard TLS)
-    secure: false,          // Must be false for port 587
+    service: 'gmail', // Let's try the built-in service handler again
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
     tls: {
-        rejectUnauthorized: false // Helps avoid SSL errors on cloud servers
-    }
+        rejectUnauthorized: false
+    },
+    // FORCE IPv4 (Fixes the timeout issue)
+    family: 4
 });
 // 3. Configure Multer (File Uploads)
 const storage = multer.diskStorage({
