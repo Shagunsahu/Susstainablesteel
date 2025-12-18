@@ -53,15 +53,13 @@ db.getConnection((err, connection) => {
 
 // 2. Configure Email Transporter
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,               // <--- TRY PORT 465 AGAIN
-    secure: true,            // <--- MUST BE TRUE FOR 465
+    host: 'smtp-relay.brevo.com', // Brevo Server
+    port: 587,
+    secure: false, // true for 465, false for other ports
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    },
-    // FORCE IPv4 (Crucial for Render)
-    family: 4 
+    }
 });
 // 3. Configure Multer (File Uploads)
 const storage = multer.diskStorage({
