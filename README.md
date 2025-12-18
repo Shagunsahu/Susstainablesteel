@@ -1,6 +1,6 @@
 # Sustainable Steel
 
-Modern React + Vite frontend with an Express/MySQL backend for handling contact inquiries and job applications, including file uploads and background email notifications via Brevo SMTP.
+Modern React + Vite frontend with an Express/MySQL backend for handling contact inquiries and job applications, including file uploads and background email notifications via Brevo Transactional Email API.
 
 ## Features
 - Contact form: saves submissions to MySQL and sends background notification email
@@ -29,8 +29,9 @@ DB_USER=your-mysql-user
 DB_PASSWORD=your-mysql-password
 DB_NAME=your-mysql-db
 DB_PORT=3306
-EMAIL_USER=your-brevo-smtp-username
+EMAIL_USER=sender@your-domain.com
 EMAIL_PASS=your-brevo-smtp-password
+BREVO_API_KEY=your_brevo_v3_api_key
 COMPANY_EMAIL=dest@example.com
 ```
 
@@ -57,18 +58,10 @@ Server listens on `PORT` (defaults to 5000). `uploads/` is auto-created for resu
   - Saves to DB, stores file in `uploads/`, returns 200 immediately, sends email in background.
 - GET `/api/health` and GET `/` for health/status.
 
-**Email transport (Brevo SMTP)**
-Configured in `backend/server.js`:
-```
-const transporter = nodemailer.createTransport({
-  host: 'smtp-relay.brevo.com',
-  port: 587,
-  secure: false,
-  auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
-});
-```
-- Update `EMAIL_USER`/`EMAIL_PASS` for your Brevo credentials.
-- Change destination email by updating `COMPANY_EMAIL` in `.env` and redeploy/restart.
+**Email transport (Brevo API, no SMTP on Render)**
+Configured in `backend/server.js` using Brevo Transactional API with `BREVO_API_KEY`.
+- `EMAIL_USER` is used as the sender email shown to recipients.
+- `COMPANY_EMAIL` is the destination; update it in `.env` and redeploy/restart to change recipients.
 
 ## Frontend
 **Install & run**

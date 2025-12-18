@@ -3,7 +3,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const multer = require('multer');
-const nodemailer = require('nodemailer'); // Import Nodemailer
+const Brevo = require('@getbrevo/brevo');
 const path = require('path');
 const fs = require('fs');
 
@@ -51,16 +51,56 @@ db.getConnection((err, connection) => {
     }
 });
 
-// 2. Configure Email Transporter
-const transporter = nodemailer.createTransport({
-    host: 'smtp-relay.brevo.com', // Brevo Server
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+// 2. Configure Email via Brevo Transactional API
+const brevoClient = new Brevo.TransactionalEmailsApi();
+brevoClient.setApiKey(Brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY);
+
+const sendContactEmail = async ({ name, email, phone, project_details, message }) => {
+    try {
+        await brevoClient.sendTransacEmail({
+            sender: { email: process.env.EMAIL_USER, name: 'Sustainable Steel' },
+            to: [{ email: process.env.COMPANY_EMAIL }],
+            subject: `New Contact Inquiry from ${name}`,
+            htmlContent: `
+                <h3>New Message Received</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Project Details:</strong> ${project_details || 'N/A'}</p>
+                <p><strong>Message:</strong> ${message || 'No message'}</p>
+            `
+        });
+    } catch (err) {
+        console.error('Background contact email failed:', err.message || err);
     }
-});
+};
+
+const sendApplicationEmail = async ({ position, name, email, phone, resumePath, originalName }) => {
+    try {
+        const attachments = resumePath ? (() => {
+            const absolutePath = path.join(__dirname, resumePath);
+            const content = fs.readFileSync(absolutePath).toString('base64');
+            return [{ name: originalName, content }];
+        })() : [];
+
+        await brevoClient.sendTransacEmail({
+            sender: { email: process.env.EMAIL_USER, name: 'Sustainable Steel' },
+            to: [{ email: process.env.COMPANY_EMAIL }],
+            subject: `Job Application: ${position} - ${name}`,
+            htmlContent: `
+                <h3>New Job Application</h3>
+                <p><strong>Position:</strong> ${position}</p>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><em>Resume ${resumePath ? 'attached below' : 'not provided'}.</em></p>
+            `,
+            attachment: attachments
+        });
+    } catch (err) {
+        console.error('Background application email failed:', err.message || err);
+    }
+};
 // 3. Configure Multer (File Uploads)
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -93,28 +133,8 @@ app.post('/api/contact', (req, res) => {
         // --- THE FIX: Send "Success" to the user IMMEDIATELY ---
         res.status(200).json({ message: "Message received successfully!" });
 
-        // --- Send Email in the Background (Fire and Forget) ---
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.COMPANY_EMAIL,
-            subject: `New Contact Inquiry from ${name}`,
-            html: `
-                <h3>New Message Received</h3>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Phone:</strong> ${phone}</p>
-                <p><strong>Project Details:</strong> ${project_details || 'N/A'}</p>
-                <p><strong>Message:</strong> ${message || 'No message'}</p>
-            `
-        };
-
-        transporter.sendMail(mailOptions, (mailErr, info) => {
-            if (mailErr) {
-                console.error("Background Email Failed (But User saw Success):", mailErr);
-            } else {
-                console.log('Background Email Sent:', info.response);
-            }
-        });
+        // Fire-and-forget via Brevo API
+        sendContactEmail({ name, email, phone, project_details, message });
     });
 });
 
@@ -141,33 +161,14 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
         // --- THE FIX: Send "Success" immediately ---
         res.status(200).json({ message: "Application submitted successfully." });
 
-        // --- Fire-and-forget email with attachment ---
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.COMPANY_EMAIL,
-            subject: `Job Application: ${position} - ${name}`,
-            html: `
-                <h3>New Job Application</h3>
-                <p><strong>Position:</strong> ${position}</p>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Phone:</strong> ${phone}</p>
-                <p><em>Resume ${resumePath ? 'attached below' : 'not provided'}.</em></p>
-            `,
-            attachments: resumePath ? [
-                {
-                    filename: req.file.originalname,
-                    path: path.join(__dirname, resumePath)
-                }
-            ] : []
-        };
-
-        transporter.sendMail(mailOptions, (mailErr, info) => {
-            if (mailErr) {
-                console.error("Background Email Failed (But User saw Success):", mailErr);
-            } else {
-                console.log('Background Email Sent:', info.response);
-            }
+        // Fire-and-forget via Brevo API with optional attachment
+        sendApplicationEmail({
+            position,
+            name,
+            email,
+            phone,
+            resumePath,
+            originalName: req.file ? req.file.originalname : undefined
         });
     });
 });
