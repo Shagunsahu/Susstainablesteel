@@ -12,7 +12,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware - CORS Configuration
 app.use(cors({
-    origin: '*', // Allow all origins for now
+    origin: [
+        "https://susstainablesteel.vercel.app", // Keep the old one just in case
+        "https://sustainablesteelllc.com",      // Production domain
+        "https://www.sustainablesteelllc.com"   // Production domain with www
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
