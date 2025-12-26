@@ -38,7 +38,7 @@ const Layout = ({ children }: LayoutProps) => {
 
       {/* --- Floating Call Button (above WhatsApp) --- */}
       <a
-        href="tel:+971508614171"
+        href="tel:+971566538609"
         className="fixed bottom-40 right-8 z-65 p-3 rounded-full bg-primary text-primary-foreground shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
         aria-label="Call us"
       >
@@ -50,7 +50,7 @@ const Layout = ({ children }: LayoutProps) => {
 
       {/* --- Floating WhatsApp Button (Bottom Right) --- */}
       <a
-        href={"https://wa.me/971508614171?text=" + encodeURIComponent("Hello Sustainable Steel, I would like a quote.")}
+        href={"https://wa.me/+971566538609?text=" + encodeURIComponent("Hello Sustainable Steel, I would like a quote.")}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-24 right-8 z-60 p-3 rounded-full bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-green-500/50 flex items-center justify-center group"
