@@ -132,10 +132,10 @@ const Careers = () => {
     <Layout>
       
       {/* 1. HERO SECTION (Dark Navy Theme) */}
-      <section className="relative py-24 bg-background overflow-hidden">
-        {/* Technical Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+       <section className="relative py-24 bg-background overflow-hidden">
+         {/* Technical Grid Pattern */}
+         <div className="absolute inset-0 opacity-[0.04]" 
+           style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
         
         {/* Glow Effects */}
@@ -149,7 +149,7 @@ const Careers = () => {
             </div>
             
           <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Build Your Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#FF4444]">With Us</span>
+            Build Your Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">With Us</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join a team of passionate professionals dedicated to engineering excellence. We build more than structures; we build careers.
@@ -210,9 +210,9 @@ const Careers = () => {
                           {job.title}
                         </h3>
                         <div className="flex flex-wrap gap-4 mt-3 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-muted-foreground/60" /> {job.type}</span>
-                          <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-muted-foreground/60" /> {job.location}</span>
-                          <span className="flex items-center gap-1.5 bg-muted px-2 py-0.5 rounded text-xs font-semibold uppercase">{job.department}</span>
+                          <span className="flex items-center gap-2"><span className="icon-chip icon-chip-sm"><Clock className="w-4 h-4" /></span> {job.type}</span>
+                          <span className="flex items-center gap-2"><span className="icon-chip icon-chip-sm"><MapPin className="w-4 h-4" /></span> {job.location}</span>
+                          <span className="flex items-center gap-2 bg-muted px-2 py-0.5 rounded text-xs font-semibold uppercase">{job.department}</span>
                         </div>
                       </div>
                       <div className={`transform transition-transform duration-300 ${activeJob === job.id ? "rotate-90" : ""}`}>
@@ -230,7 +230,7 @@ const Careers = () => {
                           <ul className="space-y-2 mb-6">
                              {job.requirements.map(req => (
                                <li key={req} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                  <CheckCircle2 className="w-4 h-4 text-primary" /> {req}
+                                  <span className="icon-chip icon-chip-sm"><CheckCircle2 className="w-4 h-4" /></span> {req}
                                </li>
                              ))}
                           </ul>
@@ -254,87 +254,97 @@ const Careers = () => {
 
             {/* RIGHT: APPLICATION FORM (Sticky) */}
             <div id="application-form" className="relative">
-               <div className="sticky top-24">
-                  <div className="bg-card text-foreground p-8 rounded-3xl shadow-2xl border border-border relative overflow-hidden">
-                     {/* Decorative Background */}
-                     <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="sticky top-24">
+                <div className="relative overflow-hidden rounded-3xl border border-[#e5e7eb] bg-white p-8 text-[#111] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+                  <div
+                   className="pointer-events-none absolute -inset-3 -z-10 rounded-[30px] bg-white/30 blur-3xl"
+                   aria-hidden
+                  />
+                  <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+                  {/* Decorative Background */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
                      
-                     <h2 className="font-display text-2xl font-bold mb-2 relative z-10">Start Your Journey</h2>
-                     <p className="text-muted-foreground text-sm mb-6 relative z-10">Fill out the form below to join our growing team.</p>
+                  <h2 className="relative z-10 mb-2 font-display text-2xl font-bold">Start Your Journey</h2>
+                  <p className="relative z-10 mb-6 text-sm text-slate-600">Fill out the form below to join our growing team.</p>
                      
-                     <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
-                        <div className="space-y-1.5">
-                           <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Full Name</label>
-                           <Input 
-                             required 
-                             placeholder="John Doe" 
-                             className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
-                             value={name}
-                             onChange={(e) => setName(e.target.value)}
-                           />
-                        </div>
+                  <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Full Name</label>
+                      <Input 
+                        required 
+                        placeholder="John Doe" 
+                        className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] placeholder:text-slate-400 transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
                         
-                        <div className="grid grid-cols-2 gap-4">
-                           <div className="space-y-1.5">
-                              <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Email</label>
-                              <Input 
-                                required 
-                                type="email"
-                                placeholder="john@doe.com" 
-                                className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                              />
-                           </div>
-                           <div className="space-y-1.5">
-                              <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone</label>
-                              <Input 
-                                required 
-                                placeholder="+971..." 
-                                className="bg-muted border-border text-foreground placeholder:text-muted-foreground/60 focus:bg-muted/80"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                              />
-                           </div>
-                        </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Email</label>
+                        <Input 
+                          required 
+                          type="email"
+                          placeholder="john@doe.com" 
+                          className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] placeholder:text-slate-400 transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Phone</label>
+                        <Input 
+                          required 
+                          placeholder="+971..." 
+                          className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] placeholder:text-slate-400 transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                      </div>
+                    </div>
 
-                        <div className="space-y-1.5">
-                           <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Position</label>
-                           <Select value={position} onValueChange={(val) => setPosition(val)}>
-                              <SelectTrigger className="bg-muted border-border text-foreground focus:bg-muted/80">
-                                 <SelectValue placeholder="Select Position" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                 <SelectItem value="Structural Design Engineer">Structural Design Engineer</SelectItem>
-                                 <SelectItem value="Project Manager">Project Manager</SelectItem>
-                                 <SelectItem value="Sales Executive">Sales Executive</SelectItem>
-                                 <SelectItem value="General Application">General Application</SelectItem>
-                              </SelectContent>
-                           </Select>
-                        </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Position</label>
+                      <Select value={position} onValueChange={(val) => setPosition(val)}>
+                        <SelectTrigger className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] focus:border-accent">
+                          <SelectValue placeholder="Select Position" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white text-[#111]">
+                          <SelectItem value="Structural Design Engineer">Structural Design Engineer</SelectItem>
+                          <SelectItem value="Project Manager">Project Manager</SelectItem>
+                          <SelectItem value="Sales Executive">Sales Executive</SelectItem>
+                          <SelectItem value="General Application">General Application</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                        <div className="space-y-1.5">
-                           <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Resume</label>
-                           <label className="border border-dashed border-border rounded-lg p-4 text-center hover:bg-muted transition-colors cursor-pointer group block">
-                              <Upload className="w-6 h-6 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
-                              <p className="text-xs text-muted-foreground">{file ? file.name : "Click to upload PDF/DOCX"}</p>
-                              <input 
-                                type="file" 
-                                accept=".pdf,.docx,.doc"
-                                className="hidden"
-                                onChange={(e) => {
-                                  if (e.target.files && e.target.files[0]) setFile(e.target.files[0]);
-                                }}
-                              />
-                           </label>
-                        </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Resume</label>
+                      <label className="block cursor-pointer rounded-lg border border-dashed border-[#e5e7eb] p-4 text-center transition-colors hover:bg-slate-50">
+                        <Upload className="mx-auto mb-2 h-6 w-6 text-slate-500 transition-colors group-hover:text-accent" />
+                        <p className="text-xs text-slate-500">{file ? file.name : "Click to upload PDF/DOCX"}</p>
+                        <input 
+                          type="file" 
+                          accept=".pdf,.docx,.doc"
+                          className="hidden"
+                          onChange={(e) => {
+                           if (e.target.files && e.target.files[0]) setFile(e.target.files[0]);
+                          }}
+                        />
+                      </label>
+                    </div>
 
-                        <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/80 text-white font-bold mt-2 shadow-lg" disabled={loading}>
-                           {loading ? "Submitting..." : "Submit Application"}
-                        </Button>
-                     </form>
-                  </div>
-               </div>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="mt-2 w-full bg-gradient-to-r from-accent via-accent to-primary text-white shadow-[0_10px_30px_rgba(0,0,0,0.25),0_0_25px_rgba(230,57,70,0.5)] hover:brightness-105"
+                      disabled={loading}
+                    >
+                      {loading ? "Submitting..." : "Submit Application"}
+                    </Button>
+                  </form>
+                </div>
+              </div>
             </div>
 
           </div>

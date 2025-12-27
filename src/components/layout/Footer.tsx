@@ -6,11 +6,11 @@ const Footer = () => {
     // Updated colors to match the Dark Theme (bg-background instead of bg-foreground)
     <footer className="bg-background text-foreground relative overflow-hidden border-t border-white/5">
       {/* 1. Top Gradient Border (The "Energy Line") */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00AEEF] via-[#FF0000] to-[#00AEEF]"></div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#E63946] via-[#FFD700] to-[#E63946]"></div>
 
       {/* 2. Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" 
-           style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+       <div className="absolute inset-0 opacity-5 pointer-events-none" 
+         style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">

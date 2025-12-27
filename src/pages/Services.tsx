@@ -98,26 +98,25 @@ const Services = () => {
     <Layout>
       <div className="absolute inset-0 opacity-[0.03]" 
              style={{ 
-               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
+               backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', 
                backgroundSize: '40px 40px' 
              }}>
         </div>
       {/* Hero Section */}
       <section className="relative py-28 bg-background overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-secondary/10"></div>
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '50px 50px' }}>
+           <div className="absolute inset-0 bg-gradient-to-b from-accent/10 via-transparent to-primary/10"></div>
+           <div className="absolute inset-0 opacity-[0.04]" 
+             style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '50px 50px' }}>
         </div>
         <div className="absolute top-10 right-10 w-72 h-72 bg-primary/15 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-4 relative z-10 text-center animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
-              
-               <span className="text-xs font-bold uppercase tracking-widest text-slate-300"> Our Services</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border mb-6 backdrop-blur-md">
+               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground"> Our Services</span>
             </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6">
-              Comprehensive <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#FF4444]">Industrial Solutions</span>
+              Comprehensive <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Industrial Solutions</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             From ventilation to steel structures, we provide end-to-end solutions for your industrial needs with quality and reliability you can trust.

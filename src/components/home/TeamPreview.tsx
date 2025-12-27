@@ -29,7 +29,7 @@ const StatCard = ({ value, label, suffix = "", index }: { value: number, label: 
   
   return (
     <div 
-      className="bg-secondary/50 rounded-2xl p-6 text-center hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-border"
+      className="bg-card rounded-2xl p-6 text-center hover:bg-background hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border hover:border-primary/50"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <p className="text-3xl font-bold text-primary mb-1">
@@ -93,7 +93,7 @@ const TeamPreview = () => {
               {/* Image Container */}
               <div className="relative overflow-hidden h-72">
                 <div className="absolute top-4 left-4 z-20">
-                  <span className="bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                  <span className="bg-primary/10 text-primary text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-primary/40">
                     {member.role}
                   </span>
                 </div>
@@ -108,13 +108,13 @@ const TeamPreview = () => {
                 {/* Social Icons Overlay - Slides up on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
                   <div className="flex gap-3 translate-y-8 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                    <a href="#" className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors">
+                    <a href="#" className="icon-chip icon-chip-sm">
                       <Linkedin className="w-5 h-5" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors">
+                    <a href="#" className="icon-chip icon-chip-sm">
                       <Mail className="w-5 h-5" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary hover:text-white transition-colors">
+                    <a href="#" className="icon-chip icon-chip-sm">
                       <Twitter className="w-5 h-5" />
                     </a>
                   </div>

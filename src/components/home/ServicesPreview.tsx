@@ -53,21 +53,21 @@ const ServicesPreview = () => {
     <section className="py-24 bg-background relative overflow-hidden">
       
       {/* 1. Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" 
-           style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+       <div className="absolute inset-0 opacity-5 pointer-events-none" 
+        style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-           <span className="text-[#00AEEF] text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
-              <span className="w-2 h-2 bg-[#FF0000] rounded-full"></span> Our Expertise
+            <span className="text-primary text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
+              <span className="w-2 h-2 bg-accent rounded-full"></span> Our Expertise
            </span>
-           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-             Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Solutions</span>
+           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+             Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Solutions</span>
            </h2>
-           <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
              From zero-energy ventilation to heavy steel structures, we provide end-to-end industrial solutions tailored to your needs.
            </p>
         </div>
@@ -77,7 +77,7 @@ const ServicesPreview = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative bg-[#0a1e40] rounded-2xl p-8 border border-white/5 hover:border-[#00AEEF] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,174,239,0.15)] overflow-hidden flex flex-col h-full"
+              className="group relative bg-card rounded-2xl p-8 border border-border hover:border-primary transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(255,215,0,0.15)] overflow-hidden flex flex-col h-full"
               style={{ 
                 animation: 'fade-in 0.6s ease-out forwards',
                 animationDelay: `${index * 100}ms`,
@@ -90,18 +90,18 @@ const ServicesPreview = () => {
               </div>
 
               {/* Hover Gradient Line */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00AEEF] via-[#FF0000] to-[#00AEEF] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
               {/* Icon */}
-              <div className="relative w-16 h-16 rounded-xl bg-[#112b5a] border border-white/10 flex items-center justify-center mb-6 group-hover:bg-[#00AEEF] group-hover:border-[#00AEEF] transition-all duration-500 group-hover:rotate-6 shadow-lg z-10">
-                <service.icon className="w-8 h-8 text-[#00AEEF] group-hover:text-[#0a1e40] transition-colors duration-500" />
+              <div className="icon-chip icon-chip-lg mb-6 z-10">
+                <service.icon className="w-8 h-8" />
               </div>
 
               {/* Content */}
-              <h3 className="relative font-display text-2xl font-bold text-white mb-3 group-hover:text-[#00AEEF] transition-colors z-10">
+              <h3 className="relative font-display text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors z-10">
                 {service.title}
               </h3>
-              <p className="relative text-slate-400 text-sm mb-8 leading-relaxed flex-grow z-10 group-hover:text-slate-300 transition-colors">
+              <p className="relative text-muted-foreground text-sm mb-8 leading-relaxed flex-grow z-10 group-hover:text-foreground transition-colors">
                 {service.description}
               </p>
               
@@ -110,7 +110,7 @@ const ServicesPreview = () => {
                 {service.features.map((feature) => (
                   <span 
                     key={feature} 
-                    className="text-[10px] uppercase font-bold px-3 py-1.5 bg-[#112b5a] text-slate-300 rounded-sm border border-white/10 group-hover:border-[#00AEEF]/30 group-hover:text-white transition-all duration-300"
+                    className="text-[10px] uppercase font-bold px-3 py-1.5 bg-background text-muted-foreground rounded-sm border border-border group-hover:border-primary/40 group-hover:text-foreground transition-all duration-300"
                   >
                     {feature}
                   </span>
@@ -118,9 +118,9 @@ const ServicesPreview = () => {
               </div>
 
               {/* Learn More Link */}
-              <Link to={service.link} className="relative inline-flex items-center text-[#00AEEF] font-bold text-sm mt-auto group/link z-10">
+              <Link to={service.link} className="relative inline-flex items-center text-primary font-bold text-sm mt-auto group/link z-10">
                 Explore Service 
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/link:translate-x-2 text-[#FF0000]" />
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/link:translate-x-2 text-accent" />
               </Link>
             </div>
           ))}
@@ -129,7 +129,7 @@ const ServicesPreview = () => {
         {/* View All Button */}
         <div className="text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
           <Link to="/services">
-            <Button size="xl" className="bg-[#FF0000] hover:bg-red-700 text-white font-bold px-10 shadow-lg shadow-red-900/20 group">
+            <Button size="xl" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 shadow-lg shadow-yellow-500/20 group">
               View All Services
               <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>

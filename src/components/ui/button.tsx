@@ -9,15 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 group", 
-        heroOutline: "border-2 border-primary text-primary bg-transparent hover:bg-primary/5",
-        cta: "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5",
+        default: "bg-gradient-to-r from-accent via-accent to-primary text-white shadow-md hover:brightness-105 hover:shadow-lg",
+        destructive: "bg-gradient-to-r from-destructive via-destructive to-primary text-white shadow-md hover:brightness-105 hover:shadow-lg",
+        outline: "border border-transparent bg-gradient-to-r from-accent via-accent to-primary text-white shadow-md hover:brightness-105 hover:shadow-lg",
+        secondary: "bg-gradient-to-r from-accent via-accent to-primary text-white shadow-md hover:brightness-105 hover:shadow-lg",
+        ghost: "bg-gradient-to-r from-accent via-accent to-primary text-white shadow-md hover:brightness-105 hover:shadow-lg",
+        link: "bg-gradient-to-r from-accent via-accent to-primary bg-clip-text text-transparent underline-offset-4 hover:underline",
+        hero: "bg-gradient-to-r from-accent via-accent to-primary text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 group",
+        heroOutline: "border-2 border-transparent bg-gradient-to-r from-accent via-accent to-primary text-white hover:brightness-105",
+        cta: "bg-gradient-to-r from-accent via-accent to-primary text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5",
       },
       size: {
         default: "h-10 px-4 py-2",

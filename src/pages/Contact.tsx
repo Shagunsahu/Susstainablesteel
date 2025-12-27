@@ -130,21 +130,33 @@ const Contact = () => {
 
   return (
     <Layout>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+             style={{ 
+                backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', 
+               backgroundSize: '40px 40px' 
+             }}>
+      </div>
+
       {/* Hero Section */}
-      <section className="gradient-hero py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
-              
-               <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Contact Us</span>
-            </div>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              Get a Free Quote Today
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Fill out the form below and our team will get back to you within 5 minutes.
-            </p>
+      <section className="relative py-32 bg-background overflow-hidden flex items-center justify-center min-h-[60vh]">
+        <div 
+            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-20"
+            style={{ backgroundImage: 'url("/assets/s2.jpg")' }} 
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10"></div>
+        
+        <div className="container mx-auto px-4 relative z-20 text-center animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-300">Get in Touch</span>
           </div>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
+            Let's Build <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Your Project</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Connect with our team to get a free quote and expert consultation within 5 minutes.
+          </p>
         </div>
       </section>
 
@@ -163,8 +175,8 @@ const Contact = () => {
                   >
                     {info.link ? (
                       <a href={info.link} className="flex items-start gap-4 hover:text-primary transition-colors">
-                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <info.icon className="w-6 h-6 text-primary" />
+                        <div className="icon-chip icon-chip-md flex-shrink-0">
+                          <info.icon className="w-6 h-6" />
                         </div>
                         <div>
                           <p className="font-semibold">{info.title}</p>
@@ -173,8 +185,8 @@ const Contact = () => {
                       </a>
                     ) : (
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <info.icon className="w-6 h-6 text-primary" />
+                        <div className="icon-chip icon-chip-md flex-shrink-0">
+                          <info.icon className="w-6 h-6" />
                         </div>
                         <div>
                           <p className="font-semibold">{info.title}</p>
@@ -205,7 +217,9 @@ const Contact = () => {
               {/* Limited Time Offer */}
               <div className="bg-destructive/10 rounded-xl p-6 border border-destructive/20">
                 <div className="flex items-center gap-3 mb-2">
-                  <Zap className="w-6 h-6 text-destructive" />
+                  <span className="icon-chip icon-chip-sm">
+                    <Zap className="w-5 h-5" />
+                  </span>
                   <p className="font-semibold text-destructive">Limited Time Offer!</p>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -216,62 +230,74 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
-                <h2 className="font-display text-2xl font-bold mb-2">Request a Callback</h2>
-                <p className="text-muted-foreground mb-6 flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5 text-primary" />
+              <div className="relative overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white p-8 text-[#111] shadow-[0_30px_80px_rgba(0,0,0,0.45)] lg:p-10">
+                <div
+                  className="pointer-events-none absolute -inset-4 -z-10 rounded-[28px] bg-white/35 blur-3xl"
+                  aria-hidden
+                />
+                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+
+                <h2 className="mb-2 font-display text-2xl font-bold">Request a Callback</h2>
+                <p className="mb-6 flex items-center gap-2 text-sm text-slate-600">
+                  <MessageCircle className="w-5 h-5 text-accent" />
                   Get a Callback in 5 Minutes
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Full Name *</label>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Full Name *</label>
                       <Input
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
+                        className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
                       />
                     </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Phone Number *</label>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Phone Number *</label>
                       <Input
                         placeholder="Your phone number"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         required
+                        className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Email Address *</label>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Email Address *</label>
                     <Input
                       type="email"
                       placeholder="Your email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
+                      className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                   </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Company</label>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Company</label>
                     <Input
                       placeholder="Your company name (optional)"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                   </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Service Required *</label>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Service Required *</label>
                     <Select value={formData.service} onValueChange={(value) => setFormData({ ...formData, service: value })}>
-                      <SelectTrigger>
+                      <SelectTrigger className="h-12 rounded-lg border border-[#e5e7eb] bg-white px-4 text-[#111] focus:border-accent">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-white text-[#111]">
                         <SelectItem value="roof-ventilators">Roof Ventilators</SelectItem>
                         <SelectItem value="tubular-skylights">Tubular Skylights</SelectItem>
                         <SelectItem value="steel-structures">Steel Structures</SelectItem>
@@ -283,21 +309,28 @@ const Contact = () => {
                     </Select>
                   </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Project Details</label>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Project Details</label>
                     <Textarea
                       placeholder="Tell us about your project requirements, timeline, budget, and any specific needs..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       rows={5}
+                      className="w-full rounded-lg border border-[#e5e7eb] bg-white px-4 py-3 text-[#111] transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                   </div>
 
-                  <Button type="submit" variant="hero" size="xl" className="w-full" disabled={loading}>
+                  <Button
+                    type="submit"
+                    variant="hero"
+                    size="xl"
+                    className="w-full bg-gradient-to-r from-accent via-accent to-primary text-white shadow-[0_10px_30px_rgba(0,0,0,0.25),0_0_25px_rgba(230,57,70,0.5)] hover:brightness-105"
+                    disabled={loading}
+                  >
                     {loading ? "Sending..." : "Get Free Quote"}
                   </Button>
 
-                  <p className="text-xs text-center text-muted-foreground">
+                  <p className="text-center text-xs text-slate-500">
                     Free Consultation • No Obligations • Quick Response
                   </p>
                 </form>

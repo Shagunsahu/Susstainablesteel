@@ -13,7 +13,9 @@ const NewsTicker = () => {
       <div className="container mx-auto px-4 flex items-center gap-4">
         {/* Label */}
         <div className="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-md shadow-sm shrink-0 z-10">
-          <Bell className="w-4 h-4 animate-pulse" />
+          <span className="icon-chip icon-chip-sm animate-pulse">
+            <Bell className="w-4 h-4" />
+          </span>
           <span className="text-xs font-bold uppercase tracking-wider">Latest News</span>
         </div>
 
@@ -22,14 +24,18 @@ const NewsTicker = () => {
           <div className="animate-marquee whitespace-nowrap flex items-center gap-16">
             {newsItems.map((item, i) => (
               <span key={i} className="flex items-center gap-2 text-sm font-medium opacity-90">
-                <ChevronRight className="w-3 h-3 text-white/50" />
+                <span className="icon-chip icon-chip-sm">
+                  <ChevronRight className="w-3 h-3" />
+                </span>
                 {item}
               </span>
             ))}
              {/* Duplicate for infinite scroll */}
             {newsItems.map((item, i) => (
               <span key={`dup-${i}`} className="flex items-center gap-2 text-sm font-medium opacity-90">
-                <ChevronRight className="w-3 h-3 text-white/50" />
+                <span className="icon-chip icon-chip-sm">
+                  <ChevronRight className="w-3 h-3" />
+                </span>
                 {item}
               </span>
             ))}

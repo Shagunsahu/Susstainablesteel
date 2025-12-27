@@ -74,16 +74,16 @@ const AboutPreview = () => {
     <section className="py-24 bg-background relative overflow-hidden">
       
       {/* 1. Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" 
-           style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+       <div className="absolute inset-0 opacity-5 pointer-events-none" 
+        style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-12 animate-fade-in">
-          <div className="h-1 w-12 bg-[#FF0000] rounded-full"></div>
-          <span className="text-[#00AEEF] text-sm font-bold uppercase tracking-widest">Who We Are</span>
+          <div className="h-1 w-12 bg-accent rounded-full"></div>
+          <span className="text-primary text-sm font-bold uppercase tracking-widest">Who We Are</span>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -104,11 +104,11 @@ const AboutPreview = () => {
                        alt={pair.altMain}
                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
                      />
-                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1e40]/80 to-transparent"></div>
+                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
                    </div>
 
                    {/* Secondary Image (Overlapping) */}
-                   <div className="absolute -bottom-10 -right-10 z-20 w-2/3 h-2/3 rounded-xl overflow-hidden border-4 border-[#0a1e40] shadow-[0_20px_50px_rgba(0,0,0,0.5)] hidden md:block">
+                   <div className="absolute -bottom-10 -right-10 z-20 w-2/3 h-2/3 rounded-xl overflow-hidden border-4 border-border shadow-[0_20px_50px_rgba(0,0,0,0.5)] hidden md:block">
                      <img
                        src={pair.small}
                        alt={pair.altDetail}
@@ -120,14 +120,14 @@ const AboutPreview = () => {
             })}
 
             {/* Floating "Years" Seal - Updated Count */}
-            <div className="absolute -top-6 -left-6 z-30 bg-[#FF0000] text-white rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(255,0,0,0.4)] animate-float border-4 border-[#0a1e40]">
+            <div className="absolute -top-6 -left-6 z-30 bg-accent text-accent-foreground rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(230,57,70,0.4)] animate-float border-4 border-border">
               <span className="text-4xl font-display font-bold tabular-nums">{yearsCount}+</span>
               <span className="text-[10px] uppercase font-bold tracking-wider text-center leading-tight">Years of<br/>Success</span>
             </div>
 
             {/* Decorative Dots */}
             <div className="absolute -bottom-12 -left-12 z-0">
-               <div className="w-24 h-24 opacity-20" style={{ backgroundImage: 'radial-gradient(#00AEEF 2px, transparent 2px)', backgroundSize: '10px 10px' }}></div>
+                <div className="w-24 h-24 opacity-20" style={{ backgroundImage: 'radial-gradient(#FFD700 2px, transparent 2px)', backgroundSize: '10px 10px' }}></div>
             </div>
           </div>
 
@@ -135,31 +135,31 @@ const AboutPreview = () => {
           <div className="animate-slide-in-right space-y-8" style={{ animationDelay: "200ms" }}>
             
             <div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                 The "First Option" for <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-white">Challenging Projects</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Challenging Projects</span>
               </h2>
-              <p className="text-slate-400 text-lg leading-relaxed border-l-2 border-[#00AEEF]/30 pl-6">
+              <p className="text-muted-foreground text-lg leading-relaxed border-l-2 border-primary/30 pl-6">
                 Sustainable Steel (popularly known as <strong>Hurricane Vent Co LLC</strong> in Oman) has earned a reputation for reliability. Many clients give us the "first option" to take up a contract before considering others.
               </p>
             </div>
 
             {/* Vision & Mission Cards - Text aligned with PDF */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-[#112b5a]/50 backdrop-blur-sm p-6 rounded-xl border border-white/5 shadow-lg group/card hover:-translate-y-2 hover:border-[#00AEEF]/50 transition-all duration-300">
-                <div className="w-12 h-12 rounded-lg bg-[#00AEEF]/10 flex items-center justify-center mb-4 group-hover/card:bg-[#00AEEF] transition-colors duration-300">
-                  <Eye className="w-6 h-6 text-[#00AEEF] group-hover/card:text-white transition-colors" />
+              <div className="bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border/60 shadow-lg group/card hover:-translate-y-2 hover:border-primary transition-all duration-300">
+                <div className="icon-chip icon-chip-md mb-4">
+                  <Eye className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-white mb-2 group-hover/card:text-[#00AEEF] transition-colors">Our Vision</h3>
-                <p className="text-sm text-slate-400">To be the most sought-after PEB contractor for projects where safety and schedule are critical.</p>
+                <h3 className="font-bold text-foreground mb-2 group-hover/card:text-primary transition-colors">Our Vision</h3>
+                <p className="text-sm text-muted-foreground">To be the most sought-after PEB contractor for projects where safety and schedule are critical.</p>
               </div>
 
-              <div className="bg-[#112b5a]/50 backdrop-blur-sm p-6 rounded-xl border border-white/5 shadow-lg group/card hover:-translate-y-2 hover:border-[#FF0000]/50 transition-all duration-300">
-                 <div className="w-12 h-12 rounded-lg bg-[#FF0000]/10 flex items-center justify-center mb-4 group-hover/card:bg-[#FF0000] transition-colors duration-300">
-                  <Target className="w-6 h-6 text-[#FF0000] group-hover/card:text-white transition-colors" />
+              <div className="bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border/60 shadow-lg group/card hover:-translate-y-2 hover:border-accent transition-all duration-300">
+                 <div className="icon-chip icon-chip-md mb-4">
+                  <Target className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-white mb-2 group-hover/card:text-[#FF0000] transition-colors">Our Mission</h3>
-                <p className="text-sm text-slate-400">Delivering projects safely, on time, and within budget while adhering to high-quality standards.</p>
+                <h3 className="font-bold text-foreground mb-2 group-hover/card:text-accent transition-colors">Our Mission</h3>
+                <p className="text-sm text-muted-foreground">Delivering projects safely, on time, and within budget while adhering to high-quality standards.</p>
               </div>
             </div>
 
@@ -174,15 +174,17 @@ const AboutPreview = () => {
                    { icon: TrendingUp, text: "Value Eng. (5-7% Saved)" }, // 
                  ].map((item, i) => (
                    <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-colors group/pill">
-                      <item.icon className="w-5 h-5 text-[#00AEEF] group-hover/pill:scale-110 transition-transform" />
-                      <span className="text-sm font-medium text-slate-300 group-hover/pill:text-white transition-colors whitespace-nowrap">{item.text}</span>
+                     <span className="icon-chip icon-chip-sm flex-shrink-0">
+                       <item.icon className="w-5 h-5" />
+                     </span>
+                     <span className="text-sm font-medium text-foreground group-hover/pill:text-primary transition-colors whitespace-nowrap">{item.text}</span>
                    </div>
                  ))}
                </div>
             </div>
 
             {/* CTA Button */}
-            <Button onClick={openAboutTop} size="xl" className="bg-[#FF0000] hover:bg-red-700 text-white font-bold px-8 shadow-lg shadow-red-900/20 group mt-4">
+            <Button onClick={openAboutTop} size="xl" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 shadow-lg shadow-yellow-500/20 group mt-4">
               Read Our Full Story 
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>

@@ -34,16 +34,16 @@ const Clients = () => {
     <Layout>
       <div className="absolute inset-0 opacity-[0.03]" 
              style={{ 
-               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
+               backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', 
                backgroundSize: '40px 40px' 
              }}>
         </div>
       {/* 1. HERO SECTION (Dark Navy Theme) */}
       <section className="relative py-24 bg-background overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-secondary/10"></div>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+           <div className="absolute inset-0 bg-gradient-to-b from-accent/10 via-transparent to-primary/10"></div>
+           {/* Background Pattern */}
+           <div className="absolute inset-0 opacity-[0.04]" 
+             style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
         
         {/* Glow Effects */}
@@ -58,7 +58,7 @@ const Clients = () => {
             
           
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6">
-            Building for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#FF4444]">Industry Leaders</span>
+            Building for <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Industry Leaders</span>
           </h1>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -69,17 +69,17 @@ const Clients = () => {
 
       {/* 2. IMPACT STATS STRIP */}
       <section className="container mx-auto px-4 relative z-30 -mt-20 mb-20">
-        <div className="bg-gradient-to-r from-[#0a1e40] to-[#005f8f] rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden group border border-white/10">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,#fff_1px,transparent_0)] bg-[size:20px_20px]"></div>
+        <div className="bg-gradient-to-r from-background via-card to-background rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden group border border-border">
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#FFD700 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10 text-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10 text-foreground">
             {stats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center text-center p-4 transition-transform duration-300 hover:-translate-y-2">
                 
-                <div className="font-display text-4xl md:text-5xl font-bold mb-2">
+                <div className="font-display text-4xl md:text-5xl font-bold mb-2 text-primary">
                   {stat.value} 
                 </div>
-                <p className="text-sm font-bold uppercase tracking-wider opacity-80 text-blue-100">{stat.label}</p>
+                <p className="text-sm font-bold uppercase tracking-wider opacity-80 text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -141,9 +141,10 @@ const Clients = () => {
 
       {/* 4. REGIONAL EXPERTISE (Map Visualization) */}
       <section className="py-24 bg-background relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'radial-gradient(circle, #00AEEF 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
-        </div>
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: 'radial-gradient(circle, #FFD700 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+        ></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">

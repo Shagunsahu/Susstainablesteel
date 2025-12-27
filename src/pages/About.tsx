@@ -68,30 +68,31 @@ const timeline = [
 const About = () => {
   return (
     <Layout>
-       <div className="absolute inset-0 opacity-[0.03]" 
-             style={{ 
-               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
-               backgroundSize: '40px 40px' 
-             }}>
-        </div>
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      ></div>
       {/* 1. HERO SECTION */}
-      <section className="relative py-32 bg-[#050f24] overflow-hidden flex items-center justify-center min-h-[60vh]">
+      <section className="relative py-32 bg-background overflow-hidden flex items-center justify-center min-h-[60vh]">
         <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed opacity-20"
             style={{ backgroundImage: 'url("/assets/about1.jpg")' }} 
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050f24] via-transparent to-[#050f24] z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10"></div>
         
         <div className="container mx-auto px-4 relative z-20 text-center animate-fade-in">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md">
               
                <span className="text-xs font-bold uppercase tracking-widest text-slate-300">About Our Legacy</span>
             </div>
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
             Building Excellence <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">Since 2002</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Since 2002</span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Engineering the skylines of tomorrow with precision, sustainability, and unwavering integrity.
           </p>
         </div>
@@ -99,19 +100,19 @@ const About = () => {
 
       {/* 2. STATS SECTION (Dark Blue Gradient) */}
       <section className="container mx-auto px-4 relative z-30 -mt-20 mb-20">
-        <div className="bg-gradient-to-r from-[#0a1e40] to-[#005f8f] rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden group border border-white/10">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,#fff_1px,transparent_0)] bg-[size:20px_20px]"></div>
+        <div className="bg-gradient-to-r from-background via-card to-background rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden group border border-border">
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#FFD700 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 text-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 text-foreground">
             {stats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center text-center p-4 transition-transform duration-300 hover:-translate-y-2">
                 <div className="mb-4 p-4 bg-white/10 rounded-2xl backdrop-blur-sm shadow-inner border border-white/5">
-                  <stat.icon className="w-8 h-8 text-blue-200" />
+                  <stat.icon className="w-8 h-8 text-primary" />
                 </div>
-                <div className="font-display text-4xl md:text-5xl font-bold mb-2">
+                <div className="font-display text-4xl md:text-5xl font-bold mb-2 text-primary">
                   <Counter end={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-sm font-bold uppercase tracking-wider opacity-80 text-blue-100">{stat.label}</p>
+                <p className="text-sm font-bold uppercase tracking-wider opacity-80 text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -119,20 +120,20 @@ const About = () => {
       </section>
 
       {/* 3. OUR STORY SECTION */}
-      <section className="relative py-24 bg-[#0a1e40] overflow-hidden">
+      <section className="relative py-24 bg-background overflow-hidden">
         
         
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
             <div className="space-y-8">
               <div className="space-y-2">
-                <span className="text-red-500 font-bold tracking-widest uppercase text-xs flex items-center gap-2">
-                  <span className="w-8 h-[2px] bg-red-500"></span> Our Legacy
+                <span className="text-accent font-bold tracking-widest uppercase text-xs flex items-center gap-2">
+                  <span className="w-8 h-[2px] bg-accent"></span> Our Legacy
                 </span>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
                   A Strategic Base in <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
                     Construction
@@ -141,17 +142,17 @@ const About = () => {
               </div>
 
               <div className="relative pl-8 border-l-2 border-white/10 space-y-6">
-                <p className="text-slate-300 text-lg leading-relaxed">
-                  <strong className="text-white">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-white font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  <strong className="text-foreground">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-foreground font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
                 </p>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   Our philosophy has always been <strong>quality in execution</strong> and <strong>timely completion</strong> of projects. This commitment has stood the test of time, earning us the "first option" status with many prestigious clients before they consider others.
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                   {['Specialized in PEB', 'Roof Ventilation Experts', 'Value-Add Engineering', 'Central Storage & Logistics'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-white/90 font-medium text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-red-500" />
+                    <div key={item} className="flex items-center gap-2 text-foreground font-medium text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-accent" />
                       {item}
                     </div>
                   ))}
@@ -160,7 +161,7 @@ const About = () => {
 
               <div className="pt-4">
                 <Link to="/contact">
-                  <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white rounded-full px-8 h-14 text-lg shadow-lg shadow-red-900/20 group transition-all hover:scale-105">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 h-14 text-lg shadow-lg shadow-accent/30 group transition-all hover:scale-105">
                     Start Your Project
                     <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
@@ -230,9 +231,9 @@ const About = () => {
       </section>
 
       {/* 5. INTERACTIVE FOUNDER SECTION (UPDATED) */}
-      <section className="py-24 bg-[#0a1e40] overflow-hidden relative">
+      <section className="py-24 bg-background overflow-hidden relative">
         
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-[400px_1fr] gap-16 items-center">
@@ -266,14 +267,14 @@ const About = () => {
               
               <div className="relative z-10 space-y-8">
                 
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
-                  "Efficiency, Quality, <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
-                    and Cost-Effective Management.
-                  </span>"
-                </h2>
+                  <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
+                    Efficiency, Quality, <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+                      and Cost-Effective Management.
+                    </span>
+                  </h2>
 
-                <div className="space-y-6 text-lg text-slate-300 leading-relaxed border-l-2 border-white/10 pl-6">
+                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed border-l-2 border-border pl-6">
                   <p>
                     With over 22 years of experience in Steel Structure Engineering, my goal is to position Sustainable Steel at the forefront of the industry.
                   </p>
@@ -283,7 +284,7 @@ const About = () => {
                 </div>
 
                 {/* Signature & Interactive Buttons */}
-                <div className="pt-8 flex flex-col sm:flex-row items-center gap-8 border-t border-white/10 mt-8">
+                <div className="pt-8 flex flex-col sm:flex-row items-center gap-8 border-t border-border mt-8">
                   
                   {/* Signature */}
                   <div className="flex-1 text-center sm:text-left">
@@ -298,7 +299,7 @@ const About = () => {
                       href="https://www.linkedin.com/in/mukesh-s-b5ba7457" 
                       target="_blank" 
                       rel="noreferrer"
-                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#0077b5] hover:border-transparent hover:text-white text-slate-300 transition-all duration-300"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-primary hover:border-primary hover:text-primary-foreground text-muted-foreground transition-all duration-300"
                     >
                       <Linkedin className="w-5 h-5 transition-transform group-hover:scale-110" />
                       <span className="text-sm font-medium">LinkedIn</span>
@@ -307,7 +308,7 @@ const About = () => {
 
                     <a 
                       href="mailto:mukesh@sustainablesteelind.com"
-                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-red-600 hover:border-transparent hover:text-white text-slate-300 transition-all duration-300"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent hover:text-accent-foreground text-muted-foreground transition-all duration-300"
                     >
                       <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
                       <span className="text-sm font-medium">Email</span>
@@ -380,20 +381,20 @@ const About = () => {
       {/* 8. CTA */}
       <section className="py-24 relative overflow-hidden">
         
-        {/* 1. Background: Dark Navy Base */}
-        <div className="absolute inset-0 bg-[#0a1e40]"></div>
+        {/* 1. Background */}
+        <div className="absolute inset-0 bg-background"></div>
 
         {/* 2. Texture: Blueprint Grid (Subtle) */}
         <div className="absolute inset-0 opacity-[0.05]" 
              style={{ 
-               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
+               backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', 
                backgroundSize: '40px 40px' 
              }}>
         </div>
 
-        {/* 3. Lighting: Red & Blue Glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+        {/* 3. Lighting */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           

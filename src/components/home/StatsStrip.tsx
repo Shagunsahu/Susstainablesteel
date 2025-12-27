@@ -93,11 +93,11 @@ const StatsStrip = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="py-12 bg-secondary border-y border-white/5 relative overflow-hidden"
+      className="py-12 bg-background border-y border-border relative overflow-hidden"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" 
-           style={{ backgroundImage: 'radial-gradient(#00AEEF 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+       <div className="absolute inset-0 opacity-5 pointer-events-none" 
+        style={{ backgroundImage: 'radial-gradient(#FFD700 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -121,25 +121,25 @@ const StatItem = ({ stat, isVisible, index, total }: { stat: any, isVisible: boo
 
   return (
     <div 
-      className={`group flex flex-col items-center text-center relative ${index !== total - 1 ? 'md:border-r border-white/5' : ''} transition-all duration-300 hover:-translate-y-1`}
+      className={`group flex flex-col items-center text-center relative ${index !== total - 1 ? 'md:border-r border-border' : ''} transition-all duration-300 hover:-translate-y-1`}
     >
-      {/* Icon with Hover Glow */}
-      <div className="mb-3 p-3 bg-[#0a1e40] rounded-full border border-white/10 shadow-[0_0_0_rgba(0,174,239,0)] group-hover:shadow-[0_0_20px_rgba(0,174,239,0.3)] group-hover:border-[#00AEEF]/50 transition-all duration-500">
-        <stat.icon className="w-6 h-6 text-[#00AEEF] group-hover:scale-110 transition-transform duration-300" />
+      {/* Icon with Gradient Chip */}
+      <div className="icon-chip icon-chip-md mb-3">
+        <stat.icon className="w-6 h-6" />
       </div>
 
       {/* Number Display */}
-      <h3 className="font-display text-4xl md:text-5xl font-bold text-[#00AEEF] mb-1 tabular-nums">
+      <h3 className="font-display text-4xl md:text-5xl font-bold text-primary mb-1 tabular-nums">
         {stat.prefix}{displayValue}{stat.suffix}
       </h3>
 
       {/* Label */}
-      <p className="font-bold text-white text-lg group-hover:text-[#00AEEF] transition-colors duration-300">
+      <p className="font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-300">
         {stat.label}
       </p>
 
       {/* Subtext */}
-      <p className="text-xs text-slate-400 uppercase tracking-widest mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
+      <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
         {stat.subtext}
       </p>
     </div>

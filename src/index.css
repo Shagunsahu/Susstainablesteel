@@ -6,71 +6,70 @@
 
 @layer base {
   :root {
-    /* --- INDUSTRIAL CORE THEME (Navy, Red, Cyan) --- */
+    /* --- DARK THEME: BLACK/ZINC WITH YELLOW & RED ACCENTS --- */
     
-    /* Background: Deep Navy (#0a1e40) */
-    --background: 218 73% 15%;
+    /* Background: Dominant Black (#111111) */
+    --background: 0 0% 6.7%;
     
-    /* Foreground: Soft Slate Text (#cbd5e1) */
-    --foreground: 215 25% 84%;
+    /* Foreground: White Text (#F3F4F6) */
+    --foreground: 210 16% 95%;
 
-    /* Cards: Slightly Lighter Navy (#112b5a) */
-    --card: 219 68% 21%;
-    --card-foreground: 215 25% 84%;
+    /* Cards: Surface Zinc (#1c1c1c) */
+    --card: 0 0% 11%;
+    --card-foreground: 210 16% 95%;
 
-    --popover: 219 68% 21%;
-    --popover-foreground: 215 25% 84%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 210 16% 95%;
 
-    /* Primary: Brand Red (#FF0000) */
-    --primary: 0 100% 50%;
-    --primary-foreground: 0 0% 100%; /* White text on red */
+    /* Primary: Golden Yellow (#FFD700) */
+    --primary: 45 100% 50%;
+    --primary-foreground: 0 0% 6.7%; /* Black text on yellow */
 
-    /* Secondary: Lighter Navy (#112b5a) with Cyan Text */
-    --secondary: 219 68% 21%;
-    --secondary-foreground: 196 100% 47%; /* Cyan (#00AEEF) */
+    /* Secondary: Surface Zinc (#1c1c1c) */
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 210 16% 95%;
 
-    /* Muted: Lighter Navy background, Slate text */
-    --muted: 219 68% 21%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted: Dark Gray background, Medium Gray text */
+    --muted: 0 0% 18%;
+    --muted-foreground: 210 9% 61%;
 
-    /* Accent: Blue-900 (#1e3a8a) background, Cyan text */
-    --accent: 218 64% 33%;
-    --accent-foreground: 196 100% 47%;
+    /* Accent: Red (#E63946) */
+    --accent: 360 72% 61%;
+    --accent-foreground: 210 16% 95%;
 
     /* Destructive: Red */
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 360 72% 61%;
+    --destructive-foreground: 210 16% 95%;
 
-    /* Borders: Blue-900 (#1e3a8a) */
-    --border: 218 64% 33%;
-    --input: 219 68% 21%;
+    /* Borders: Dark Gray (#2d2d2d) */
+    --border: 0 0% 18%;
+    --input: 0 0% 11%;
     
-    /* Ring: Cyan (#00AEEF) */
-    --ring: 196 100% 47%;
+    /* Ring: Golden Yellow (#FFD700) */
+    --ring: 45 100% 50%;
 
     --radius: 0.75rem;
 
     /* Custom Gradients using Brand Colors */
-    /* Navy to Lighter Navy */
-    --gradient-hero: linear-gradient(135deg, hsl(218 73% 15%) 0%, hsl(219 68% 21%) 100%);
-    /* Red to Darker Red */
-    --gradient-primary: linear-gradient(135deg, hsl(0 100% 50%) 0%, hsl(0 100% 40%) 100%);
-    /* Card gradient: Subtle Navy */
-    --gradient-card: linear-gradient(180deg, hsl(219 68% 21%) 0%, hsl(218 73% 15%) 100%);
+    /* Red to Yellow Gradient */
+    --gradient-hero: linear-gradient(135deg, #E63946 0%, #FFD700 100%);
+    /* Red to Yellow Primary Gradient */
+    --gradient-primary: linear-gradient(135deg, #E63946 0%, #FFD700 100%);
+    /* Card gradient: Subtle zinc */
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 11%) 0%, hsl(0 0% 6.7%) 100%);
 
     /* Shadows tailored for dark mode depth */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-    --shadow-card: 0 4px 20px -4px rgb(0 0 0 / 0.5);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+    --shadow-card: 0 4px 20px -4px rgb(0 0 0 / 0.7);
   }
 
-  /* Since the whole site is dark, .dark class just inherits or reinforces root */
+  /* Dark mode inherits root values */
   .dark {
-    --background: 218 73% 15%;
-    --foreground: 215 25% 84%;
-    /* ... repeat values if necessary, but root handles it for single-theme sites */
+    --background: 0 0% 6.7%;
+    --foreground: 210 16% 95%;
   }
 }
 
@@ -97,10 +96,24 @@
     font-family: 'Playfair Display', Georgia, serif;
   }
 
-  /* Text Gradient: Red to Cyan */
+  /* Text Gradient: Red to Yellow */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(0,100%,50%)] to-[hsl(196,100%,47%)];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#E63946] to-[#FFD700];
   }
+
+    /* Gradient icon chips for consistent look */
+    .icon-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, #E63946, #FFD700);
+      color: #111111;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 25px rgba(230, 57, 70, 0.35);
+    }
+    .icon-chip-sm { width: 1.75rem; height: 1.75rem; }
+    .icon-chip-md { width: 3rem; height: 3rem; }
+    .icon-chip-lg { width: 3.5rem; height: 3.5rem; }
 
   .gradient-hero {
     background: var(--gradient-hero);
@@ -134,10 +147,10 @@
     50% { transform: translateY(-10px); }
   }
 
-  /* Updated Glow to use Cyan */
+  /* Updated Glow to use Yellow */
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px hsl(196 100% 47% / 0.2); }
-    50% { box-shadow: 0 0 40px hsl(196 100% 47% / 0.4); }
+    0%, 100% { box-shadow: 0 0 20px hsl(45 100% 50% / 0.2); }
+    50% { box-shadow: 0 0 40px hsl(45 100% 50% / 0.4); }
   }
 
   .animate-fade-in {
@@ -167,13 +180,13 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(218 73% 15%);
+    background: hsl(0 0% 6.7%);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(218 64% 33%);
+    background: hsl(0 0% 18%);
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(0 100% 50%);
+    background: hsl(45 100% 50%);
   }
 }

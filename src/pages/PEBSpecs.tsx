@@ -29,15 +29,15 @@ const PEBSpecs = () => {
   return (
     <Layout>
       {/* Technical Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+           <div className="absolute inset-0 opacity-[0.04]" 
+             style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}> 
         </div>
       {/* 1. TECHNICAL HERO (Blueprint Style) */}
       <section className="relative py-24 bg-background overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-secondary/10"></div>
+           <div className="absolute inset-0 bg-gradient-to-b from-accent/10 via-transparent to-primary/10"></div>
         {/* Technical Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+           <div className="absolute inset-0 opacity-[0.04]" 
+             style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
         
         {/* Glow Effect */}
@@ -189,8 +189,8 @@ const PEBSpecs = () => {
 
       {/* CTA DOWNLOAD */}
       <section className="py-16 bg-card text-center relative overflow-hidden border-t border-border">
-        <div className="absolute inset-0 opacity-[0.04]" 
-             style={{ backgroundImage: 'linear-gradient(#00AEEF 1px, transparent 1px), linear-gradient(90deg, #00AEEF 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+           <div className="absolute inset-0 opacity-[0.04]" 
+               style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">

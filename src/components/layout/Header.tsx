@@ -73,20 +73,20 @@ const Header = () => {
   
   // UPDATED HERE: Changed bg-white/95 to bg-[#E6E8F0]/95
   const headerBgClass = isScrolled 
-    ? "bg-[#E6E8F0]/95 backdrop-blur-md shadow-md border-b border-slate-300/50" 
+    ? "bg-background/90 backdrop-blur-md shadow-md border-b border-border" 
     : "bg-transparent"; 
   
   // Text colors when scrolled vs not scrolled
   const textColorClass = isScrolled 
-    ? "text-[#0a1e40] group-hover:text-primary" // Dark blue when scrolled against light bg
+    ? "text-foreground group-hover:text-primary" // Foreground on dark base
     : "text-white hover:text-white/80"; // White when transparent against dark hero bar
     
   const logoTextClass = isScrolled 
-    ? "text-[#0a1e40]" 
+    ? "text-foreground" 
     : "text-white";
 
   const subTextClass = isScrolled 
-    ? "text-slate-600" 
+    ? "text-muted-foreground" 
     : "text-slate-300";
 
   return (
@@ -94,7 +94,7 @@ const Header = () => {
       
       {/* --- Top Bar: Contact Info --- */}
       {/* Hides on scroll */}
-      <div className={`transition-all duration-300 ${isScrolled ? "h-0 overflow-hidden py-0 opacity-0" : "bg-[#0a1e40] text-white py-2 opacity-100"}`}>
+      <div className={`transition-all duration-300 ${isScrolled ? "h-0 overflow-hidden py-0 opacity-0" : "bg-background text-foreground py-2 opacity-100"}`}>
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs sm:text-sm font-medium">
           <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6">
             <button onClick={() => handleCopy("+971 508614171", "phone")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
@@ -118,7 +118,7 @@ const Header = () => {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-2 text-slate-300"><Clock className="w-4 h-4 text-primary" /> Sun-Thu: 8AM-6PM</span>
+            <span className="flex items-center gap-2 text-muted-foreground"><Clock className="w-4 h-4 text-primary" /> Sun-Thu: 8AM-6PM</span>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@ const Header = () => {
                   >
                     {link.name}
                     {link.dropdown && (
-                        <ChevronDown className={`w-3 h-3 transition-all duration-300 group-hover:rotate-180 ${isScrolled ? "text-slate-500" : "text-white/70"}`} />
+                        <ChevronDown className={`w-3 h-3 transition-all duration-300 group-hover:rotate-180 ${isScrolled ? "text-muted-foreground" : "text-white/70"}`} />
                     )}
                     
                     {/* Active Underline Indicator */}
@@ -170,13 +170,13 @@ const Header = () => {
                   
                   {/* Dropdown Menu */}
                     {link.dropdown && (
-                    <div className="absolute top-full left-0 pt-6 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                       <div className="bg-white border border-[#E6E8F0] shadow-xl rounded-xl overflow-hidden p-2">
+                      <div className="absolute top-full left-0 pt-6 w-56 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
+                        <div className="bg-card border border-border shadow-xl rounded-xl overflow-hidden p-2">
                         {link.dropdown.map((dropItem) => (
                             <Link 
                             key={dropItem.name} 
                             to={{ pathname: dropItem.path.split('#')[0], hash: dropItem.path.includes('#') ? `#${dropItem.path.split('#')[1]}` : '' }}
-                            className=" px-4 py-3 text-sm text-slate-600 hover:bg-[#E6E8F0] hover:text-[#0a1e40] rounded-lg transition-colors flex items-center justify-between group/item"
+                           className=" px-4 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-colors flex items-center justify-between group/item"
                             >
                             {dropItem.name}
                             <ChevronRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-primary" />
@@ -201,7 +201,7 @@ const Header = () => {
 
             {/* Mobile Menu Button (Color swap) */}
             <button
-              className={`lg:hidden p-2 transition-colors duration-300 ${isScrolled ? "text-[#0a1e40]" : "text-white"}`}
+              className={`lg:hidden p-2 transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -211,29 +211,29 @@ const Header = () => {
 
           {/* --- Mobile Navigation --- */}
           {isOpen && (
-            <div className="lg:hidden absolute top-full left-0 w-full bg-[#E6E8F0] border-t border-slate-200 shadow-2xl animate-in slide-in-from-top-5 duration-300 z-40 max-h-[80vh] overflow-y-auto">
+            <div className="lg:hidden absolute top-full left-0 w-full bg-background border-t border-border shadow-2xl animate-in slide-in-from-top-5 duration-300 z-40 max-h-[80vh] overflow-y-auto">
               <div className="flex flex-col p-6 gap-2">
                 {navLinks.map((link) => (
-                  <div key={link.name} className="border-b border-slate-200 last:border-0 pb-2">
+                  <div key={link.name} className="border-b border-border last:border-0 pb-2">
                     {link.dropdown ? (
                       <div>
                         <button 
                             onClick={() => toggleMobileSubmenu(link.name)}
-                            className={`flex items-center justify-between w-full font-medium py-3 text-left transition-colors ${openMobileSubmenu === link.name ? "text-[#0a1e40]" : "text-slate-700"}`}
+                            className={`flex items-center justify-between w-full font-medium py-3 text-left transition-colors ${openMobileSubmenu === link.name ? "text-primary" : "text-foreground"}`}
                         >
                             {link.name}
                             <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openMobileSubmenu === link.name ? "rotate-180" : ""}`} />
                         </button>
                         <div className={`overflow-hidden transition-all duration-300 ${openMobileSubmenu === link.name ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}>
-                            <div className="bg-white/50 rounded-lg p-2 mb-2 flex flex-col gap-1">
+                            <div className="bg-card rounded-lg p-2 mb-2 flex flex-col gap-1 border border-border/60">
                                 {link.dropdown.map((subItem) => (
                                     <Link 
                                         key={subItem.name}
                                         to={subItem.path}
                                         onClick={() => setIsOpen(false)}
-                                        className="text-sm text-slate-600 py-2 px-3 hover:bg-white hover:text-[#0a1e40] rounded transition-colors flex items-center gap-2"
+                                        className="text-sm text-foreground py-2 px-3 hover:bg-muted hover:text-primary rounded transition-colors flex items-center gap-2"
                                     >
-                                        <div className="w-1 h-1 bg-slate-300 rounded-full"></div>
+                                        <div className="w-1 h-1 bg-border rounded-full"></div>
                                         {subItem.name}
                                     </Link>
                                 ))}
@@ -244,8 +244,8 @@ const Header = () => {
                       <Link
                         to={link.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block font-medium py-3 transition-colors hover:text-[#0a1e40] ${
-                          location.pathname === link.path ? "text-[#0a1e40]" : "text-slate-700"
+                        className={`block font-medium py-3 transition-colors hover:text-primary ${
+                          location.pathname === link.path ? "text-primary" : "text-foreground"
                         }`}
                       >
                         {link.name}
@@ -254,7 +254,7 @@ const Header = () => {
                   </div>
                 ))}
                 <Link to="/contact" onClick={() => setIsOpen(false)} className="mt-4">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white h-12 text-lg rounded-xl shadow-lg shadow-primary/20">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-lg rounded-xl shadow-lg shadow-primary/20">
                     Get Free Quote
                   </Button>
                 </Link>
