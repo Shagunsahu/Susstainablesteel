@@ -48,13 +48,22 @@ const services = [
   },
 ];
 
-const ServicesPreview = () => {
+type ServicesPreviewProps = {
+  variant?: "light" | "dark";
+};
+
+const ServicesPreview = ({ variant = "dark" }: ServicesPreviewProps) => {
+  const isLight = variant === "light";
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section
+      className={`py-24 relative overflow-hidden ${
+        isLight ? "bg-white text-slate-700" : "bg-background"
+      }`}
+    >
       
       {/* 1. Background Pattern */}
        <div className="absolute inset-0 opacity-5 pointer-events-none" 
-        style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+        style={{ backgroundImage: 'linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -64,10 +73,18 @@ const ServicesPreview = () => {
             <span className="text-primary text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
               <span className="w-2 h-2 bg-accent rounded-full"></span> Our Expertise
            </span>
-           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-             Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Solutions</span>
+           <h2
+            className={`font-display text-4xl md:text-5xl font-bold mb-6 ${
+              isLight ? "text-slate-800" : "text-foreground"
+            }`}
+           >
+             Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Solutions</span>
            </h2>
-           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+           <p
+            className={`${
+              isLight ? "text-slate-600" : "text-muted-foreground"
+            } max-w-2xl mx-auto text-lg leading-relaxed`}
+           >
              From zero-energy ventilation to heavy steel structures, we provide end-to-end industrial solutions tailored to your needs.
            </p>
         </div>
@@ -77,7 +94,11 @@ const ServicesPreview = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative bg-card rounded-2xl p-8 border border-border hover:border-primary transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(255,215,0,0.15)] overflow-hidden flex flex-col h-full"
+              className={`group relative rounded-2xl p-8 border transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col h-full hover:shadow-[0_10px_40px_rgba(14,165,233,0.3),0_0_60px_rgba(14,165,233,0.2)] hover:border-accent ${
+                isLight
+                  ? "bg-card border-border"
+                  : "bg-card border-border"
+              }`}
               style={{ 
                 animation: 'fade-in 0.6s ease-out forwards',
                 animationDelay: `${index * 100}ms`,
@@ -85,12 +106,14 @@ const ServicesPreview = () => {
               }}
             >
               {/* Background Number Watermark */}
-              <div className="absolute -right-4 -top-6 text-[120px] font-display font-bold text-white/5 select-none transition-transform duration-500 group-hover:scale-110 group-hover:text-white/10">
+              <div className={`absolute -right-4 -top-6 text-[120px] font-display font-bold select-none transition-transform duration-500 group-hover:scale-110 ${
+                isLight ? "text-white/5 group-hover:text-white/10" : "text-white/5 group-hover:text-white/10"
+              }`}>
                 0{index + 1}
               </div>
 
               {/* Hover Gradient Line */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-red-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
 
               {/* Icon */}
               <div className="icon-chip icon-chip-lg mb-6 z-10">
@@ -98,10 +121,18 @@ const ServicesPreview = () => {
               </div>
 
               {/* Content */}
-              <h3 className="relative font-display text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors z-10">
+              <h3
+                className={`relative font-display text-2xl font-bold mb-3 group-hover:text-accent transition-colors z-10 ${
+                  isLight ? "text-foreground" : "text-foreground"
+                }`}
+              >
                 {service.title}
               </h3>
-              <p className="relative text-muted-foreground text-sm mb-8 leading-relaxed flex-grow z-10 group-hover:text-foreground transition-colors">
+              <p
+                className={`relative text-sm mb-8 leading-relaxed flex-grow z-10 group-hover:text-foreground transition-colors ${
+                  isLight ? "text-muted-foreground" : "text-muted-foreground"
+                }`}
+              >
                 {service.description}
               </p>
               
@@ -110,7 +141,9 @@ const ServicesPreview = () => {
                 {service.features.map((feature) => (
                   <span 
                     key={feature} 
-                    className="text-[10px] uppercase font-bold px-3 py-1.5 bg-background text-muted-foreground rounded-sm border border-border group-hover:border-primary/40 group-hover:text-foreground transition-all duration-300"
+                    className={`text-[10px] uppercase font-bold px-3 py-1.5 rounded-sm border group-hover:border-accent/40 group-hover:text-foreground transition-all duration-300 ${
+                      isLight ? "bg-background text-muted-foreground border-border" : "bg-background text-muted-foreground border-border"
+                    }`}
                   >
                     {feature}
                   </span>
@@ -129,7 +162,7 @@ const ServicesPreview = () => {
         {/* View All Button */}
         <div className="text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
           <Link to="/services">
-            <Button size="xl" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 shadow-lg shadow-yellow-500/20 group">
+            <Button size="xl" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 shadow-[0_8px_30px_rgba(220,38,38,0.3)] hover:shadow-[0_8px_30px_rgba(220,38,38,0.5)] group">
               View All Services
               <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>

@@ -25,9 +25,18 @@ const certs = [
   }
 ];
 
-const Certifications = () => {
+type CertificationsProps = {
+  variant?: "light" | "dark";
+};
+
+const Certifications = ({ variant = "dark" }: CertificationsProps) => {
+  const isLight = variant === "light";
   return (
-    <section className="py-24 bg-background border-b border-border">
+    <section
+      className={`py-24 border-b ${
+        isLight ? "bg-white text-slate-700 border-slate-200" : "bg-background border-border"
+      }`}
+    >
       <div className="container mx-auto px-4">
         
         {/* Section Header */}
@@ -35,11 +44,19 @@ const Certifications = () => {
            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-2 block opacity-80">
              Accreditations
            </span>
-           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+           <h2
+            className={`font-display text-3xl md:text-4xl font-bold mb-4 ${
+              isLight ? "text-slate-800" : "text-foreground"
+            }`}
+           >
              Certified Excellence
            </h2>
-           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-             Our commitment to quality, safety, and the environment is validated by international standards.
+           <p
+            className={`${
+              isLight ? "text-slate-600" : "text-foreground/80"
+            } max-w-2xl mx-auto text-lg`}
+           >
+            Our commitment to quality, safety, and the environment is validated by international standards.
            </p>
         </div>
 
@@ -48,19 +65,45 @@ const Certifications = () => {
           {certs.map((cert, i) => (
             <div 
               key={i} 
-              className="p-8 rounded-3xl border border-border bg-card hover:border-primary hover:shadow-[0_15px_40px_rgba(255,215,0,0.12)] hover:-translate-y-1 transition-all duration-300 group text-center relative overflow-hidden"
+              className={`p-8 rounded-3xl border transition-all duration-300 group text-center relative overflow-hidden hover:-translate-y-1 ${
+                isLight
+                  ? "bg-card border-border hover:border-accent hover:shadow-[0_15px_40px_rgba(14,165,233,0.16)]"
+                  : "bg-card border-border hover:border-accent hover:shadow-[0_15px_40px_rgba(14,165,233,0.16)]"
+              }`}
             >
                <div className="relative z-10 flex flex-col h-full items-center">
                  
                  {/* Icon Container */}
-                 <div className="w-20 h-20 bg-background rounded-2xl flex items-center justify-center shadow-sm mb-6 text-primary border border-border group-hover:scale-110 transition-transform">
-                    <cert.icon className="w-10 h-10" />
+                 <div
+                  className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-sm mb-6 text-primary border group-hover:scale-110 transition-transform ${
+                    isLight ? "bg-background border-border" : "bg-background border-border"
+                  }`}
+                 >
+                  <cert.icon className="w-10 h-10" />
                  </div>
                  
                  {/* Text Content */}
-                 <h3 className="text-2xl font-bold text-foreground mb-1">{cert.title}</h3>
-                 <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">{cert.id}</p>
-                 <p className="text-muted-foreground mb-8 leading-relaxed">{cert.desc}</p>
+                 <h3
+                  className={`text-2xl font-bold mb-1 ${
+                    isLight ? "text-foreground" : "text-foreground"
+                  }`}
+                 >
+                  {cert.title}
+                 </h3>
+                 <p
+                  className={`text-xs font-bold uppercase tracking-wider mb-4 ${
+                    isLight ? "text-foreground/70" : "text-foreground/70"
+                  }`}
+                 >
+                  {cert.id}
+                 </p>
+                 <p
+                  className={`mb-8 leading-relaxed ${
+                    isLight ? "text-foreground" : "text-foreground"
+                  }`}
+                 >
+                  {cert.desc}
+                 </p>
                  
                  {/* Download Button */}
                  <div className="mt-auto w-full">

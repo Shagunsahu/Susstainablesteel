@@ -86,10 +86,10 @@ const Clients = () => {
         </div>
       </section>
       {/* 3. CLIENTS GRID (Glassmorphism Cards) */}
-      <section className="py-24 bg-muted relative">
+      <section className="py-24 bg-white text-slate-700 relative">
         <div className="absolute inset-0 opacity-[0.03]" 
              style={{ 
-               backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', 
+               backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', 
                backgroundSize: '40px 40px' 
              }}>
         </div>

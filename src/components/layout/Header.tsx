@@ -71,30 +71,22 @@ const Header = () => {
 
   // --- Dynamic Style Classes based on Scroll State ---
   
-  // UPDATED HERE: Changed bg-white/95 to bg-[#E6E8F0]/95
+  // Keep navbar as a dark slab for the stripe rhythm
   const headerBgClass = isScrolled 
-    ? "bg-background/90 backdrop-blur-md shadow-md border-b border-border" 
-    : "bg-transparent"; 
+    ? "bg-secondary/90 backdrop-blur-md shadow-md border-b border-border" 
+    : "bg-secondary/85 backdrop-blur-sm border-b border-border/60"; 
   
-  // Text colors when scrolled vs not scrolled
-  const textColorClass = isScrolled 
-    ? "text-foreground group-hover:text-primary" // Foreground on dark base
-    : "text-white hover:text-white/80"; // White when transparent against dark hero bar
-    
-  const logoTextClass = isScrolled 
-    ? "text-foreground" 
-    : "text-white";
-
-  const subTextClass = isScrolled 
-    ? "text-muted-foreground" 
-    : "text-slate-300";
+  // Text colors stay readable on dark
+  const textColorClass = "text-white group-hover:text-primary";
+  const logoTextClass = "text-white";
+  const subTextClass = "text-white/80";
 
   return (
     <header className="w-full sticky top-0 z-50 transition-all duration-300">
       
       {/* --- Top Bar: Contact Info --- */}
       {/* Hides on scroll */}
-      <div className={`transition-all duration-300 ${isScrolled ? "h-0 overflow-hidden py-0 opacity-0" : "bg-background text-foreground py-2 opacity-100"}`}>
+      <div className={`transition-all duration-300 ${isScrolled ? "h-0 overflow-hidden py-0 opacity-0" : "bg-secondary text-secondary-foreground py-2 opacity-100"}`}>
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs sm:text-sm font-medium">
           <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6">
             <button onClick={() => handleCopy("+971 508614171", "phone")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
@@ -139,7 +131,7 @@ const Header = () => {
                />
               
               <div className="hidden sm:block">
-                <h1 className={`font-display text-xl font-bold transition-colors duration-300 ${logoTextClass} group-hover:text-primary`}>
+                <h1 className={`font-display text-xl font-bold transition-colors duration-300 ${logoTextClass} group-hover:text-accent`}>
                   Sustainable Steel
                 </h1>
                 <p className={`text-xs transition-colors duration-300 ${subTextClass}`}>
@@ -161,7 +153,7 @@ const Header = () => {
                   >
                     {link.name}
                     {link.dropdown && (
-                        <ChevronDown className={`w-3 h-3 transition-all duration-300 group-hover:rotate-180 ${isScrolled ? "text-muted-foreground" : "text-white/70"}`} />
+                        <ChevronDown className={`w-3 h-3 transition-all duration-300 group-hover:rotate-180 text-white/80`} />
                     )}
                     
                     {/* Active Underline Indicator */}
@@ -192,7 +184,7 @@ const Header = () => {
             {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
               <Link to="/contact">
-                <Button className={`${isScrolled ? "h-9 px-4" : "h-11 px-6"} bg-primary hover:bg-primary/90 text-white transition-all duration-300 shadow-lg hover:shadow-primary/25 rounded-full`}>
+                <Button className={`${isScrolled ? "h-9 px-4" : "h-11 px-6"} bg-primary hover:bg-primary/90 text-white transition-all duration-300 shadow-[0_8px_25px_rgba(220,38,38,0.3)] hover:shadow-[0_8px_25px_rgba(220,38,38,0.5)] rounded-full`}>
                   Get Free Quote
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -201,7 +193,7 @@ const Header = () => {
 
             {/* Mobile Menu Button (Color swap) */}
             <button
-              className={`lg:hidden p-2 transition-colors duration-300 ${isScrolled ? "text-foreground" : "text-white"}`}
+              className="lg:hidden p-2 transition-colors duration-300 text-white"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -254,7 +246,7 @@ const Header = () => {
                   </div>
                 ))}
                 <Link to="/contact" onClick={() => setIsOpen(false)} className="mt-4">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-lg rounded-xl shadow-lg shadow-primary/20">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-lg rounded-xl shadow-[0_8px_25px_rgba(220,38,38,0.3)] hover:shadow-[0_8px_25px_rgba(220,38,38,0.5)]">
                     Get Free Quote
                   </Button>
                 </Link>

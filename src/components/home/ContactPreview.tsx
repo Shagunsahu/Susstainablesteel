@@ -125,9 +125,9 @@ const ContactPreview = () => {
             <div className="grid gap-4 sm:grid-cols-2">
               <a
                 href="tel:+971508614171"
-                className="group rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm transition-all hover:border-primary/70 hover:bg-card"
+                className="group rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm transition-all hover:border-accent/70 hover:bg-card"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-primary text-[#111] transition-transform group-hover:scale-110">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white transition-transform group-hover:scale-110">
                   <Phone className="h-6 w-6" />
                 </div>
                 <h3 className="mb-1 font-semibold text-foreground">Call Us Now</h3>
@@ -137,9 +137,9 @@ const ContactPreview = () => {
 
               <a
                 href="mailto:sales@sustainablesteelllc.com"
-                className="group rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm transition-all hover:border-primary/70 hover:bg-card"
+                className="group rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm transition-all hover:border-accent/70 hover:bg-card"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-primary text-[#111] transition-transform group-hover:scale-110">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white transition-transform group-hover:scale-110">
                   <Mail className="h-6 w-6" />
                 </div>
                 <h3 className="mb-1 font-semibold text-foreground">Email Support</h3>
@@ -150,7 +150,7 @@ const ContactPreview = () => {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-primary text-[#111]">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
                   <MapPin className="h-6 w-6" />
                 </div>
                 <h3 className="mb-1 font-semibold text-foreground">UAE Headquarters</h3>
@@ -158,7 +158,7 @@ const ContactPreview = () => {
               </div>
 
               <div className="rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-primary text-[#111]">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
                   <Clock className="h-6 w-6" />
                 </div>
                 <h3 className="mb-1 font-semibold text-foreground">Working Hours</h3>
@@ -177,7 +177,7 @@ const ContactPreview = () => {
 
               <div className="relative z-10">
                 <h3 className="mb-4 text-lg font-bold text-primary">🎉 Limited Time Offer!</h3>
-                <p className="mb-4 text-white">
+                <p className="text-white mb-4">
                   Get 10% OFF on all orders placed this month. Includes free site survey.
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -197,8 +197,8 @@ const ContactPreview = () => {
               className="pointer-events-none absolute -inset-4 -z-10 rounded-[28px] bg-white/40 blur-3xl"
               aria-hidden
             />
-            <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
-             <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+            <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
+             <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
 
             <div className="mb-8">
               <h3 className="mb-2 text-2xl font-bold">Request Callback</h3>
@@ -294,7 +294,7 @@ const ContactPreview = () => {
                 type="submit"
                 variant="hero"
                 size="xl"
-                className="w-full bg-gradient-to-r from-accent via-accent to-primary text-lg font-bold text-white shadow-[0_10px_30px_rgba(0,0,0,0.25),0_0_25px_rgba(230,57,70,0.5)] hover:brightness-105"
+                className="w-full bg-gradient-to-r from-red-600 to-red-800 text-lg font-bold text-white shadow-[0_10px_30px_rgba(220,38,38,0.3),0_0_40px_rgba(220,38,38,0.2)] hover:shadow-[0_10px_30px_rgba(220,38,38,0.5),0_0_50px_rgba(220,38,38,0.3)] hover:brightness-105"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (

@@ -149,7 +149,7 @@ const Careers = () => {
             </div>
             
           <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Build Your Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">With Us</span>
+            Build Your Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">With Us</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join a team of passionate professionals dedicated to engineering excellence. We build more than structures; we build careers.
@@ -158,7 +158,7 @@ const Careers = () => {
       </section>
 
       {/* 2. CULTURE / BENEFITS GRID */}
-      <section className="py-20 bg-muted border-b border-border">
+      <section className="py-20 bg-white text-slate-700 border-b border-slate-200">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl font-bold text-foreground mb-4">Why Sustainable Steel?</h2>
@@ -168,8 +168,8 @@ const Careers = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, i) => (
               <div key={i} className="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                  <benefit.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+                  <benefit.icon className="w-6 h-6 text-accent group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="font-bold text-lg text-foreground mb-2">{benefit.title}</h3>
                 <p className="text-sm text-muted-foreground">{benefit.desc}</p>
@@ -197,7 +197,7 @@ const Careers = () => {
                     className={`group rounded-2xl border transition-all duration-300 overflow-hidden ${
                       activeJob === job.id 
                         ? "border-primary bg-primary/5 shadow-md" 
-                        : "border-border bg-card hover:border-primary/50"
+                        : "border-border bg-card hover:border-accent/50"
                     }`}
                   >
                     {/* Job Header (Clickable) */}
@@ -206,7 +206,7 @@ const Careers = () => {
                       onClick={() => setActiveJob(activeJob === job.id ? null : job.id)}
                     >
                       <div>
-                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">
                           {job.title}
                         </h3>
                         <div className="flex flex-wrap gap-4 mt-3 text-sm text-muted-foreground">
@@ -216,7 +216,7 @@ const Careers = () => {
                         </div>
                       </div>
                       <div className={`transform transition-transform duration-300 ${activeJob === job.id ? "rotate-90" : ""}`}>
-                         <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                         <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors">
                             <ArrowRight className="w-4 h-4" />
                          </div>
                       </div>
@@ -260,7 +260,7 @@ const Careers = () => {
                    className="pointer-events-none absolute -inset-3 -z-10 rounded-[30px] bg-white/30 blur-3xl"
                    aria-hidden
                   />
-                  <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+                  <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
                   {/* Decorative Background */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
                      
@@ -337,7 +337,7 @@ const Careers = () => {
                     <Button
                       type="submit"
                       size="lg"
-                      className="mt-2 w-full bg-gradient-to-r from-accent via-accent to-primary text-white shadow-[0_10px_30px_rgba(0,0,0,0.25),0_0_25px_rgba(230,57,70,0.5)] hover:brightness-105"
+                      className="mt-2 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white shadow-[0_10px_30px_rgba(6,182,212,0.3),0_0_40px_rgba(6,182,212,0.2)] hover:shadow-[0_10px_30px_rgba(6,182,212,0.5),0_0_50px_rgba(6,182,212,0.3)] hover:brightness-105"
                       disabled={loading}
                     >
                       {loading ? "Submitting..." : "Submit Application"}

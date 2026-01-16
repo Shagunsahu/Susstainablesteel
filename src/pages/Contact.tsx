@@ -139,7 +139,7 @@ const Contact = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-32 bg-background overflow-hidden flex items-center justify-center min-h-[60vh]">
+      <section className="relative py-32 bg-white text-slate-700 overflow-hidden flex items-center justify-center min-h-[60vh]">
         <div 
             className="absolute inset-0 bg-cover bg-center bg-fixed opacity-20"
             style={{ backgroundImage: 'url("/assets/s2.jpg")' }} 
@@ -152,7 +152,7 @@ const Contact = () => {
           </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
             Let's Build <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Your Project</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Your Project</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Connect with our team to get a free quote and expert consultation within 5 minutes.
@@ -235,9 +235,9 @@ const Contact = () => {
                   className="pointer-events-none absolute -inset-4 -z-10 rounded-[28px] bg-white/35 blur-3xl"
                   aria-hidden
                 />
-                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
-                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
-                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-accent via-accent to-primary" />
+                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
+                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
+                 <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
 
                 <h2 className="mb-2 font-display text-2xl font-bold">Request a Callback</h2>
                 <p className="mb-6 flex items-center gap-2 text-sm text-slate-600">
@@ -324,7 +324,7 @@ const Contact = () => {
                     type="submit"
                     variant="hero"
                     size="xl"
-                    className="w-full bg-gradient-to-r from-accent via-accent to-primary text-white shadow-[0_10px_30px_rgba(0,0,0,0.25),0_0_25px_rgba(230,57,70,0.5)] hover:brightness-105"
+                    className="w-full bg-gradient-to-r from-red-600 to-red-800 text-white shadow-[0_10px_30px_rgba(220,38,38,0.3),0_0_40px_rgba(220,38,38,0.2)] hover:shadow-[0_10px_30px_rgba(220,38,38,0.5),0_0_50px_rgba(220,38,38,0.3)] hover:brightness-105"
                     disabled={loading}
                   >
                     {loading ? "Sending..." : "Get Free Quote"}

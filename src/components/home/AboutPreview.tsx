@@ -47,7 +47,11 @@ const useCounter = (end: number, duration: number = 2000) => {
   return count;
 };
 
-const AboutPreview = () => {
+type AboutPreviewProps = {
+  variant?: "light" | "dark";
+};
+
+const AboutPreview = ({ variant = "dark" }: AboutPreviewProps) => {
   // Updated to 22 years based on "Since 2002" 
   const yearsCount = useCounter(22, 2000);
   const navigate = useNavigate();
@@ -70,13 +74,24 @@ const AboutPreview = () => {
     setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" }), 50);
   };
 
+  const isLight = variant === "light";
+
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section
+      className={`py-24 relative overflow-hidden ${
+        isLight ? "bg-white text-slate-700" : "bg-background"
+      }`}
+    >
       
       {/* 1. Background Pattern */}
-       <div className="absolute inset-0 opacity-5 pointer-events-none" 
-        style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-      </div>
+       <div
+        className="absolute inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      ></div>
 
       <div className="container mx-auto px-4 relative z-10">
         
@@ -104,7 +119,11 @@ const AboutPreview = () => {
                        alt={pair.altMain}
                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
                      />
-                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+                     <div
+                      className={`absolute inset-0 bg-gradient-to-t ${
+                        isLight ? "from-slate-900/30" : "from-background/80"
+                      } to-transparent`}
+                     ></div>
                    </div>
 
                    {/* Secondary Image (Overlapping) */}
@@ -132,40 +151,82 @@ const AboutPreview = () => {
           </div>
 
           {/* --- RIGHT: Content --- */}
-          <div className="animate-slide-in-right space-y-8" style={{ animationDelay: "200ms" }}>
+            <div className="animate-slide-in-right space-y-8" style={{ animationDelay: "200ms" }}>
             
             <div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <h2
+                className={`font-display text-4xl md:text-5xl font-bold mb-6 leading-tight ${
+                  isLight ? "text-slate-700" : "text-foreground"
+                }`}
+              >
                 The "First Option" for <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Challenging Projects</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Challenging Projects</span>
               </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed border-l-2 border-primary/30 pl-6">
+              <p
+                className={`${
+                  isLight ? "text-slate-700" : "text-foreground/90"
+                } text-lg leading-relaxed border-l-2 border-primary/30 pl-6`}
+              >
                 Sustainable Steel (popularly known as <strong>Hurricane Vent Co LLC</strong> in Oman) has earned a reputation for reliability. Many clients give us the "first option" to take up a contract before considering others.
               </p>
             </div>
 
             {/* Vision & Mission Cards - Text aligned with PDF */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border/60 shadow-lg group/card hover:-translate-y-2 hover:border-primary transition-all duration-300">
+              <div
+                className={`${
+                  isLight
+                    ? "bg-white border-slate-200 text-slate-700 shadow-card"
+                    : "bg-card/70 backdrop-blur-sm border-border/60 text-white"
+                } p-6 rounded-xl border shadow-lg group/card hover:-translate-y-2 hover:border-primary transition-all duration-300`}
+              >
                 <div className="icon-chip icon-chip-md mb-4">
                   <Eye className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2 group-hover/card:text-primary transition-colors">Our Vision</h3>
-                <p className="text-sm text-muted-foreground">To be the most sought-after PEB contractor for projects where safety and schedule are critical.</p>
+                <h3
+                  className={`font-bold mb-2 group-hover/card:text-primary transition-colors ${
+                    isLight ? "text-slate-800" : "text-white"
+                  }`}
+                >
+                  Our Vision
+                </h3>
+                <p className={`text-sm ${isLight ? "text-slate-600" : "text-white"}`}>
+                  To be the most sought-after PEB contractor for projects where safety and schedule are critical.
+                </p>
               </div>
 
-              <div className="bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border/60 shadow-lg group/card hover:-translate-y-2 hover:border-accent transition-all duration-300">
+              <div
+                className={`${
+                  isLight
+                    ? "bg-white border-slate-200 text-slate-700 shadow-card"
+                    : "bg-card/70 backdrop-blur-sm border-border/60 text-white"
+                } p-6 rounded-xl border shadow-lg group/card hover:-translate-y-2 hover:border-accent transition-all duration-300`}
+              >
                  <div className="icon-chip icon-chip-md mb-4">
                   <Target className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2 group-hover/card:text-accent transition-colors">Our Mission</h3>
-                <p className="text-sm text-muted-foreground">Delivering projects safely, on time, and within budget while adhering to high-quality standards.</p>
+                <h3
+                  className={`font-bold mb-2 group-hover/card:text-accent transition-colors ${
+                    isLight ? "text-slate-800" : "text-white"
+                  }`}
+                >
+                  Our Mission
+                </h3>
+                <p className={`text-sm ${isLight ? "text-slate-600" : "text-white"}`}>
+                  Delivering projects safely, on time, and within budget while adhering to high-quality standards.
+                </p>
               </div>
             </div>
 
             {/* Why Choose Us Pills - Updated with Value Engineering */}
             <div>
-               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Our Competitive Edge</h4>
+               <h4
+                className={`text-sm font-bold uppercase tracking-wider mb-4 ${
+                  isLight ? "text-slate-700" : "text-foreground"
+                }`}
+               >
+                Our Competitive Edge
+               </h4>
                <div className="grid grid-cols-2 gap-3">
                  {[
                    { icon: ShieldCheck, text: "Quality Execution" }, // [cite: 22]
@@ -173,11 +234,22 @@ const AboutPreview = () => {
                    { icon: Award, text: "ISO 9001 Certified" }, // [cite: 52]
                    { icon: TrendingUp, text: "Value Eng. (5-7% Saved)" }, // 
                  ].map((item, i) => (
-                   <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3 hover:bg-white/10 transition-colors group/pill">
+                   <div
+                    key={i}
+                    className={`flex items-center gap-3 rounded-lg p-3 transition-colors group/pill ${
+                      isLight ? "bg-slate-100 hover:bg-slate-200" : "bg-white/5 hover:bg-white/10"
+                    }`}
+                   >
                      <span className="icon-chip icon-chip-sm flex-shrink-0">
                        <item.icon className="w-5 h-5" />
                      </span>
-                     <span className="text-sm font-medium text-foreground group-hover/pill:text-primary transition-colors whitespace-nowrap">{item.text}</span>
+                     <span
+                      className={`text-sm font-medium transition-colors whitespace-nowrap ${
+                        isLight ? "text-slate-700 group-hover/pill:text-primary" : "text-foreground group-hover/pill:text-primary"
+                      }`}
+                     >
+                      {item.text}
+                     </span>
                    </div>
                  ))}
                </div>

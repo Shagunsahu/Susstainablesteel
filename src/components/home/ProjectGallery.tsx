@@ -90,7 +90,11 @@ const projects: Project[] = [
 // Categories match PDF Services exactly [cite: 3-7]
 const categories = ["All", "Steel Structures", "Roof Ventilators", "Tubular Skylights", "Waterproofing", "Sheet Replacement"];
 
-const ProjectGallery = () => {
+type ProjectGalleryProps = {
+  variant?: "light" | "dark";
+};
+
+const ProjectGallery = ({ variant = "dark" }: ProjectGalleryProps) => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const location = useLocation();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -122,12 +126,19 @@ const ProjectGallery = () => {
 
   const filtered = activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory);
 
+  const isLight = variant === "light";
+
   return (
-    <section className="py-24 bg-background relative" aria-labelledby="projects-heading">
+    <section
+      className={`py-24 relative ${
+        isLight ? "bg-white text-slate-700" : "bg-secondary text-secondary-foreground"
+      }`}
+      aria-labelledby="projects-heading"
+    >
       {/* Background Pattern */}
       <div
         className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+        style={{ backgroundImage: 'linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)', backgroundSize: '40px 40px' }}
       ></div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -136,8 +147,13 @@ const ProjectGallery = () => {
           <span className="text-primary text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
             <span className="w-2 h-2 bg-accent rounded-full"></span> Our Portfolio
           </span>
-          <h2 id="projects-heading" className="font-display text-4xl md:text-5xl font-bold text-foreground">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Projects</span>
+          <h2
+            id="projects-heading"
+            className={`font-display text-4xl md:text-5xl font-bold ${
+              isLight ? "text-slate-800" : "text-foreground"
+            }`}
+          >
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Projects</span>
           </h2>
         </div>
 
@@ -146,8 +162,10 @@ const ProjectGallery = () => {
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             const base = 'px-5 py-2 text-xs font-bold uppercase tracking-wider border transition-all duration-300 rounded-sm';
-            const activeClasses = 'bg-gradient-to-r from-accent via-accent to-primary text-white shadow-[0_0_15px_rgba(230,57,70,0.3)]';
-            const inactiveClasses = 'border-border hover:border-transparent hover:bg-gradient-to-r hover:from-accent hover:via-accent hover:to-primary hover:text-white';
+            const activeClasses = 'bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white shadow-[0_0_15px_rgba(6,182,212,0.3)]';
+            const inactiveClasses = isLight
+              ? 'border-slate-200 hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-blue-600 hover:text-white'
+              : 'border-border hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-blue-600 hover:text-white';
             return (
               <button
                 key={cat}
@@ -165,7 +183,7 @@ const ProjectGallery = () => {
           {/* Scroll Left Button */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gradient-to-r from-accent via-accent to-primary backdrop-blur-sm border border-transparent flex items-center justify-center hover:brightness-110 text-white transition-all opacity-0 group-hover/container:opacity-100 -translate-x-1/2 md:translate-x-0 shadow-lg"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 backdrop-blur-sm border border-transparent flex items-center justify-center hover:brightness-110 text-white transition-all opacity-0 group-hover/container:opacity-100 -translate-x-1/2 md:translate-x-0 shadow-lg"
             aria-label="Scroll left"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -174,7 +192,7 @@ const ProjectGallery = () => {
           {/* Scroll Right Button */}
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gradient-to-r from-accent via-accent to-primary backdrop-blur-sm border border-transparent flex items-center justify-center hover:brightness-110 text-white transition-all opacity-0 group-hover/container:opacity-100 translate-x-1/2 md:translate-x-0 shadow-lg"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 backdrop-blur-sm border border-transparent flex items-center justify-center hover:brightness-110 text-white transition-all opacity-0 group-hover/container:opacity-100 translate-x-1/2 md:translate-x-0 shadow-lg"
             aria-label="Scroll right"
           >
             <ChevronRight className="w-6 h-6" />
@@ -190,7 +208,9 @@ const ProjectGallery = () => {
               <article 
                 id={project.anchor} 
                 key={project.id} 
-                className="group relative h-[450px] min-w-[320px] md:min-w-[400px] flex-shrink-0 snap-center overflow-hidden border border-border bg-card cursor-pointer hover:border-primary transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,215,0,0.15)]"
+                className={`group relative h-[450px] min-w-[320px] md:min-w-[400px] flex-shrink-0 snap-center overflow-hidden border cursor-pointer transition-all duration-500 hover:shadow-[0_0_30px_rgba(14,165,233,0.25)] hover:border-accent ${
+                  isLight ? "bg-white border-slate-200" : "bg-card border-border"
+                }`}
                 onClick={() => setSelectedProject(project)}
               >
                 {/* Image */}
@@ -199,7 +219,11 @@ const ProjectGallery = () => {
                 </div>
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t opacity-90 group-hover:opacity-80 transition-opacity duration-500 ${
+                    isLight ? "from-slate-900/80 via-slate-900/50" : "from-secondary via-secondary/60"
+                  }`}
+                ></div>
 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
@@ -215,14 +239,14 @@ const ProjectGallery = () => {
                       <p className="text-primary text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-accent"></span> {project.category}
                       </p>
-                      <h3 className="text-2xl font-display font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
+                      <h3 className="text-2xl font-display font-bold text-white mb-2 leading-tight group-hover:text-accent transition-colors">
                         {project.title}
                       </h3>
                       <div className="flex items-center justify-between border-t border-border pt-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                          <span className="text-muted-foreground text-sm flex items-center gap-2">
+                          <span className="text-slate-200 text-sm flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-accent" /> {project.location}
                           </span>
-                          <span className="text-sm font-bold text-foreground flex items-center gap-1 border-b border-primary">
+                          <span className="text-sm font-bold text-white flex items-center gap-1 border-b border-primary">
                              View Details <ArrowUpRight className="w-4 h-4" />
                           </span>
                       </div>
@@ -238,10 +262,14 @@ const ProjectGallery = () => {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <div className="absolute inset-0 bg-background/90 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
 
-            <div className="relative bg-card border border-border overflow-hidden max-w-5xl w-full shadow-2xl z-10 animate-fade-in flex flex-col md:flex-row max-h-[90vh]">
+            <div
+              className={`relative overflow-hidden max-w-5xl w-full shadow-2xl z-10 animate-fade-in flex flex-col md:flex-row max-h-[90vh] border ${
+                isLight ? "bg-white border-slate-200" : "bg-card border-border"
+              }`}
+            >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-background/70 hover:bg-gradient-to-r hover:from-accent hover:via-accent hover:to-primary text-foreground hover:text-white z-20 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-background/70 hover:bg-gradient-to-r hover:from-cyan-500 hover:via-blue-500 hover:to-blue-600 text-foreground hover:text-white z-20 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -249,7 +277,11 @@ const ProjectGallery = () => {
               {/* Modal Image */}
               <div className="w-full md:w-1/2 h-64 md:h-auto relative">
                 <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent md:bg-gradient-to-r"></div>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r ${
+                    isLight ? "from-slate-900/70" : "from-secondary"
+                  } to-transparent`}
+                ></div>
               </div>
 
               {/* Modal Content */}
@@ -258,16 +290,18 @@ const ProjectGallery = () => {
                   <span className="text-primary text-xs font-bold uppercase tracking-widest border border-primary px-3 py-1 rounded-sm bg-primary/10">
                     {selectedProject.category}
                   </span>
-                  <span className="text-muted-foreground text-xs font-bold uppercase tracking-widest flex items-center gap-1">
+                  <span className={`text-xs font-bold uppercase tracking-widest flex items-center gap-1 ${
+                    isLight ? "text-slate-500" : "text-muted-foreground"
+                  }`}>
                     <MapPin className="w-3 h-3 text-accent" /> {selectedProject.location}
                   </span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+                <h3 className={`text-3xl md:text-4xl font-display font-bold mb-6 ${isLight ? "text-slate-800" : "text-foreground"}`}>
                   {selectedProject.title}
                 </h3>
 
-                <div className="space-y-4 mb-8 text-muted-foreground leading-relaxed">
+                <div className={`space-y-4 mb-8 leading-relaxed ${isLight ? "text-slate-600" : "text-muted-foreground"}`}>
                   <p>{selectedProject.description}</p>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-accent"></span> Expert Execution</li>
@@ -279,13 +313,17 @@ const ProjectGallery = () => {
                 <div className="flex gap-4 mt-auto">
                   <a
                     href="/contact"
-                    className="px-8 py-3 bg-gradient-to-r from-accent via-accent to-primary text-white font-bold uppercase tracking-wider text-sm transition-colors hover:brightness-110 shadow-lg"
+                    className="px-8 py-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white font-bold uppercase tracking-wider text-sm transition-colors hover:brightness-110 shadow-lg"
                   >
                     Request Similar Project
                   </a>
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="px-8 py-3 border border-border hover:border-white text-foreground hover:text-white font-bold uppercase tracking-wider text-sm transition-colors"
+                    className={`px-8 py-3 border font-bold uppercase tracking-wider text-sm transition-colors ${
+                      isLight
+                        ? "border-slate-300 text-slate-700 hover:border-accent hover:text-accent"
+                        : "border-border hover:border-white text-foreground hover:text-white"
+                    }`}
                   >
                     Close
                   </button>

@@ -6,70 +6,77 @@
 
 @layer base {
   :root {
-    /* --- DARK THEME: BLACK/ZINC WITH YELLOW & RED ACCENTS --- */
-    
-    /* Background: Dominant Black (#111111) */
-    --background: 0 0% 6.7%;
-    
-    /* Foreground: White Text (#F3F4F6) */
-    --foreground: 210 16% 95%;
+    /* Canvas Light primary background with industrial accents */
+    --background: 210 40% 98%;
+    --foreground: 217 33% 17%; /* Text Charcoal */
 
-    /* Cards: Surface Zinc (#1c1c1c) */
-    --card: 0 0% 11%;
-    --card-foreground: 210 16% 95%;
+    /* Dark slabs for stripe sections (nav, footer, services) */
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --popover: 0 0% 11%;
-    --popover-foreground: 210 16% 95%;
+    /* Industrial Gold primary */
+    --primary: 51 100% 50%;
+    --primary-foreground: 222 47% 11%;
 
-    /* Primary: Golden Yellow (#FFD700) */
-    --primary: 45 100% 50%;
-    --primary-foreground: 0 0% 6.7%; /* Black text on yellow */
+    /* Secondary = dark slab */
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 210 40% 98%;
 
-    /* Secondary: Surface Zinc (#1c1c1c) */
-    --secondary: 0 0% 11%;
-    --secondary-foreground: 210 16% 95%;
+    /* Muted on light canvas */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    /* Muted: Dark Gray background, Medium Gray text */
-    --muted: 0 0% 18%;
-    --muted-foreground: 210 9% 61%;
+    /* Safety Red accent */
+    --accent: 355 78% 56%;
+    --accent-foreground: 210 40% 98%;
 
-    /* Accent: Red (#E63946) */
-    --accent: 360 72% 61%;
-    --accent-foreground: 210 16% 95%;
+    /* Destructive shares accent */
+    --destructive: 355 78% 56%;
+    --destructive-foreground: 210 40% 98%;
 
-    /* Destructive: Red */
-    --destructive: 360 72% 61%;
-    --destructive-foreground: 210 16% 95%;
-
-    /* Borders: Dark Gray (#2d2d2d) */
-    --border: 0 0% 18%;
-    --input: 0 0% 11%;
-    
-    /* Ring: Golden Yellow (#FFD700) */
-    --ring: 45 100% 50%;
+    /* Borders / inputs */
+    --border: 215 16% 47%;
+    --input: 210 40% 98%;
+    --ring: 51 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom Gradients using Brand Colors */
-    /* Red to Yellow Gradient */
+    /* Gradients */
     --gradient-hero: linear-gradient(135deg, #E63946 0%, #FFD700 100%);
-    /* Red to Yellow Primary Gradient */
     --gradient-primary: linear-gradient(135deg, #E63946 0%, #FFD700 100%);
-    /* Card gradient: Subtle zinc */
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 11%) 0%, hsl(0 0% 6.7%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 11%) 0%, hsl(217 33% 17%) 100%);
 
-    /* Shadows tailored for dark mode depth */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
-    --shadow-card: 0 4px 20px -4px rgb(0 0 0 / 0.7);
+    /* Shadows tuned for light canvas */
+    --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.12);
+    --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.15), 0 2px 4px -2px rgb(15 23 42 / 0.12);
+    --shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.18), 0 4px 6px -4px rgb(15 23 42 / 0.12);
+    --shadow-xl: 0 20px 25px -5px rgb(15 23 42 / 0.2), 0 8px 10px -6px rgb(15 23 42 / 0.12);
+    --shadow-card: 0 6px 30px -10px rgb(15 23 42 / 0.25);
   }
 
-  /* Dark mode inherits root values */
+  /* Dark mode uses the dark slab palette */
   .dark {
-    --background: 0 0% 6.7%;
-    --foreground: 210 16% 95%;
+    --background: 215 28% 17%;  /* #1E293B Dark Navy */
+    --foreground: 0 0% 100%;    /* White text */
+    --card: 215 28% 17%;        /* #1E293B */
+    --card-foreground: 0 0% 100%;  /* White text */
+    --popover: 215 28% 17%;     /* #1E293B */
+    --popover-foreground: 0 0% 100%;  /* White text */
+    --primary: 356 84% 50%;     /* Red-600 */
+    --primary-foreground: 0 0% 100%;  /* White */
+    --secondary: 215 28% 17%;   /* #1E293B */
+    --secondary-foreground: 0 0% 100%;  /* White text */
+    --muted: 217 33% 20%;
+    --muted-foreground: 0 0% 100%;  /* White text */
+    --accent: 198 93% 60%;      /* Cyan-500 */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 356 84% 50%;
+    --destructive-foreground: 0 0% 100%;  /* White */
+    --border: 215 16% 40%;
+    --input: 215 28% 17%;       /* #1E293B */
+    --ring: 198 93% 60%;        /* Cyan ring */
   }
 }
 
@@ -83,7 +90,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-white; /* Ensure headings are white */
+    @apply font-display text-foreground;
   }
 }
 
@@ -107,9 +114,9 @@
       align-items: center;
       justify-content: center;
       border-radius: 0.75rem;
-      background: linear-gradient(135deg, #E63946, #FFD700);
-      color: #111111;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 25px rgba(230, 57, 70, 0.35);
+      background: linear-gradient(135deg, #06B6D4, #2563EB);
+      color: #1E293B;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15), 0 0 25px rgba(6, 182, 212, 0.2);
     }
     .icon-chip-sm { width: 1.75rem; height: 1.75rem; }
     .icon-chip-md { width: 3rem; height: 3rem; }
@@ -175,18 +182,18 @@
   .animation-delay-400 { animation-delay: 400ms; }
   .animation-delay-500 { animation-delay: 500ms; }
   
-  /* Scrollbar Styling for Dark Theme */
+  /* Scrollbar Styling for light canvas */
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(0 0% 6.7%);
+    background: hsl(210 40% 98%);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(0 0% 18%);
+    background: hsl(215 16% 70%);
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(45 100% 50%);
+    background: hsl(51 100% 50%);
   }
 }

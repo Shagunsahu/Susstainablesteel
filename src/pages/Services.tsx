@@ -104,7 +104,7 @@ const Services = () => {
         </div>
       {/* Hero Section */}
       <section className="relative py-28 bg-background overflow-hidden">
-           <div className="absolute inset-0 bg-gradient-to-b from-accent/10 via-transparent to-primary/10"></div>
+           <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-blue-600/10"></div>
            <div className="absolute inset-0 opacity-[0.04]" 
              style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '50px 50px' }}>
         </div>
@@ -116,7 +116,7 @@ const Services = () => {
                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground"> Our Services</span>
             </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6">
-              Comprehensive <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Industrial Solutions</span>
+              Comprehensive <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Industrial Solutions</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             From ventilation to steel structures, we provide end-to-end solutions for your industrial needs with quality and reliability you can trust.
@@ -125,32 +125,34 @@ const Services = () => {
       </section>
       
       {/* Services List */}
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-white text-slate-700">
         <div className="container mx-auto px-4">
           {services.map((service, index) => (
             <div
               key={service.title}
-              id={service.id} // Binds the ID for scrolling
-              className={`scroll-mt-32 group grid lg:grid-cols-2 gap-12 items-center mb-32 last:mb-10 ${
+              id={service.id}
+              className={`scroll-mt-32 group grid lg:grid-cols-2 gap-12 items-center mb-32 last:mb-10 px-8 py-12 rounded-2xl transition-all duration-300 ${
+                index % 2 === 0 ? "bg-white border border-slate-200" : "bg-card border border-border"
+              } ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
               {/* Text Content */}
               <div className={`${index % 2 === 1 ? "lg:order-2" : ""} animate-fade-in`}>
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
-                  <service.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
+                  <service.icon className="w-8 h-8 text-accent group-hover:text-white transition-colors" />
                 </div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-800 mb-2">
                   {service.title}
                 </h2>
-                <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-4">{service.subtitle}</p>
-                <p className="text-muted-foreground mb-8 text-lg leading-relaxed">{service.description}</p>
+                <p className="text-accent text-sm font-semibold uppercase tracking-wider mb-4">{service.subtitle}</p>
+                <p className="text-slate-700 mb-8 text-lg leading-relaxed">{service.description}</p>
                 
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {service.keyPoints.map((point) => (
-                    <div key={point} className="flex items-start gap-3 p-2 rounded-lg hover:bg-secondary/50 transition-colors">
+                    <div key={point} className="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-100 transition-colors">
                       <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-foreground/80 font-medium">{point}</span>
+                      <span className="text-sm text-slate-700 font-medium">{point}</span>
                     </div>
                   ))}
                 </div>
@@ -165,7 +167,7 @@ const Services = () => {
 
               {/* Image Content */}
               <div className={`${index % 2 === 1 ? "lg:order-1" : ""} relative perspective-1000 group-hover:z-10`}>
-                <div className="absolute inset-0 bg-primary/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+                <div className="absolute inset-0 bg-accent/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
                 <img
                   src={service.image}
                   alt={service.title}

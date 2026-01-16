@@ -24,64 +24,60 @@ export default {
         display: ['Playfair Display', 'Georgia', 'serif'], // Elegant heading font
       },
       colors: {
-        border: "#2d2d2d", // Dark gray borders
-        input: "#1c1c1c", // Card/surface color for inputs
-        ring: "#FFD700", // Yellow focus ring
+        border: "#1e3a8a", // Blue-900 (Subtle borders)
+        input: "#112b5a", // Lighter Navy (Input backgrounds)
+        ring: "#00AEEF", // Cyan (Focus rings)
         
-        // --- DARK THEME: BLACK/ZINC WITH YELLOW & RED ACCENTS ---
-        background: "#111111", // zinc-950 (Dominant base background)
-        foreground: "#F3F4F6", // gray-100 (White text)
+        // --- INDUSTRIAL CORE THEME COLORS ---
+        background: "#0a1e40", // Deep Navy (Main Background)
+        foreground: "#cbd5e1", // Slate-300 (Main Text)
 
         primary: {
-          DEFAULT: "#FFD700", // yellow-400 (Main buttons, icons, headings)
-          foreground: "#111111", // Black text on yellow
+          DEFAULT: "#FF0000", // Brand Red (Buttons/Actions)
+          foreground: "#ffffff", // White text on Red
         },
         secondary: {
-          DEFAULT: "#1c1c1c", // zinc-900 (Secondary elements)
-          foreground: "#F3F4F6", // White text
+          DEFAULT: "#112b5a", // Lighter Navy (Secondary elements)
+          foreground: "#00AEEF", // Cyan text
         },
         destructive: {
-          DEFAULT: "#E63946", // red-500 (Error messages, urgent)
-          foreground: "#F3F4F6",
+          DEFAULT: "#ef4444", // Red
+          foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "#2d2d2d", // Dark gray (Muted background)
-          foreground: "#9CA3AF", // Medium gray (Muted text)
+          DEFAULT: "#112b5a", // Muted background
+          foreground: "#94a3b8", // Muted text
         },
         accent: {
-          DEFAULT: "#E63946", // red-500 (Accents, urgent tags)
-          foreground: "#F3F4F6",
+          DEFAULT: "#1e3a8a", // Blue-900
+          foreground: "#00AEEF", // Cyan
         },
         popover: {
-          DEFAULT: "#1c1c1c",
-          foreground: "#F3F4F6",
+          DEFAULT: "#112b5a",
+          foreground: "#cbd5e1",
         },
         card: {
-          DEFAULT: "#1c1c1c", // zinc-900 (Cards, forms, testimonials)
-          foreground: "#F3F4F6",
+          DEFAULT: "#112b5a", // Lighter Navy (Card Backgrounds)
+          foreground: "#cbd5e1",
         },
-        // Brand colors
+        // Legacy support if needed
         steel: {
-          black: "#111111",
-          surface: "#1c1c1c",
-          yellow: "#FFD700",
-          red: "#E63946",
-          white: "#F3F4F6",
-          gray: "#9CA3AF",
+          blue: "#00AEEF",
+          dark: "#0a1e40",
+          red: "#FF0000",
+          light: "#112b5a",
+          gray: "#94a3b8",
         },
         sidebar: {
-          DEFAULT: "#111111",
-          foreground: "#F3F4F6",
-          primary: "#FFD700",
-          "primary-foreground": "#111111",
-          accent: "#E63946",
-          "accent-foreground": "#F3F4F6",
-          border: "#2d2d2d",
-          ring: "#FFD700",
+          DEFAULT: "#0a1e40",
+          foreground: "#cbd5e1",
+          primary: "#FF0000",
+          "primary-foreground": "#ffffff",
+          accent: "#1e3a8a",
+          "accent-foreground": "#00AEEF",
+          border: "#1e3a8a",
+          ring: "#00AEEF",
         },
-      },
-      backgroundImage: {
-        "gradient-red-yellow": "linear-gradient(135deg, #E63946, #FFD700)",
       },
       borderRadius: {
         lg: "var(--radius)",

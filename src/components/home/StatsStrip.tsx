@@ -64,7 +64,11 @@ const stats = [
   },
 ];
 
-const StatsStrip = () => {
+type StatsStripProps = {
+  variant?: "light" | "dark";
+};
+
+const StatsStrip = ({ variant = "dark" }: StatsStripProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -90,10 +94,14 @@ const StatsStrip = () => {
     };
   }, []);
 
+  const isLight = variant === "light";
+
   return (
     <section 
       ref={sectionRef} 
-      className="py-12 bg-background border-y border-border relative overflow-hidden"
+      className={`py-12 border-y relative overflow-hidden ${
+        isLight ? "bg-white text-slate-700 border-slate-200" : "bg-secondary text-secondary-foreground border-border"
+      }`}
     >
       {/* Background Pattern */}
        <div className="absolute inset-0 opacity-5 pointer-events-none" 
@@ -103,7 +111,7 @@ const StatsStrip = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {stats.map((stat, index) => (
-            <StatItem key={stat.id} stat={stat} isVisible={isVisible} index={index} total={stats.length} />
+            <StatItem key={stat.id} stat={stat} isVisible={isVisible} index={index} total={stats.length} isLight={isLight} />
           ))}
         </div>
       </div>
@@ -112,7 +120,7 @@ const StatsStrip = () => {
 };
 
 // --- Sub-component to handle individual counters ---
-const StatItem = ({ stat, isVisible, index, total }: { stat: any, isVisible: boolean, index: number, total: number }) => {
+const StatItem = ({ stat, isVisible, index, total, isLight }: { stat: any, isVisible: boolean, index: number, total: number, isLight: boolean }) => {
   // Only run the hook if animation is enabled for this ID
   const count = useCounter(stat.value, 2000, isVisible && stat.animate);
 
@@ -121,7 +129,9 @@ const StatItem = ({ stat, isVisible, index, total }: { stat: any, isVisible: boo
 
   return (
     <div 
-      className={`group flex flex-col items-center text-center relative ${index !== total - 1 ? 'md:border-r border-border' : ''} transition-all duration-300 hover:-translate-y-1`}
+      className={`group flex flex-col items-center text-center relative transition-all duration-300 hover:-translate-y-1 ${
+        index !== total - 1 ? (isLight ? 'md:border-r border-slate-200' : 'md:border-r border-border') : ''
+      }`}
     >
       {/* Icon with Gradient Chip */}
       <div className="icon-chip icon-chip-md mb-3">
@@ -134,12 +144,14 @@ const StatItem = ({ stat, isVisible, index, total }: { stat: any, isVisible: boo
       </h3>
 
       {/* Label */}
-      <p className="font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-300">
+      <p className={`font-bold text-lg group-hover:text-accent transition-colors duration-300 ${isLight ? "text-slate-800" : "text-foreground"}`}>
         {stat.label}
       </p>
 
       {/* Subtext */}
-      <p className="text-xs text-muted-foreground uppercase tracking-widest mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
+      <p className={`text-xs uppercase tracking-widest mt-1 opacity-70 group-hover:opacity-100 transition-opacity ${
+        isLight ? "text-slate-500" : "text-muted-foreground"
+      }`}>
         {stat.subtext}
       </p>
     </div>

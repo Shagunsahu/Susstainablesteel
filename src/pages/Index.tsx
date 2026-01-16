@@ -16,10 +16,10 @@ const Index = () => {
       <NewsTicker />
       <HeroSection />
       <StatsStrip />
-      <AboutPreview />
+      <AboutPreview variant="light" />
       <ProjectGallery /> 
-      <ServicesPreview />
-      <Certifications />
+      <ServicesPreview variant="light" />
+      <Certifications variant="light" />
       <ClientsMarquee /> 
       <ContactPreview />
       

@@ -13,9 +13,18 @@ const clients = [
   { name: "Industrial Minerals", icon: Hammer },
 ];
 
-const ClientsMarquee = () => {
+type ClientsMarqueeProps = {
+  variant?: "light" | "dark";
+};
+
+const ClientsMarquee = ({ variant = "dark" }: ClientsMarqueeProps) => {
+  const isLight = variant === "light";
   return (
-    <section className="py-16 bg-background border-y border-border relative overflow-hidden">
+    <section
+      className={`py-16 border-y relative overflow-hidden ${
+        isLight ? "bg-white text-slate-700 border-slate-200" : "bg-secondary text-secondary-foreground border-border"
+      }`}
+    >
       
       {/* 1. Background Pattern (The "Track") */}
        <div className="absolute inset-0 opacity-5 pointer-events-none" 
@@ -26,7 +35,7 @@ const ClientsMarquee = () => {
         <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2 block">
             Trusted Partners
         </span>
-        <h3 className="text-foreground font-display text-2xl font-bold">
+        <h3 className={`font-display text-2xl font-bold ${isLight ? "text-slate-800" : "text-foreground"}`}>
           Powering Industry Leaders
         </h3>
       </div>
@@ -42,12 +51,24 @@ const ClientsMarquee = () => {
           {[...clients, ...clients, ...clients].map((client, i) => (
             <div 
               key={i} 
-              className="group/card flex items-center gap-4 bg-card border border-border px-8 py-4 rounded-lg min-w-[280px] hover:border-primary hover:bg-background hover:shadow-[0_0_20px_rgba(255,215,0,0.15)] transition-all duration-300 cursor-default"
+              className={`group/card flex items-center gap-4 px-8 py-4 rounded-lg min-w-[280px] transition-all duration-300 cursor-default border ${
+                isLight
+                  ? "bg-white border-slate-200 hover:border-accent hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]"
+                  : "bg-card border-border hover:border-accent hover:bg-background hover:shadow-[0_0_20px_rgba(14,165,233,0.2)]"
+              }`}
             >
-              <div className="p-2 bg-background rounded-md border border-border group-hover/card:border-primary/50 transition-colors">
+              <div
+                className={`p-2 rounded-md border transition-colors ${
+                  isLight ? "bg-slate-50 border-slate-200" : "bg-background border-border"
+                } group-hover/card:border-accent/50`}
+              >
                  <client.icon className="w-6 h-6 text-primary" />
               </div>
-              <span className="text-foreground font-bold text-sm uppercase tracking-wide group-hover/card:text-primary transition-colors">
+              <span
+                className={`font-bold text-sm uppercase tracking-wide group-hover/card:text-accent transition-colors ${
+                  isLight ? "text-slate-800" : "text-foreground"
+                }`}
+              >
                 {client.name}
               </span>
             </div>
@@ -56,8 +77,8 @@ const ClientsMarquee = () => {
         </div>
         
         {/* 3. Gradient Masks (Seamless edges) */}
-        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-20"></div>
-        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-20"></div>
+        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-secondary to-transparent z-20"></div>
+        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-secondary to-transparent z-20"></div>
       </div>
     </section>
   );

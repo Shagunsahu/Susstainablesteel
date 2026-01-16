@@ -64,23 +64,23 @@ const HeroSection = () => {
   const typewriterText = useTypewriter(["Warehouses", "Factories", "Multi-Level Car Parks", "The Future"], 100, 5000);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-background">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-secondary text-secondary-foreground">
       
-      {/* 1. Full-Width Background Image with Deep Navy Overlay */}
+      {/* 1. Full-Width Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/assets/heroimage.jpg" // Ensure this image exists in your public/assets folder
           alt="Steel Structure Background" 
           className="w-full h-full object-cover animate-fade-in"
         />
-        {/* Gradient Overlay: Deep Navy (#111111) opacity 90% */}
-        <div className="absolute inset-0 bg-[#111111]/90 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent"></div>
+        {/* Gradient Overlay: Dark base for contrast */}
+        <div className="absolute inset-0 bg-[#0F172A]/90 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
       </div>
 
       {/* 2. Blueprint Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" 
-        style={{ backgroundImage: 'linear-gradient(#FFD700 1px, transparent 1px), linear-gradient(90deg, #FFD700 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+        style={{ backgroundImage: 'linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       {/* 3. Main Content */}
@@ -99,10 +99,10 @@ const HeroSection = () => {
             </span>
 
             {/* ISO 9001:2015 Certified Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/50 border border-secondary backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0F172A]/70 border border-white/10 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFD700]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0EA5E9] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0EA5E9]"></span>
               </span>
               <span className="text-xs font-bold uppercase tracking-wider text-white">ISO 9001:2015 Certified</span>
             </div>
@@ -110,24 +110,24 @@ const HeroSection = () => {
           {/* Headline with Typewriter */}
           <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight text-white mb-6">
             We Build <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E63946] to-[#FFD700]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
               {typewriterText}
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl border-l-4 border-[#FFD700] pl-6">
+          <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl border-l-4 border-[#0EA5E9] pl-6">
             The region's premier provider of PEB steel structures and zero-energy ventilation. 
             We deliver <span className="text-white font-semibold">5-7% cost savings</span> through value-add engineering.
           </p>
           {/* --- INTERACTIVE SELECTOR --- */}
-          <div className="bg-secondary/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 mb-10 max-w-lg shadow-2xl animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <div className="bg-[#0F172A]/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 mb-10 max-w-lg shadow-2xl animate-fade-in" style={{ animationDelay: '200ms' }}>
             <label className="text-sm font-bold text-slate-300 mb-3 block uppercase tracking-wider">
               I am looking for...
             </label>
             <div className="flex flex-col sm:flex-row gap-3">
               <Select>
-                <SelectTrigger className="w-full h-12 bg-background/50 border-white/10 text-white focus:ring-[#FFD700]">
+                <SelectTrigger className="w-full h-12 bg-[#0F172A]/50 border-white/10 text-white focus:ring-[#0EA5E9]">
                   <SelectValue placeholder="Select Service" />
                 </SelectTrigger>
                 <SelectContent className="bg-background border-border text-foreground">
@@ -139,7 +139,7 @@ const HeroSection = () => {
               </Select>
               
               <Link to="/contact" className="w-full sm:w-auto">
-                <Button className="w-full h-12 px-6 bg-accent hover:bg-accent/90 text-accent-foreground font-bold whitespace-nowrap">
+                <Button className="w-full h-12 px-6 bg-accent hover:bg-accent/90 text-accent-foreground font-bold whitespace-nowrap shadow-[0_8px_30px_rgba(14,165,233,0.3)] hover:shadow-[0_8px_30px_rgba(14,165,233,0.5)]">
                   Get Estimate
                 </Button>
               </Link>

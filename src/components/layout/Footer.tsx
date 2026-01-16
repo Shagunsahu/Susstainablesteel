@@ -3,10 +3,10 @@ import { Phone, Mail, MapPin, Linkedin, ArrowRight, ChevronRight } from "lucide-
 
 const Footer = () => {
   return (
-    // Updated colors to match the Dark Theme (bg-background instead of bg-foreground)
-    <footer className="bg-background text-foreground relative overflow-hidden border-t border-white/5">
+    // Updated colors to match the Dark Theme (bg-secondary slab)
+    <footer className="bg-secondary text-secondary-foreground relative overflow-hidden border-t border-border">
       {/* 1. Top Gradient Border (The "Energy Line") */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#E63946] via-[#FFD700] to-[#E63946]"></div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-red-600"></div>
 
       {/* 2. Background Pattern */}
        <div className="absolute inset-0 opacity-5 pointer-events-none" 
@@ -22,7 +22,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 group">
               <img src="/assets/logo.png" alt="Sustainable Steel Logo" className="h-10 w-auto group-hover:scale-105 transition-transform duration-300" />
               <div>
-                <h3 className="font-display text-lg font-bold group-hover:text-primary transition-colors">Sustainable Steel</h3>
+                <h3 className="font-display text-lg font-bold group-hover:text-accent transition-colors">Sustainable Steel</h3>
                 <p className="text-xs text-muted-foreground">Industries LLC SP</p>
               </div>
             </Link>
@@ -148,7 +148,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 relative z-10 bg-black/20">
+      <div className="border-t border-border relative z-10 bg-secondary/80">
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Sustainable Steel Industries LLC SP. All rights reserved.</p>
           <div className="flex gap-6">

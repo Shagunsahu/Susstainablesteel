@@ -90,7 +90,7 @@ const About = () => {
             </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
             Building Excellence <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Since 2002</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Since 2002</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Engineering the skylines of tomorrow with precision, sustainability, and unwavering integrity.
@@ -120,7 +120,7 @@ const About = () => {
       </section>
 
       {/* 3. OUR STORY SECTION */}
-      <section className="relative py-24 bg-background overflow-hidden">
+      <section className="relative py-24 bg-white text-slate-700 overflow-hidden">
         
         
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -133,19 +133,19 @@ const About = () => {
                 <span className="text-accent font-bold tracking-widest uppercase text-xs flex items-center gap-2">
                   <span className="w-8 h-[2px] bg-accent"></span> Our Legacy
                 </span>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-800 leading-tight">
                   A Strategic Base in <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-600">
                     Construction
                   </span>
                 </h2>
               </div>
 
-              <div className="relative pl-8 border-l-2 border-white/10 space-y-6">
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  <strong className="text-foreground">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-foreground font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
+              <div className="relative pl-8 border-l-2 border-slate-200 space-y-6">
+                <p className="text-slate-700 text-lg leading-relaxed">
+                  <strong className="text-slate-800">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-slate-800 font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-slate-700 leading-relaxed">
                   Our philosophy has always been <strong>quality in execution</strong> and <strong>timely completion</strong> of projects. This commitment has stood the test of time, earning us the "first option" status with many prestigious clients before they consider others.
                 </p>
                 
@@ -161,7 +161,7 @@ const About = () => {
 
               <div className="pt-4">
                 <Link to="/contact">
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 h-14 text-lg shadow-lg shadow-accent/30 group transition-all hover:scale-105">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 h-14 text-lg shadow-[0_8px_30px_rgba(14,165,233,0.3)] hover:shadow-[0_8px_30px_rgba(14,165,233,0.5)] group transition-all hover:scale-105">
                     Start Your Project
                     <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
@@ -269,7 +269,7 @@ const About = () => {
                 
                   <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
                     Efficiency, Quality, <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
                       and Cost-Effective Management.
                     </span>
                   </h2>
@@ -299,7 +299,7 @@ const About = () => {
                       href="https://www.linkedin.com/in/mukesh-s-b5ba7457" 
                       target="_blank" 
                       rel="noreferrer"
-                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-primary hover:border-primary hover:text-primary-foreground text-muted-foreground transition-all duration-300"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent hover:text-accent-foreground text-muted-foreground transition-all duration-300"
                     >
                       <Linkedin className="w-5 h-5 transition-transform group-hover:scale-110" />
                       <span className="text-sm font-medium">LinkedIn</span>
@@ -334,7 +334,7 @@ const About = () => {
             {highlights.map((item, index) => (
               <div key={item.title} className="group bg-secondary/20 p-8 rounded-2xl hover:bg-primary hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-xl">
                 <div className="mb-6 p-4 bg-background rounded-full w-fit group-hover:bg-white/20">
-                    <item.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                    <item.icon className="w-8 h-8 text-accent group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="font-display text-xl font-bold mb-3">{item.title}</h3>
                 <p className="text-muted-foreground group-hover:text-white/90 text-sm leading-relaxed">
@@ -404,7 +404,7 @@ const About = () => {
           </div>
 
           <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Ready to Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Future?</span>
+            Ready to Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Future?</span>
           </h2>
           
           <p className="text-slate-300 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
@@ -414,7 +414,7 @@ const About = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/contact">
-              <Button size="xl" className="h-16 px-10 text-lg font-bold bg-red-600 hover:bg-red-700 text-white shadow-xl shadow-red-900/20 hover:scale-105 transition-all rounded-full group">
+              <Button size="xl" className="h-16 px-10 text-lg font-bold bg-red-600 hover:bg-red-700 text-white shadow-[0_8px_30px_rgba(220,38,38,0.3)] hover:shadow-[0_8px_30px_rgba(220,38,38,0.5)] hover:scale-105 transition-all rounded-full group">
                 Get Free Consultation
                 <ArrowRight className="w-6 h-6 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>
