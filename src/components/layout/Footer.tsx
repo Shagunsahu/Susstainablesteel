@@ -22,7 +22,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 group">
               <img src="/assets/logo.png" alt="Sustainable Steel Logo" className="h-10 w-auto group-hover:scale-105 transition-transform duration-300" />
               <div>
-                <h3 className="font-display text-lg font-bold group-hover:text-accent transition-colors">Sustainable Steel</h3>
+                <h3 className="font-display text-lg font-bold group-hover:text-red-500 transition-colors">Sustainable Steel</h3>
                 <p className="text-xs text-muted-foreground">Industries LLC SP</p>
               </div>
             </Link>
@@ -55,8 +55,8 @@ const Footer = () => {
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link to={link.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">
-                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" />
+                  <Link to={link.path} className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-red-500" />
                     <span>{link.name}</span>
                   </Link>
                 </li>
@@ -77,8 +77,8 @@ const Footer = () => {
                 { name: "Roof Maintenance", path: "/products#maintenance" },
               ].map((prod) => (
                 <li key={prod.name}>
-                  <Link to={prod.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">
-                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" />
+                  <Link to={prod.path} className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-red-500" />
                     <span>{prod.name}</span>
                   </Link>
                 </li>
@@ -100,8 +100,8 @@ const Footer = () => {
                 { name: "Sheet Replacement", path: "/services#sheet-replacement" },
               ].map((service) => (
                 <li key={service.name}>
-                  <Link to={service.path} className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm group">
-                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary" />
+                  <Link to={service.path} className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
+                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-red-500" />
                     <span>{service.name}</span>
                   </Link>
                 </li>
@@ -120,8 +120,8 @@ const Footer = () => {
                 <div>
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Phone</p>
                   <div className="flex flex-col gap-1 text-sm font-medium">
-                    <a href="tel:+971508614171" className="hover:text-primary whitespace-nowrap">+971 50 861 4171</a>
-                    <a href="tel:+971566538609" className="hover:text-primary whitespace-nowrap">+971 56 653 8609</a>
+                    <a href="tel:+971508614171" className="hover:text-red-500 whitespace-nowrap">+971 50 861 4171</a>
+                    <a href="tel:+971566538609" className="hover:text-red-500 whitespace-nowrap">+971 56 653 8609</a>
                   </div>
                 </div>
               </li>
@@ -130,8 +130,8 @@ const Footer = () => {
                 <div className="overflow-hidden">
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold">Email</p>
                   <div className="flex flex-col gap-1 text-xs">
-                    <a href="mailto:sales@sustainablesteelllc.com" className="hover:text-primary break-all">sales@sustainablesteelllc.com</a>
-                    <a href="mailto:jk@sustainablesteelllc.com" className="hover:text-primary break-all">jk@sustainablesteelllc.com</a>
+                    <a href="mailto:sales@sustainablesteelllc.com" className="hover:text-red-500 break-all">sales@sustainablesteelllc.com</a>
+                    <a href="mailto:jk@sustainablesteelllc.com" className="hover:text-red-500 break-all">jk@sustainablesteelllc.com</a>
                   </div>
                 </div>
               </li>
@@ -152,8 +152,8 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Sustainable Steel Industries LLC SP. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-red-500 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-red-500 transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

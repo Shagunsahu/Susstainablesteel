@@ -124,9 +124,9 @@ const TeamPreview = () => {
               {/* Text Content */}
               <div className="p-6 relative">
                 {/* Decorative Line */}
-                <div className="absolute top-0 left-6 right-6 h-px bg-border group-hover:bg-primary/50 transition-colors duration-500" />
+                <div className="absolute top-0 left-6 right-6 h-px bg-border group-hover:bg-red-500/50 transition-colors duration-500" />
                 
-                <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-red-500 transition-colors">
                   {member.name}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

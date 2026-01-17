@@ -133,19 +133,19 @@ const About = () => {
                 <span className="text-accent font-bold tracking-widest uppercase text-xs flex items-center gap-2">
                   <span className="w-8 h-[2px] bg-accent"></span> Our Legacy
                 </span>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-800 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
                   A Strategic Base in <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-600">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
                     Construction
                   </span>
                 </h2>
               </div>
 
-              <div className="relative pl-8 border-l-2 border-slate-200 space-y-6">
-                <p className="text-slate-700 text-lg leading-relaxed">
-                  <strong className="text-slate-800">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-slate-800 font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
+              <div className="relative pl-8 border-l-2 border-white/10 space-y-6">
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  <strong className="text-foreground">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-foreground font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
                 </p>
-                <p className="text-slate-700 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   Our philosophy has always been <strong>quality in execution</strong> and <strong>timely completion</strong> of projects. This commitment has stood the test of time, earning us the "first option" status with many prestigious clients before they consider others.
                 </p>
                 
@@ -299,7 +299,7 @@ const About = () => {
                       href="https://www.linkedin.com/in/mukesh-s-b5ba7457" 
                       target="_blank" 
                       rel="noreferrer"
-                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent hover:text-accent-foreground text-muted-foreground transition-all duration-300"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-red-500/10 hover:border-red-500 hover:text-red-500 text-muted-foreground transition-all duration-300"
                     >
                       <Linkedin className="w-5 h-5 transition-transform group-hover:scale-110" />
                       <span className="text-sm font-medium">LinkedIn</span>
@@ -308,7 +308,7 @@ const About = () => {
 
                     <a 
                       href="mailto:mukesh@sustainablesteelind.com"
-                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-accent hover:border-accent hover:text-accent-foreground text-muted-foreground transition-all duration-300"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-red-500/10 hover:border-red-500 hover:text-red-500 text-muted-foreground transition-all duration-300"
                     >
                       <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
                       <span className="text-sm font-medium">Email</span>

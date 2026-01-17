@@ -122,7 +122,7 @@ const ServicesPreview = ({ variant = "dark" }: ServicesPreviewProps) => {
 
               {/* Content */}
               <h3
-                className={`relative font-display text-2xl font-bold mb-3 group-hover:text-accent transition-colors z-10 ${
+                className={`relative font-display text-2xl font-bold mb-3 group-hover:text-red-500 transition-colors z-10 ${
                   isLight ? "text-foreground" : "text-foreground"
                 }`}
               >
@@ -130,7 +130,7 @@ const ServicesPreview = ({ variant = "dark" }: ServicesPreviewProps) => {
               </h3>
               <p
                 className={`relative text-sm mb-8 leading-relaxed flex-grow z-10 group-hover:text-foreground transition-colors ${
-                  isLight ? "text-muted-foreground" : "text-muted-foreground"
+                  isLight ? "text-white" : "text-white"
                 }`}
               >
                 {service.description}
@@ -142,7 +142,7 @@ const ServicesPreview = ({ variant = "dark" }: ServicesPreviewProps) => {
                   <span 
                     key={feature} 
                     className={`text-[10px] uppercase font-bold px-3 py-1.5 rounded-sm border group-hover:border-accent/40 group-hover:text-foreground transition-all duration-300 ${
-                      isLight ? "bg-background text-muted-foreground border-border" : "bg-background text-muted-foreground border-border"
+                      isLight ? "bg-background text-white border-border" : "bg-background text-muted-foreground border-border"
                     }`}
                   >
                     {feature}

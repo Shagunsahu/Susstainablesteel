@@ -142,17 +142,17 @@ const Services = () => {
                 <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
                   <service.icon className="w-8 h-8 text-accent group-hover:text-white transition-colors" />
                 </div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-800 mb-2">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
                   {service.title}
                 </h2>
-                <p className="text-accent text-sm font-semibold uppercase tracking-wider mb-4">{service.subtitle}</p>
-                <p className="text-slate-700 mb-8 text-lg leading-relaxed">{service.description}</p>
+                <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-4">{service.subtitle}</p>
+                <p className="text-muted-foreground mb-8 text-lg leading-relaxed">{service.description}</p>
                 
                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                   {service.keyPoints.map((point) => (
-                    <div key={point} className="flex items-start gap-3 p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                    <div key={point} className="flex items-start gap-3 p-2 rounded-lg hover:bg-secondary/50 transition-colors">
                       <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-slate-700 font-medium">{point}</span>
+                      <span className="text-sm text-foreground/80 font-medium">{point}</span>
                     </div>
                   ))}
                 </div>

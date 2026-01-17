@@ -98,9 +98,9 @@ const PEBSpecs = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {designCodes.map((item, i) => (
-              <div key={i} className="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 group">
+              <div key={i} className="bg-card p-6 rounded-xl border border-border shadow-sm hover:shadow-md hover:border-red-500/30 transition-all duration-300 group">
                 <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Code Reference</div>
-                <h3 className="font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">{item.code}</h3>
+                <h3 className="font-bold text-lg text-foreground mb-2 group-hover:text-red-500 transition-colors">{item.code}</h3>
                 <p className="text-sm text-muted-foreground">{item.title}</p>
               </div>
             ))}

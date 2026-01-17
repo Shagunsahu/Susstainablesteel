@@ -201,7 +201,7 @@ const ContactPreview = () => {
              <div className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-blue-600 to-red-600" />
 
             <div className="mb-8">
-              <h3 className="mb-2 text-2xl font-bold">Request Callback</h3>
+              <h3 className="mb-2 text-2xl font-bold text-[#111]">Request Callback</h3>
               <p className="text-sm text-slate-500">
                 Fill in the specs below. Average response time: <span className="font-bold text-accent">5 mins</span>.
               </p>

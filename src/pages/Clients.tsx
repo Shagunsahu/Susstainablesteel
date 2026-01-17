@@ -121,7 +121,7 @@ const Clients = () => {
                   </div>
                   
                   <div className="mt-auto">
-                    <h3 className="font-display font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="font-display font-bold text-lg text-foreground mb-2 group-hover:text-red-500 transition-colors">
                       {c.name}
                     </h3>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">

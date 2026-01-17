@@ -192,7 +192,7 @@ const Team = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-display font-bold text-lg group-hover:text-primary transition-colors">{member.name}</h3>
+                  <h3 className="font-display font-bold text-lg group-hover:text-red-500 transition-colors">{member.name}</h3>
                   <p className="text-xs text-muted-foreground font-medium uppercase mt-1">{member.role}</p>
                 </div>
               </div>

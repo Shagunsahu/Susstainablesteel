@@ -174,7 +174,7 @@ const Contact = () => {
                     className="bg-card rounded-xl p-4 shadow-card border border-border"
                   >
                     {info.link ? (
-                      <a href={info.link} className="flex items-start gap-4 hover:text-primary transition-colors">
+                      <a href={info.link} className="flex items-start gap-4 hover:text-red-500 transition-colors">
                         <div className="icon-chip icon-chip-md flex-shrink-0">
                           <info.icon className="w-6 h-6" />
                         </div>

@@ -206,7 +206,7 @@ const Careers = () => {
                       onClick={() => setActiveJob(activeJob === job.id ? null : job.id)}
                     >
                       <div>
-                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">
+                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-red-500 transition-colors">
                           {job.title}
                         </h3>
                         <div className="flex flex-wrap gap-4 mt-3 text-sm text-muted-foreground">
@@ -321,7 +321,7 @@ const Careers = () => {
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Resume</label>
                       <label className="block cursor-pointer rounded-lg border border-dashed border-[#e5e7eb] p-4 text-center transition-colors hover:bg-slate-50">
-                        <Upload className="mx-auto mb-2 h-6 w-6 text-slate-500 transition-colors group-hover:text-accent" />
+                        <Upload className="mx-auto mb-2 h-6 w-6 text-slate-500 transition-colors group-hover:text-red-500" />
                         <p className="text-xs text-slate-500">{file ? file.name : "Click to upload PDF/DOCX"}</p>
                         <input 
                           type="file" 

@@ -308,7 +308,7 @@ const Products = () => {
 
                     {/* Card Body */}
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="font-display text-xl font-bold text-foreground mb-2 group-hover:text-red-500 transition-colors">
                         {product.name}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-6 line-clamp-2">

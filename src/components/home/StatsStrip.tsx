@@ -144,7 +144,7 @@ const StatItem = ({ stat, isVisible, index, total, isLight }: { stat: any, isVis
       </h3>
 
       {/* Label */}
-      <p className={`font-bold text-lg group-hover:text-accent transition-colors duration-300 ${isLight ? "text-slate-800" : "text-foreground"}`}>
+      <p className={`font-bold text-lg group-hover:text-red-500 transition-colors duration-300 ${isLight ? "text-slate-800" : "text-foreground"}`}>
         {stat.label}
       </p>
 

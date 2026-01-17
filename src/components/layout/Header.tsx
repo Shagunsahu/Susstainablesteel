@@ -77,7 +77,7 @@ const Header = () => {
     : "bg-secondary/85 backdrop-blur-sm border-b border-border/60"; 
   
   // Text colors stay readable on dark
-  const textColorClass = "text-white group-hover:text-primary";
+  const textColorClass = "text-white group-hover:text-red-500";
   const logoTextClass = "text-white";
   const subTextClass = "text-white/80";
 
@@ -85,32 +85,32 @@ const Header = () => {
     <header className="w-full sticky top-0 z-50 transition-all duration-300">
       
       {/* --- Top Bar: Contact Info --- */}
-      {/* Hides on scroll */}
-      <div className={`transition-all duration-300 ${isScrolled ? "h-0 overflow-hidden py-0 opacity-0" : "bg-secondary text-secondary-foreground py-2 opacity-100"}`}>
+      {/* Always visible */}
+      <div className="transition-all duration-300 bg-secondary text-white py-2 opacity-100">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs sm:text-sm font-medium">
           <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6">
-            <button onClick={() => handleCopy("+971 508614171", "phone")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
+            <button onClick={() => handleCopy("+971 508614171", "phone")} className="flex items-center gap-2 hover:text-red-500 transition-colors cursor-pointer group">
               {copied === "phone" ? <Check className="w-4 h-4 text-green-400" /> : <Phone className="w-4 h-4 text-primary" />}
               <span className={copied === "phone" ? "text-green-400" : ""}>{copied === "phone" ? "Copied!" : "+971 508614171"}</span>
             </button>
-            <button onClick={() => handleCopy("+971 56 6538609", "phone")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
+            <button onClick={() => handleCopy("+971 56 6538609", "phone")} className="flex items-center gap-2 hover:text-red-500 transition-colors cursor-pointer group">
               {copied === "phone" ? <Check className="w-4 h-4 text-green-400" /> : <Phone className="w-4 h-4 text-primary" />}
               <span className={copied === "phone" ? "text-green-400" : ""}>{copied === "phone" ? "Copied!" : "+971 56 653 8609"}</span>
             </button>
-            <button onClick={() => handleCopy("sales@sustainablesteelllc.com", "email")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
+            <button onClick={() => handleCopy("sales@sustainablesteelllc.com", "email")} className="flex items-center gap-2 hover:text-red-500 transition-colors cursor-pointer group">
               {copied === "email" ? <Check className="w-4 h-4 text-green-400" /> : <Mail className="w-4 h-4 text-primary" />}
               <span className={copied === "email" ? "text-green-400" : ""}>{copied === "email" ? "Copied!" : "sales@sustainablesteelllc.com"}</span>
             </button>
-            <button onClick={() => handleCopy("Jk@sustainablesteelllc.com", "email")} className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group">
+            <button onClick={() => handleCopy("Jk@sustainablesteelllc.com", "email")} className="flex items-center gap-2 hover:text-red-500 transition-colors cursor-pointer group">
               {copied === "email" ? <Check className="w-4 h-4 text-green-400" /> : <Mail className="w-4 h-4 text-primary" />}
               <span className={copied === "email" ? "text-green-400" : ""}>{copied === "email" ? "Copied!" : "Jk@sustainablesteelllc.com"}</span>
             </button>
-             <a href="https://www.linkedin.com/in/mukesh-s-b5ba7457" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors hover:scale-110 duration-200">
+             <a href="https://www.linkedin.com/in/mukesh-s-b5ba7457" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors hover:scale-110 duration-200">
               <Linkedin className="w-4 h-4" />
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-2 text-muted-foreground"><Clock className="w-4 h-4 text-primary" /> Sun-Thu: 8AM-6PM</span>
+            <span className="flex items-center gap-2 text-white"><Clock className="w-4 h-4 text-primary" /> Mon-Sat: 8AM-6PM</span>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ const Header = () => {
                />
               
               <div className="hidden sm:block">
-                <h1 className={`font-display text-xl font-bold transition-colors duration-300 ${logoTextClass} group-hover:text-accent`}>
+                <h1 className={`font-display text-xl font-bold transition-colors duration-300 ${logoTextClass} group-hover:text-red-500`}>
                   Sustainable Steel
                 </h1>
                 <p className={`text-xs transition-colors duration-300 ${subTextClass}`}>
@@ -168,7 +168,7 @@ const Header = () => {
                             <Link 
                             key={dropItem.name} 
                             to={{ pathname: dropItem.path.split('#')[0], hash: dropItem.path.includes('#') ? `#${dropItem.path.split('#')[1]}` : '' }}
-                           className=" px-4 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg transition-colors flex items-center justify-between group/item"
+                           className=" px-4 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-red-500 rounded-lg transition-colors flex items-center justify-between group/item"
                             >
                             {dropItem.name}
                             <ChevronRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-primary" />
@@ -211,7 +211,7 @@ const Header = () => {
                       <div>
                         <button 
                             onClick={() => toggleMobileSubmenu(link.name)}
-                            className={`flex items-center justify-between w-full font-medium py-3 text-left transition-colors ${openMobileSubmenu === link.name ? "text-primary" : "text-foreground"}`}
+                            className={`flex items-center justify-between w-full font-medium py-3 text-left transition-colors ${openMobileSubmenu === link.name ? "text-red-500" : "text-foreground"}`}
                         >
                             {link.name}
                             <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openMobileSubmenu === link.name ? "rotate-180" : ""}`} />
@@ -223,7 +223,7 @@ const Header = () => {
                                         key={subItem.name}
                                         to={subItem.path}
                                         onClick={() => setIsOpen(false)}
-                                        className="text-sm text-foreground py-2 px-3 hover:bg-muted hover:text-primary rounded transition-colors flex items-center gap-2"
+                                        className="text-sm text-foreground py-2 px-3 hover:bg-muted hover:text-red-500 rounded transition-colors flex items-center gap-2"
                                     >
                                         <div className="w-1 h-1 bg-border rounded-full"></div>
                                         {subItem.name}
@@ -236,8 +236,8 @@ const Header = () => {
                       <Link
                         to={link.path}
                         onClick={() => setIsOpen(false)}
-                        className={`block font-medium py-3 transition-colors hover:text-primary ${
-                          location.pathname === link.path ? "text-primary" : "text-foreground"
+                        className={`block font-medium py-3 transition-colors hover:text-red-500 ${
+                          location.pathname === link.path ? "text-red-500" : "text-foreground"
                         }`}
                       >
                         {link.name}

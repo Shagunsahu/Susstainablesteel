@@ -237,9 +237,9 @@ const ProjectGallery = ({ variant = "dark" }: ProjectGalleryProps) => {
 
                     <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                       <p className="text-primary text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent"></span> {project.category}
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> {project.category}
                       </p>
-                      <h3 className="text-2xl font-display font-bold text-white mb-2 leading-tight group-hover:text-accent transition-colors">
+                      <h3 className="text-2xl font-display font-bold text-white mb-2 leading-tight group-hover:text-red-500 transition-colors">
                         {project.title}
                       </h3>
                       <div className="flex items-center justify-between border-t border-border pt-4 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
@@ -321,7 +321,7 @@ const ProjectGallery = ({ variant = "dark" }: ProjectGalleryProps) => {
                     onClick={() => setSelectedProject(null)}
                     className={`px-8 py-3 border font-bold uppercase tracking-wider text-sm transition-colors ${
                       isLight
-                        ? "border-slate-300 text-slate-700 hover:border-accent hover:text-accent"
+                        ? "border-slate-300 text-slate-700 hover:border-red-500 hover:text-red-500"
                         : "border-border hover:border-white text-foreground hover:text-white"
                     }`}
                   >
