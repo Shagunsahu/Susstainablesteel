@@ -120,7 +120,9 @@ const About = () => {
       </section>
 
       {/* 3. OUR STORY SECTION */}
-      <section className="relative py-24 bg-white text-slate-700 overflow-hidden">
+      <section className={`relative py-24 overflow-hidden ${
+        true ? "bg-white text-slate-700" : "bg-background"
+      }`}>
         
         
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -130,29 +132,29 @@ const About = () => {
             
             <div className="space-y-8">
               <div className="space-y-2">
-                <span className="text-accent font-bold tracking-widest uppercase text-xs flex items-center gap-2">
-                  <span className="w-8 h-[2px] bg-accent"></span> Our Legacy
+                <span className="text-cyan-600 font-bold tracking-widest uppercase text-xs flex items-center gap-2">
+                  <span className="w-8 h-[2px] bg-cyan-600"></span> Our Legacy
                 </span>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-800 leading-tight">
                   A Strategic Base in <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
                     Construction
                   </span>
                 </h2>
               </div>
 
-              <div className="relative pl-8 border-l-2 border-white/10 space-y-6">
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  <strong className="text-foreground">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-foreground font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
+              <div className="relative pl-8 border-l-2 border-slate-200 space-y-6">
+                <p className="text-slate-600 text-lg leading-relaxed">
+                  <strong className="text-slate-800">Sustainable Steel Industries LLC SP</strong> (popularly known as <span className="text-slate-800 font-semibold">Hurricane Vent Co LLC</span> in Oman) has risen from humble beginnings as a small manufacturing company to become a leading construction firm.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   Our philosophy has always been <strong>quality in execution</strong> and <strong>timely completion</strong> of projects. This commitment has stood the test of time, earning us the "first option" status with many prestigious clients before they consider others.
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                   {['Specialized in PEB', 'Roof Ventilation Experts', 'Value-Add Engineering', 'Central Storage & Logistics'].map((item) => (
-                    <div key={item} className="flex items-center gap-2 text-foreground font-medium text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-accent" />
+                    <div key={item} className="flex items-center gap-2 text-slate-800 font-medium text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-600" />
                       {item}
                     </div>
                   ))}
@@ -161,7 +163,7 @@ const About = () => {
 
               <div className="pt-4">
                 <Link to="/contact">
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 h-14 text-lg shadow-[0_8px_30px_rgba(14,165,233,0.3)] hover:shadow-[0_8px_30px_rgba(14,165,233,0.5)] group transition-all hover:scale-105">
+                  <Button size="lg" className="bg-white hover:bg-gray-50 text-background border-0 rounded-full px-8 h-14 text-lg shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.5)] group transition-all hover:scale-105 font-bold">
                     Start Your Project
                     <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
@@ -170,8 +172,8 @@ const About = () => {
             </div>
 
             <div className="relative h-[400px] md:h-[500px] block group perspective-1000">
-              <div className="absolute top-0 right-0 w-3/4 h-3/4 rounded-2xl overflow-hidden shadow-2xl border border-white/5 transition-transform duration-700 group-hover:translate-x-4 group-hover:-translate-y-4">
-                 <div className="absolute inset-0 bg-[#0a1e40]/20 mix-blend-multiply z-10"></div>
+              <div className="absolute top-0 right-0 w-3/4 h-3/4 rounded-2xl overflow-hidden shadow-2xl border border-slate-100 transition-transform duration-700 group-hover:translate-x-4 group-hover:-translate-y-4">
+                 <div className="absolute inset-0 bg-white/5 mix-blend-multiply z-10"></div>
                  <img 
                    src="/assets/a3.jpg" 
                    alt="Industrial Construction" 
@@ -179,7 +181,7 @@ const About = () => {
                  />
               </div>
 
-              <div className="absolute bottom-0 left-0 w-3/4 h-3/4 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-[#0a1e40] transition-transform duration-700 group-hover:-translate-x-4 group-hover:translate-y-4 z-20">
+              <div className="absolute bottom-0 left-0 w-3/4 h-3/4 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-4 border-slate-200 transition-transform duration-700 group-hover:-translate-x-4 group-hover:translate-y-4 z-20">
                 <img 
                   src="/assets/a2.jpg" 
                   alt="Ventilation Systems" 
@@ -188,7 +190,7 @@ const About = () => {
               </div>
 
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 animate-bounce">
-                <div className="bg-red-600 text-white p-4 rounded-full shadow-2xl border-4 border-[#0a1e40] flex flex-col items-center justify-center w-32 h-32 text-center">
+                <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white p-4 rounded-full shadow-2xl border-4 border-white flex flex-col items-center justify-center w-32 h-32 text-center">
                   <Factory className="w-8 h-8 mb-1" />
                   <span className="font-bold text-2xl leading-none">22+</span>
                   <span className="text-[10px] uppercase font-bold tracking-wider opacity-90">Years Exp.</span>
@@ -201,28 +203,28 @@ const About = () => {
       </section>
 
       {/* 4. VISION & MISSION */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-background rounded-2xl p-10 shadow-sm border-t-4 border-primary hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-2xl p-10 shadow-lg border border-cyan-500/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-primary/10 rounded-xl text-primary">
+                <div className="p-3 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl text-white">
                    <Eye className="w-8 h-8" />
                 </div>
-                <h3 className="font-display text-2xl font-bold">Our Vision</h3>
+                <h3 className="font-display text-2xl font-bold text-foreground">Our Vision</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-foreground/80 leading-relaxed">
                 To be the most sought-after <strong>PEB contractor for challenging projects</strong>. We set ourselves apart by meeting the challenges of execution, safety, and strict schedules.
               </p>
             </div>
-            <div className="bg-background rounded-2xl p-10 shadow-sm border-t-4 border-blue-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-2xl p-10 shadow-lg border border-blue-600/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-6">
-                 <div className="p-3 bg-blue-600/10 rounded-xl text-blue-600">
+                 <div className="p-3 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl text-white">
                    <Target className="w-8 h-8" />
                 </div>
-                <h3 className="font-display text-2xl font-bold">Our Mission</h3>
+                <h3 className="font-display text-2xl font-bold text-foreground">Our Mission</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-foreground/80 leading-relaxed">
                 To provide our esteemed clients with project implementations that are completed <strong>safely, on time, and within budget</strong>, while adhering to high-quality standards.
               </p>
             </div>
@@ -324,20 +326,20 @@ const About = () => {
       </section>
 
       {/* 6. CORE VALUES */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold">Our Core Values</h2>
-            <div className="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-800">Our Core Values</h2>
+            <div className="w-20 h-1 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((item, index) => (
-              <div key={item.title} className="group bg-secondary/20 p-8 rounded-2xl hover:bg-primary hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-xl">
-                <div className="mb-6 p-4 bg-background rounded-full w-fit group-hover:bg-white/20">
+              <div key={item.title} className="group bg-background border border-border p-8 rounded-2xl hover:bg-gradient-to-br hover:from-cyan-500 hover:to-blue-600 hover:text-white hover:border-0 transition-all duration-300 cursor-default shadow-lg hover:shadow-xl">
+                <div className="mb-6 p-4 bg-card rounded-full w-fit group-hover:bg-white/20">
                     <item.icon className="w-8 h-8 text-accent group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="font-display text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground group-hover:text-white/90 text-sm leading-relaxed">
+                <h3 className="font-display text-xl font-bold mb-3 text-foreground group-hover:text-white">{item.title}</h3>
+                <p className="text-foreground/80 group-hover:text-white/90 text-sm leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -347,15 +349,15 @@ const About = () => {
       </section>
 
       {/* 7. TIMELINE */}
-      <section className="py-24 bg-secondary/30">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold">Our Journey</h2>
-            <p className="text-muted-foreground mt-4">Two decades of milestones and memories.</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Our Journey</h2>
+            <p className="text-foreground/80 mt-4">Two decades of milestones and memories.</p>
           </div>
           
           <div className="relative max-w-4xl mx-auto">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-border hidden md:block"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-border/50 hidden md:block"></div>
 
             {timeline.map((item, index) => (
               <div key={item.year} className={`flex flex-col md:flex-row items-center justify-between mb-12 relative group ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
@@ -414,7 +416,7 @@ const About = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/contact">
-              <Button size="xl" className="h-16 px-10 text-lg font-bold bg-red-600 hover:bg-red-700 text-white shadow-[0_8px_30px_rgba(220,38,38,0.3)] hover:shadow-[0_8px_30px_rgba(220,38,38,0.5)] hover:scale-105 transition-all rounded-full group">
+              <Button size="xl" className="h-16 px-10 text-lg font-bold bg-white hover:bg-gray-50 text-background shadow-[0_8px_30px_rgba(255,255,255,0.3)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.5)] hover:scale-105 transition-all rounded-full group">
                 Get Free Consultation
                 <ArrowRight className="w-6 h-6 ml-2 transition-transform group-hover:translate-x-1" />
               </Button>

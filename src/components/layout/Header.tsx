@@ -4,6 +4,7 @@ import {
   Menu, 
   X, 
   Phone, 
+  MapPin,
   Mail, 
   Clock, 
   ChevronRight, 
@@ -21,14 +22,16 @@ const navLinks = [
     name: "Services", 
     path: "/services", 
     dropdown: [
-      { name: "Steel Structure Works", path: "/services#steel" },
-      { name: "Roof Ventilator Fans", path: "/services#ventilators" },
-      { name: "Tubular Skylights", path: "/services#skylights" },
-      { name: "Roof Water Proofing", path: "/services#waterproofing" },
-      { name: "Sheet Replacement", path: "/services#sheet-replacement" }
+      { name: "Roof Sheet Water Proofing", path: "/services#waterproofing" },
+      { name: "Roof Turbo Ventilator Fans", path: "/services#ventilators" },
+      { name: "Tubular Roof Skylights", path: "/services#skylights" },
+      { name: "Structural Steel Erection", path: "/services#steel-erection" },
+      { name: "Fire Painting Works", path: "/services#fire-painting" },
+      { name: "Cladding Services", path: "/services#cladding" },
+      { name: "Fabrication Services", path: "/services#fabrication" }
     ]
   },
-  { 
+  /*{ 
     name: "Products", 
     path: "/products",
     dropdown: [
@@ -37,9 +40,11 @@ const navLinks = [
       { name: "Steel Structures", path: "/products#steel-structures" },
       { name: "Roof Maintenance", path: "/products#maintenance" }
     ]
-  },
+  },*/
   { name: "PEB Technical", path: "/peb-specifications" },
-  { name: "Clients", path: "/clients" },
+  { name: "Gallery", path: "/gallery" },
+  { name: "ISO Certification", path: "/iso-certifications" },
+  /*{ name: "Clients", path: "/clients" },*/
   { name: "Careers", path: "/careers" },
   { name: "Contact", path: "/contact" },
 ];
@@ -110,6 +115,7 @@ const Header = () => {
             </a>
           </div>
           <div className="flex items-center gap-4">
+            <span className="flex items-center gap-2 text-white"><MapPin className="w-4 h-4 text-primary" />UAE-OMAN</span>
             <span className="flex items-center gap-2 text-white"><Clock className="w-4 h-4 text-primary" /> Mon-Sat: 8AM-6PM</span>
           </div>
         </div>

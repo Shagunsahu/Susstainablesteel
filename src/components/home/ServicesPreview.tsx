@@ -1,50 +1,56 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Wind, Sun, Building2, Droplets, Hammer, TrendingUp } from "lucide-react";
+import { ArrowRight, Sun, Droplets, Hammer, Fan, Construction, Flame, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Data aligned with Company Profile PDF [cite: 3-7, 31, 89, 100]
 const services = [
   {
-    icon: Wind,
-    title: "Roof Ventilator Fans",
-    description: "Zero-energy wind driven turbine ventilators that eliminate heat and dust without electricity.",
-    features: ["No Electric Cost", "Rust Free (80% SS)", "No Maintenance"],
-    link: "/services#roof-ventilators",
+    icon: Droplets,
+    title: "Roof Sheet Water Proofing",
+    description: "Specialized waterproofing solutions to protect industrial roofing from leaks and weather damage.",
+    features: ["Leak Protection", "Weather Resistant", "Long Lasting"],
+    link: "/services/waterproofing",
+  },
+  {
+    icon: Fan,
+    title: "Roof Turbo Ventilator Fans",
+    description: "Supply & installation of energy-efficient ventilation systems to improve air circulation in warehouses.",
+    features: ["Energy Efficient", "No Electricity", "Improved Air Quality"],
+    link: "/services/ventilators",
   },
   {
     icon: Sun,
-    title: "Tubular Skylights",
-    description: "Natural daylighting systems that foster a healthier work environment while cutting costs.",
-    features: ["Save 40% Electricity", "Lowers Cooling Load", "Zero Carbon Footprint"],
-    link: "/services#tubular-skylights",
+    title: "Tubular Roof Skylights",
+    description: "Natural lighting solutions that reduce energy costs and improve indoor visibility.",
+    features: ["Natural Light", "Energy Savings", "Better Visibility"],
+    link: "/services/skylights",
   },
   {
-    icon: Building2,
-    title: "Steel Structure Works",
-    description: "Turnkey PEB solutions for warehouses, factories, and multi-level car parks.",
-    features: ["Custom Fabrication", "Logistic Warehouses", "Rapid Installation"],
-    link: "/services#steel-structures",
+    icon: Construction,
+    title: "Structural Steel Erection",
+    description: "Heavy-duty steel erection for warehouses, factories, and high-rise structures.",
+    features: ["Heavy Duty", "Custom Design", "Fast Installation"],
+    link: "/services/steel-erection",
   },
   {
-    icon: Droplets,
-    title: "Roof Water Proofing",
-    description: "Comprehensive seam sealing and coating to prevent costly water penetration damage.",
-    features: ["Simpler than Replacement", "Seals all Leaks", "Long-term Solution"],
-    link: "/services#waterproofing",
+    icon: Flame,
+    title: "Fire Painting Works",
+    description: "Intumescent fireproofing coatings to ensure structural integrity during fire emergencies.",
+    features: ["Fire Protection", "Safety Compliance", "Structural Integrity"],
+    link: "/services/fire-painting",
+  },
+  {
+    icon: Layers,
+    title: "Cladding Services",
+    description: "High-quality wall and roof cladding for thermal insulation and aesthetic finishing.",
+    features: ["Thermal Insulation", "Aesthetic Finish", "Weather Protection"],
+    link: "/services/cladding",
   },
   {
     icon: Hammer,
-    title: "Sheet Replacement",
-    description: "Professional replacement of damaged single-skin or sandwich panels to restore integrity.",
-    features: ["Sandwich Panels", "Single Skin", "Minimizes Disruption"],
-    link: "/services#sheet-replacement",
-  },
-  {
-    icon: TrendingUp,
-    title: "Value Engineering",
-    description: "Expert structural analysis to optimize designs and reduce material weight without compromising safety.",
-    features: ["5-7% Cost Savings", "Material Optimization", "Structural Integrity"],
-    link: "/services#steel-structures",
+    title: "Fabrication Services",
+    description: "Custom steel fabrication for beams, columns, and specialized industrial components.",
+    features: ["Custom Fabrication", "Precision Work", "Quality Materials"],
+    link: "/services/fabrication",
   },
 ];
 

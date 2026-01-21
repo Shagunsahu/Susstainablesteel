@@ -50,7 +50,8 @@ const Footer = () => {
                 { name: "Home", path: "/" },
                 { name: "About Us", path: "/about" },
                 { name: "Services", path: "/services" },
-                { name: "Products", path: "/products" },
+                { name: "Gallery", path: "/gallery" },
+                { name: "ISO Certification", path: "/iso-certification" },
                 { name: "Careers", path: "/careers" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
@@ -64,40 +65,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* 3. Products (New Section) */}
-          <div className="animate-fade-in">
-            <h4 className="font-display text-base font-semibold mb-4 flex items-center gap-2">
-              <span className="w-1 h-5 bg-primary rounded-full"></span> Products
-            </h4>
-            <ul className="space-y-2">
-              {[
-                { name: "Roof Ventilator Fans", path: "/products#roof-ventilators" },
-                { name: "Tubular Skylights", path: "/products#tubular-skylights" },
-                { name: "Steel Structures", path: "/products#steel-structures" },
-                { name: "Roof Maintenance", path: "/products#maintenance" },
-              ].map((prod) => (
-                <li key={prod.name}>
-                  <Link to={prod.path} className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
-                    <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all text-red-500" />
-                    <span>{prod.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 4. Services */}
+          {/* 3. Services */}
           <div className="animate-fade-in">
             <h4 className="font-display text-base font-semibold mb-4 flex items-center gap-2">
               <span className="w-1 h-5 bg-primary rounded-full"></span> Services
             </h4>
             <ul className="space-y-2">
               {[
-                { name: "Steel Structure Works", path: "/services#steel" },
-                { name: "Roof Ventilator Fans", path: "/services#ventilators" },
-                { name: "Tubular Skylights", path: "/services#skylights" },
-                { name: "Roof Water Proofing", path: "/services#waterproofing" },
-                { name: "Sheet Replacement", path: "/services#sheet-replacement" },
+                { name: "Roof Sheet Water Proofing", path: "/services#waterproofing" },
+                { name: "Roof Turbo Ventilator Fans", path: "/services#ventilators" },
+                { name: "Tubular Roof Skylights", path: "/services#skylights" },
+                { name: "Structural Steel Erection", path: "/services#steel-erection" },
+                { name: "Fire Painting Works", path: "/services#fire-painting" },
+                { name: "Cladding Services", path: "/services#cladding" },
+                { name: "Fabrication Services", path: "/services#fabrication" },
               ].map((service) => (
                 <li key={service.name}>
                   <Link to={service.path} className="text-muted-foreground hover:text-red-500 transition-colors flex items-center gap-2 text-sm group">
@@ -107,6 +88,34 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* 4. Our Locations */}
+          <div className="animate-fade-in">
+            <h4 className="font-display text-base font-semibold mb-4 flex items-center gap-2">
+              <span className="w-1 h-5 bg-primary rounded-full"></span> Our Locations
+            </h4>
+            <div className="space-y-6 text-sm">
+              {/* Oman Office */}
+              <div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mb-2">Sultanate of Oman</p>
+                <div className="text-muted-foreground leading-relaxed">
+                  <p>P.O. Box #12, P.C. #321</p>
+                  <p>Barka Industrial Estate,</p>
+                  <p>Sultanate of Oman</p>
+                </div>
+              </div>
+              {/* UAE Office */}
+              <div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-semibold mb-2">United Arab Emirates</p>
+                <div className="text-muted-foreground leading-relaxed">
+                  <p>Plot No. 524</p>
+                  <p>Maliha Industrial Area - 02</p>
+                  <p>Maliha, Sharjah</p>
+                  <p>United Arab Emirates</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* 5. Contact Us */}

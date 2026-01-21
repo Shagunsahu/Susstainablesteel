@@ -139,9 +139,9 @@ const Contact = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-32 bg-white text-slate-700 overflow-hidden flex items-center justify-center min-h-[60vh]">
+      <section className="relative py-32 bg-background overflow-hidden flex items-center justify-center min-h-[60vh]">
         <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-20"
+            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
             style={{ backgroundImage: 'url("/assets/s2.jpg")' }} 
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10"></div>
@@ -171,26 +171,28 @@ const Contact = () => {
                 {contactInfo.map((info) => (
                   <div
                     key={info.title}
-                    className="bg-card rounded-xl p-4 shadow-card border border-border"
+                    className="bg-card rounded-xl p-4 shadow-lg border border-border"
                   >
                     {info.link ? (
-                      <a href={info.link} className="flex items-start gap-4 hover:text-red-500 transition-colors">
-                        <div className="icon-chip icon-chip-md flex-shrink-0">
-                          <info.icon className="w-6 h-6" />
-                        </div>
+                      <a href={info.link} className="flex items-start gap-4">
+                        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white transition-transform group-hover:scale-110">
+                                           <info.icon className="w-6 h-6" />
+                          </div>
+                        
                         <div>
                           <p className="font-semibold">{info.title}</p>
-                          <p className="text-primary">{info.value}</p>
+                          <p className="text-foreground/70">{info.value}</p>
                         </div>
                       </a>
                     ) : (
                       <div className="flex items-start gap-4">
-                        <div className="icon-chip icon-chip-md flex-shrink-0">
-                          <info.icon className="w-6 h-6" />
+                       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white transition-transform group-hover:scale-110">
+                                           <info.icon className="w-6 h-6" />
                         </div>
+                        
                         <div>
                           <p className="font-semibold">{info.title}</p>
-                          <p className="text-foreground">{info.value}</p>
+                          <p className="text-muted-foreground">{info.value}</p>
                         </div>
                       </div>
                     )}
@@ -199,15 +201,15 @@ const Contact = () => {
               </div>
 
               {/* Free Offers */}
-              <div className="bg-card rounded-xl p-6 shadow-card border border-border mb-6">
+              <div className="bg-card rounded-xl p-6 shadow-lg border border-border mb-6">
                 <h3 className="font-semibold mb-4 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <CheckCircle className="w-5 h-5 text-accent" />
                   Free Offers
                 </h3>
                 <ul className="space-y-3">
                   {freeOffers.map((offer) => (
-                    <li key={offer} className="flex items-center gap-2 text-sm">
-                      <div className="w-2 h-2 rounded-full bg-primary" />
+                    <li key={offer} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div className="w-2 h-2 rounded-full bg-accent" />
                       <span>{offer}</span>
                     </li>
                   ))}
@@ -215,14 +217,14 @@ const Contact = () => {
               </div>
 
               {/* Limited Time Offer */}
-              <div className="bg-destructive/10 rounded-xl p-6 border border-destructive/20">
+              <div className="card-gradient rounded-xl p-6 border-0 text-white">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="icon-chip icon-chip-sm">
+                  <span className="p-2 bg-white/20 rounded-lg">
                     <Zap className="w-5 h-5" />
                   </span>
-                  <p className="font-semibold text-destructive">Limited Time Offer!</p>
+                  <p className="font-semibold">Limited Time Offer!</p>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-white/90">
                   Get 10% off on orders placed this month
                 </p>
               </div>
@@ -341,19 +343,19 @@ const Contact = () => {
       </section>
 
       {/* FAQs */}
-      <section className="py-20 bg-secondary/50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">FAQ</span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-2">
+            <span className="text-cyan-600 text-sm font-medium uppercase tracking-wider">FAQ</span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-800 mt-2">
               Frequently Asked Questions
             </h2>
           </div>
           <div className="max-w-3xl mx-auto grid gap-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="bg-card rounded-xl p-6 shadow-card border border-border">
-                <h3 className="font-semibold mb-2">{faq.question}</h3>
-                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+              <div key={faq.question} className="bg-cyan-50 rounded-xl p-6 shadow-card border border-cyan-100 hover:border-cyan-200 transition-colors">
+                <h3 className="font-semibold mb-2 text-slate-800">{faq.question}</h3>
+                <p className="text-sm text-slate-600">{faq.answer}</p>
               </div>
             ))}
           </div>
@@ -361,11 +363,13 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="h-[400px] bg-secondary flex items-center justify-center">
+      <section className="h-[400px] bg-white flex items-center justify-center">
         <div className="text-center">
-          <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-          <h3 className="font-display text-2xl font-bold mb-2">Visit Our Offices</h3>
-          <p className="text-muted-foreground">UAE </p>
+          <div className="w-16 h-16 mx-auto mb-4 bg-cyan-50 rounded-2xl flex items-center justify-center">
+            <MapPin className="w-8 h-8 text-cyan-600" />
+          </div>
+          <h3 className="font-display text-2xl font-bold mb-2 text-slate-800">Visit Our Offices</h3>
+          <p className="text-slate-600">UAE</p>
         </div>
       </section>
     </Layout>
