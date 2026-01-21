@@ -9,6 +9,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from "@/components/ui/select";
+import { servicesData } from "@/data/services";
 
 // --- HOOK: Typewriter Effect ---
 const useTypewriter = (words: string[], typingSpeed = 100, pauseDuration = 2000) => {
@@ -116,10 +117,10 @@ const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl border-l-4 border-[#0EA5E9] pl-6">
+          <h3 className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-2xl border-l-4 border-[#0EA5E9] pl-6">
             The region's premier provider of PEB steel structures and zero-energy ventilation. 
             We deliver <span className="text-white font-semibold">5-7% cost savings</span> through value-add engineering.
-          </p>
+          </h3>
           {/* --- INTERACTIVE SELECTOR --- */}
           <div className="bg-[#0F172A]/40 backdrop-blur-md p-6 rounded-2xl border border-white/10 mb-10 max-w-lg shadow-2xl animate-fade-in" style={{ animationDelay: '200ms' }}>
             <label className="text-sm font-bold text-slate-300 mb-3 block uppercase tracking-wider">
@@ -131,10 +132,11 @@ const HeroSection = () => {
                   <SelectValue placeholder="Select Service" />
                 </SelectTrigger>
                 <SelectContent className="bg-background border-border text-foreground">
-                  <SelectItem value="ventilation">Roof Ventilation</SelectItem>
-                  <SelectItem value="skylights">Tubular Skylights</SelectItem>
-                  <SelectItem value="steel">Steel Structures</SelectItem>
-                  <SelectItem value="maintenance">Maintenance</SelectItem>
+                  {servicesData.map((service) => (
+                    <SelectItem key={service.id} value={service.id}>
+                      {service.title}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
               

@@ -324,7 +324,98 @@ const About = () => {
           </div>
         </div>
       </section>
+       
+       <section className="py-24 bg-background overflow-hidden relative">
+        
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-[400px_1fr] gap-16 items-center">
+            
+            {/* Left: Interactive Image Card */}
+            <div className="relative group mx-auto lg:mx-0 w-full max-w-[350px]">
+              {/* Floating Frame */}
+              <div className="absolute inset-0 border-2 border-red-500/30 rounded-3xl transform translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+              {/* Solid BG */}
+              <div className="absolute inset-0 bg-white/5 rounded-3xl transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
+              
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <div className="aspect-[3/4] overflow-hidden bg-slate-800">
+                  <img 
+                    src="/assets/business.jpg" 
+                    alt="JK Singh" 
+                    className="w-full h-full group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
+                  />
+                </div>
+                {/* Name Plate */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-6 border-t border-white/10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="font-display text-2xl font-bold text-[#0a1e40]">JK Singh</h3>
+                  <p className="text-red-600 font-bold text-xs uppercase tracking-widest mt-1">Business Development Manager</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Content & Quote */}
+            <div className="relative">
+              <Quote className="absolute -top-12 -left-8 w-24 h-24 text-white/5 z-0" />
+              
+              <div className="relative z-10 space-y-8">
+                
+                  <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
+                    Strategic Growth, Market Expansion, <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
+                       and Client-Centric Solutions.
+                    </span>
+                  </h2>
+
+                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed border-l-2 border-border pl-6">
+                  <p>
+                    Dedicated to propelling the Steel Structure industry forward, I focus on taking Sustainable Steel to new markets and sectors. My expertise lies in developing robust business strategies that promote revenue and long-term profitability.
+                    </p>
+                  <p>
+                   My role is to ensure that our engineering excellence reaches the right clients. I focus on optimizing market reach and delivering value-engineered proposals that demonstrate efficiency, quality, and distinct commercial advantage.
+                   </p>
+                </div>
+
+                {/* Signature & Interactive Buttons */}
+                <div className="pt-8 flex flex-col sm:flex-row items-center gap-8 border-t border-border mt-8">
+                  
+                  {/* Signature */}
+                  <div className="flex-1 text-center sm:text-left">
+                    <span className="font-serif text-3xl text-white/80 italic transform -rotate-2 inline-block">
+                      JK Singh
+                    </span>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-4">
+                    <a 
+                      href="https://www.linkedin.com/in/mukesh-s-b5ba7457" 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-red-500/10 hover:border-red-500 hover:text-red-500 text-muted-foreground transition-all duration-300"
+                    >
+                      <Linkedin className="w-5 h-5 transition-transform group-hover:scale-110" />
+                      <span className="text-sm font-medium">LinkedIn</span>
+                      <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
+
+                    <a 
+                      href="mailto:jk@sustainablesteelind.com"
+                      className="group flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:bg-red-500/10 hover:border-red-500 hover:text-red-500 text-muted-foreground transition-all duration-300"
+                    >
+                      <Mail className="w-5 h-5 transition-transform group-hover:scale-110" />
+                      <span className="text-sm font-medium">Email</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
       {/* 6. CORE VALUES */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">

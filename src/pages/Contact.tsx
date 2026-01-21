@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock, CheckCircle, Zap, MessageCircle } from "lucide-react";
+import { servicesData } from "@/data/services";
 
 const contactInfo = [
   {
@@ -300,12 +301,11 @@ const Contact = () => {
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent className="bg-white text-[#111]">
-                        <SelectItem value="roof-ventilators">Roof Ventilators</SelectItem>
-                        <SelectItem value="tubular-skylights">Tubular Skylights</SelectItem>
-                        <SelectItem value="steel-structures">Steel Structures</SelectItem>
-                        <SelectItem value="installation">Installation Services</SelectItem>
-                        <SelectItem value="maintenance">Maintenance</SelectItem>
-                        <SelectItem value="energy-solutions">Energy Solutions</SelectItem>
+                        {servicesData.map((service) => (
+                          <SelectItem key={service.id} value={service.id}>
+                            {service.title}
+                          </SelectItem>
+                        ))}
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>

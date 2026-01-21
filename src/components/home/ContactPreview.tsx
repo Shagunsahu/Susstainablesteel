@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { servicesData } from "@/data/services";
 
 const benefits = [
   "10% off this month",
@@ -270,11 +271,12 @@ const ContactPreview = () => {
                   required
                 >
                   <option value="">Select a service</option>
-                  <option value="ventilators">Roof Ventilators</option>
-                  <option value="skylights">Tubular Skylights</option>
-                  <option value="steel">Steel Structures</option>
-                  <option value="installation">Installation Services</option>
-                  <option value="maintenance">Maintenance</option>
+                  {servicesData.map((service) => (
+                    <option key={service.id} value={service.id}>
+                      {service.title}
+                    </option>
+                  ))}
+                  <option value="other">Other</option>
                 </select>
               </div>
 
