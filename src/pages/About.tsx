@@ -343,13 +343,13 @@ const About = () => {
                 <div className="aspect-[3/4] overflow-hidden bg-slate-800">
                   <img 
                     src="/assets/business.jpg" 
-                    alt="JK Singh" 
+                    alt="Jaya Kumar" 
                     className="w-full h-full group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" 
                   />
                 </div>
                 {/* Name Plate */}
                 <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-6 border-t border-white/10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="font-display text-2xl font-bold text-[#0a1e40]">JK Singh</h3>
+                  <h3 className="font-display text-2xl font-bold text-[#0a1e40]">Jaya Kumar</h3>
                   <p className="text-red-600 font-bold text-xs uppercase tracking-widest mt-1">Business Development Manager</p>
                 </div>
               </div>
@@ -383,13 +383,13 @@ const About = () => {
                   {/* Signature */}
                   <div className="flex-1 text-center sm:text-left">
                     <span className="font-serif text-3xl text-white/80 italic transform -rotate-2 inline-block">
-                      JK Singh
+                      Jaya Kumar
                     </span>
                   </div>
 
                   {/* Buttons */}
                   <div className="flex gap-4">
-                    <a 
+                   {/* <a 
                       href="https://www.linkedin.com/in/mukesh-s-b5ba7457" 
                       target="_blank" 
                       rel="noreferrer"
@@ -398,7 +398,7 @@ const About = () => {
                       <Linkedin className="w-5 h-5 transition-transform group-hover:scale-110" />
                       <span className="text-sm font-medium">LinkedIn</span>
                       <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </a>
+                    </a>*/}
 
                     <a 
                       href="mailto:jk@sustainablesteelind.com"
