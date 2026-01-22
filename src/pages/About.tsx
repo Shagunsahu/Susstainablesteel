@@ -324,7 +324,7 @@ const About = () => {
           </div>
         </div>
       </section>
-       
+       {/*
        <section className="py-24 bg-background overflow-hidden relative">
         
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -415,7 +415,7 @@ const About = () => {
 
           </div>
         </div>
-      </section>
+      </section>*/}
       {/* 6. CORE VALUES */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
